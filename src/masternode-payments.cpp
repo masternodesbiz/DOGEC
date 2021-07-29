@@ -340,7 +340,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
 
             CAmount nDevReward = 1.2 * COIN;
             bool nPayday = false;
-            if (nHeight > 1122000) {
+            if (nHeight >= 1122000) {
                 CTxDestination destination = DecodeDestination(Params().DevAddress());
                 EncodeDestination(destination);
                 CScript DEV_SCRIPT = GetScriptForDestination(destination);
@@ -357,7 +357,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
                     // Majority of cases; do it quick and move on
                     txNew.vout[i - 1].nValue -= masternodePayment;
                 } else if (i == 3) {
-                    txNew.vout[i - 1].nValue -= masternodePayment + nDevReward;
+                    txNew.vout[i - 1].nValue -= (masternodePayment + nDevReward);
                 } else if (i > 3) {
                     // special case, stake is split between (i-1) outputs
                     unsigned int outputs = i-1;
@@ -373,7 +373,6 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
             }
         } else {
             if (nHeight > 1071750) {
-                CAmount nDevReward = 1.2 * COIN;
                 bool nPayday = false;
                 int nDevPayPeriod = nHeight % Params().GetConsensus().nBudgetCycleBlocks;
                 if (nDevPayPeriod == 0) {
