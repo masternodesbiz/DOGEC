@@ -339,13 +339,11 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
             txNew.vout.resize(i + 1);
 
             CAmount nDevReward = 1.2 * COIN;
-            bool nPayday = false;
             if (nHeight >= 1122000) {
                 CTxDestination destination = DecodeDestination(Params().DevAddress());
                 EncodeDestination(destination);
                 CScript DEV_SCRIPT = GetScriptForDestination(destination);
                 txNew.vout.push_back(CTxOut(nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
-                nPayday = true;
             }
 
             txNew.vout[i].scriptPubKey = payee;
@@ -373,14 +371,13 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
             }
         } else {
             if (nHeight > 1071750) {
-                bool nPayday = false;
+                CAmount nDevReward = 1.2 * COIN;
                 int nDevPayPeriod = nHeight % Params().GetConsensus().nBudgetCycleBlocks;
                 if (nDevPayPeriod == 0) {
                     CTxDestination destination = DecodeDestination(Params().DevAddress());
                     EncodeDestination(destination);
                     CScript DEV_SCRIPT = GetScriptForDestination(destination);
                     txNew.vout.push_back(CTxOut(nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
-                    nPayday = true;
                 }
                 txNew.vout.resize(3);
                 txNew.vout[1].scriptPubKey = payee;
