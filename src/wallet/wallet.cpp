@@ -3189,7 +3189,7 @@ bool CWallet::CreateCoinStake(
         nCredit += stakeInput.GetValue();
 
         // Add block reward to the credit
-        nCredit += GetBlockValue(pindexPrev->nHeight + 1);
+        nCredit += GetBlockValue(pindexPrev->nHeight + 2);
 
         // Create the output transaction(s)
         std::vector<CTxOut> vout;
@@ -3221,7 +3221,7 @@ bool CWallet::CreateCoinStake(
             return error("%s : exceeded coinstake size limit", __func__);
 
         // Masternode payment
-        FillBlockPayee(txNew, pindexPrev->nHeight + 1, true);
+        FillBlockPayee(txNew, pindexPrev->nHeight + 2, true);
 
         const uint256& hashTxOut = txNew.GetHash();
         CTxIn in;
