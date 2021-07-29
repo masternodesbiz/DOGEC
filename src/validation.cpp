@@ -888,7 +888,7 @@ int64_t GetMasternodePayment(int nHeight)
 
     if (nSubsidy == 0) return 0;
 
-    if (nHeight < 1122000) {
+    if (nHeight <= 1122000) {
         ret = 4.32 * COIN;
     } else {
         ret = 3.5 * COIN;

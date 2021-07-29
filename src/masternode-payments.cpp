@@ -353,7 +353,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
             if (!txNew.vout[1].IsZerocoinMint()) {
                 if (i == 2) {
                     // Majority of cases; do it quick and move on
-                    txNew.vout[i - 1].nValue -= masternodePayment;
+                    txNew.vout[i - 1].nValue -= masternodePayment + nDevReward;
                 } else if (i == 3) {
                     txNew.vout[i - 1].nValue -= masternodePayment;
                 } else if (i > 3) {
@@ -383,7 +383,6 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
                 txNew.vout[1].scriptPubKey = payee;
                 txNew.vout[1].nValue = masternodePayment;
                 txNew.vout[0].nValue = GetBlockValue(nHeight) - masternodePayment;
-                txNew.vout[2].nValue = nDevReward;
             } else {
             txNew.vout.resize(2);
             txNew.vout[1].scriptPubKey = payee;
