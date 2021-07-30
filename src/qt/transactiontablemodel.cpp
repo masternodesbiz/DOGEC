@@ -726,7 +726,7 @@ QVariant TransactionTableModel::data(const QModelIndex& index, int role) const
     case Qt::ForegroundRole:
         // Minted
         if (rec->type == TransactionRecord::Generated || rec->type == TransactionRecord::StakeMint ||
-                rec->type == TransactionRecord::StakeZDOGEC || rec->type == TransactionRecord::MNReward || rec->type == case TransactionRecord::DevReward) {
+                rec->type == TransactionRecord::StakeZDOGEC || rec->type == TransactionRecord::MNReward || rec->type == TransactionRecord::DevReward) {
             if (rec->status.status == TransactionStatus::Conflicted || rec->status.status == TransactionStatus::NotAccepted)
                 return COLOR_ORPHAN;
             else
