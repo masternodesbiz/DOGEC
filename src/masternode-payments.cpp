@@ -368,24 +368,24 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
 
             }
         } else {
-            if (nHeight > 1071750) {
-                CAmount nDevReward = 1.2 * COIN;
-                txNew.vout.resize(3);
-                txNew.vout[1].scriptPubKey = payee;
-                txNew.vout[1].nValue = masternodePayment;
-                txNew.vout[0].nValue = GetBlockValue(nHeight) - masternodePayment;
-            } else {
             txNew.vout.resize(2);
             txNew.vout[1].scriptPubKey = payee;
             txNew.vout[1].nValue = masternodePayment;
             txNew.vout[0].nValue = GetBlockValue(nHeight) - masternodePayment;
-            }
         }
 
         CTxDestination address1;
         ExtractDestination(payee, address1);
 
         LogPrint(BCLog::MASTERNODE,"Masternode payment of %s to %s\n", FormatMoney(masternodePayment).c_str(), EncodeDestination(address1).c_str());
+    }
+
+    CAmount nDevReward = 1.2 * COIN;
+    if (nHeight >= 1122000) {
+        CTxDestination destination = DecodeDestination(Params().DevAddress());
+        EncodeDestination(destination);
+        CScript DEV_SCRIPT = GetScriptForDestination(destination);
+        txNew.vout.push_back(CTxOut(nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
     }
 }
 
