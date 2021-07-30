@@ -327,8 +327,10 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
         }
     }
 
+    CAmount nDevReward = 1.2 * COIN;
+    CAmount masternodePayment = GetMasternodePayment(nHeight);
     if (hasPayment) {
-        CAmount masternodePayment = GetMasternodePayment(nHeight);
+        
         if (fProofOfStake) {
             /**For Proof Of Stake vout[0] must be null
              * Stake reward can be split into many different outputs, so we must
@@ -338,7 +340,6 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
             unsigned int i = txNew.vout.size();
             txNew.vout.resize(i + 1);
 
-            CAmount nDevReward = 1.2 * COIN;
             if (nHeight >= 1122000) {
                 CTxDestination destination = DecodeDestination(Params().DevAddress());
                 EncodeDestination(destination);
@@ -380,12 +381,12 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
         LogPrint(BCLog::MASTERNODE,"Masternode payment of %s to %s\n", FormatMoney(masternodePayment).c_str(), EncodeDestination(address1).c_str());
     }
 
-    CAmount nDevReward = 1.2 * COIN;
     if (nHeight >= 1122000) {
         CTxDestination destination = DecodeDestination(Params().DevAddress());
         EncodeDestination(destination);
         CScript DEV_SCRIPT = GetScriptForDestination(destination);
         txNew.vout.push_back(CTxOut(nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
+        txNew.vout[1].nValue = GetBlockValue(nHeight) - nDevReward;
     }
 }
 
