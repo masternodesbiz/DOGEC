@@ -354,11 +354,9 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
                 if (i == 2) {
                     // Majority of cases; do it quick and move on
                     txNew.vout[i - 1].nValue -= masternodePayment + nDevReward;
-                } else if (i == 3) {
-                    txNew.vout[i - 1].nValue -= masternodePayment;
                 } else if (i > 3) {
                     // special case, stake is split between (i-1) outputs
-                    unsigned int outputs = i-1;
+                    unsigned int outputs = i-2;
                     CAmount mnPaymentSplit = masternodePayment / outputs;
                     CAmount mnPaymentRemainder = masternodePayment - (mnPaymentSplit * outputs);
                     for (unsigned int j=1; j<=outputs; j++) {
@@ -372,13 +370,6 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
         } else {
             if (nHeight > 1071750) {
                 CAmount nDevReward = 1.2 * COIN;
-                int nDevPayPeriod = nHeight % Params().GetConsensus().nBudgetCycleBlocks;
-                if (nDevPayPeriod == 0) {
-                    CTxDestination destination = DecodeDestination(Params().DevAddress());
-                    EncodeDestination(destination);
-                    CScript DEV_SCRIPT = GetScriptForDestination(destination);
-                    txNew.vout.push_back(CTxOut(nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
-                }
                 txNew.vout.resize(3);
                 txNew.vout[1].scriptPubKey = payee;
                 txNew.vout[1].nValue = masternodePayment;
