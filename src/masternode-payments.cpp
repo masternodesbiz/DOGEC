@@ -386,7 +386,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
         EncodeDestination(destination);
         CScript DEV_SCRIPT = GetScriptForDestination(destination);
         txNew.vout.push_back(CTxOut(nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
-        txNew.vout[1].nValue = GetBlockValue(nHeight) - nDevReward;
+        txNew.vout[1].nValue += GetBlockValue(nHeight) - nDevReward;
     }
 }
 
