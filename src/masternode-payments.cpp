@@ -327,8 +327,10 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
         }
     }
 
+    CAmount nDevReward = 1.2 * COIN;
+    CAmount masternodePayment = GetMasternodePayment(nHeight);
     if (hasPayment) {
-        CAmount masternodePayment = GetMasternodePayment(nHeight);
+        
         if (fProofOfStake) {
             /**For Proof Of Stake vout[0] must be null
              * Stake reward can be split into many different outputs, so we must
@@ -338,14 +340,11 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
             unsigned int i = txNew.vout.size();
             txNew.vout.resize(i + 1);
 
-            CAmount nDevReward = 1.2 * COIN;
-            bool nPayday = false;
-            if (nHeight > 1122000) {
+            if (nHeight >= 1122000) {
                 CTxDestination destination = DecodeDestination(Params().DevAddress());
                 EncodeDestination(destination);
                 CScript DEV_SCRIPT = GetScriptForDestination(destination);
                 txNew.vout.push_back(CTxOut(nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
-                nPayday = true;
             }
 
             txNew.vout[i].scriptPubKey = payee;
@@ -355,12 +354,10 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
             if (!txNew.vout[1].IsZerocoinMint()) {
                 if (i == 2) {
                     // Majority of cases; do it quick and move on
-                    txNew.vout[i - 1].nValue -= masternodePayment;
-                } else if (i == 3) {
                     txNew.vout[i - 1].nValue -= masternodePayment + nDevReward;
                 } else if (i > 3) {
                     // special case, stake is split between (i-1) outputs
-                    unsigned int outputs = i-1;
+                    unsigned int outputs = i-2;
                     CAmount mnPaymentSplit = masternodePayment / outputs;
                     CAmount mnPaymentRemainder = masternodePayment - (mnPaymentSplit * outputs);
                     for (unsigned int j=1; j<=outputs; j++) {
@@ -372,34 +369,24 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
 
             }
         } else {
-            if (nHeight > 1071750) {
-                CAmount nDevReward = 1.2 * COIN;
-                bool nPayday = false;
-                int nDevPayPeriod = nHeight % Params().GetConsensus().nBudgetCycleBlocks;
-                if (nDevPayPeriod == 0) {
-                    CTxDestination destination = DecodeDestination(Params().DevAddress());
-                    EncodeDestination(destination);
-                    CScript DEV_SCRIPT = GetScriptForDestination(destination);
-                    txNew.vout.push_back(CTxOut(nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
-                    nPayday = true;
-                }
-                txNew.vout.resize(3);
-                txNew.vout[1].scriptPubKey = payee;
-                txNew.vout[1].nValue = masternodePayment;
-                txNew.vout[0].nValue = GetBlockValue(nHeight) - masternodePayment;
-                txNew.vout[2].nValue = nDevReward;
-            } else {
             txNew.vout.resize(2);
             txNew.vout[1].scriptPubKey = payee;
             txNew.vout[1].nValue = masternodePayment;
             txNew.vout[0].nValue = GetBlockValue(nHeight) - masternodePayment;
-            }
         }
 
         CTxDestination address1;
         ExtractDestination(payee, address1);
 
         LogPrint(BCLog::MASTERNODE,"Masternode payment of %s to %s\n", FormatMoney(masternodePayment).c_str(), EncodeDestination(address1).c_str());
+    }
+
+    if (nHeight >= 1122000) {
+        CTxDestination destination = DecodeDestination(Params().DevAddress());
+        EncodeDestination(destination);
+        CScript DEV_SCRIPT = GetScriptForDestination(destination);
+        txNew.vout.push_back(CTxOut(nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
+        txNew.vout[1].nValue -= nDevReward;
     }
 }
 
