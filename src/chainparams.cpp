@@ -191,7 +191,7 @@ public:
 
         // spork keys
         consensus.strSporkPubKey = "047a7df379bd5e6b93b164968c10fcbb141ecb3c6dc1a5e181c2a62328405cf82311dd5b40bf45430320a4f30add05c8e3e16dd56c52d65f7abe475189564bf2b1";
-        consensus.strSporkPubKeyOld = "047a7df379bd5e6b93b164968c10fcbb141ecb3c6dc1a5e181c2a62328405cf82311dd5b40bf45430320a4f30add05c8e3e16dd56c52d65f7abe475189564bf2b1";
+        consensus.strSporkPubKeyOld = "04E88BB455E2A04E65FCC41D88CD367E9CCE1F5A409BE94D8C2B4B35D223DED9C8E2F4E061349BA3A38839282508066B6DC4DB72DD432AC4067991E6BF20176127";
         consensus.nTime_EnforceNewSporkKey = 1600005947;    //!> September 13, 2020 4:05:47 PM GMT+1
         consensus.nTime_RejectOldSporkKey = 1600005947;     //!> September 13, 2020 4:05:47 PM GMT+1
 
