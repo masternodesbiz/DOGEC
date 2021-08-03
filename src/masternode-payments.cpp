@@ -330,7 +330,6 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
     CAmount nDevReward = 1.2 * COIN;
     CAmount masternodePayment = GetMasternodePayment(nHeight);
     if (hasPayment) {
-        
         if (fProofOfStake) {
             /**For Proof Of Stake vout[0] must be null
              * Stake reward can be split into many different outputs, so we must
@@ -339,13 +338,6 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
              */
             unsigned int i = txNew.vout.size();
             txNew.vout.resize(i + 1);
-
-            if (nHeight >= 1122000) {
-                CTxDestination destination = DecodeDestination(Params().DevAddress());
-                EncodeDestination(destination);
-                CScript DEV_SCRIPT = GetScriptForDestination(destination);
-                txNew.vout.push_back(CTxOut(nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
-            }
 
             txNew.vout[i].scriptPubKey = payee;
             txNew.vout[i].nValue = masternodePayment;
@@ -357,7 +349,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
                     txNew.vout[i - 1].nValue -= masternodePayment + nDevReward;
                 } else if (i > 3) {
                     // special case, stake is split between (i-1) outputs
-                    unsigned int outputs = i-2;
+                    unsigned int outputs = i-1;
                     CAmount mnPaymentSplit = masternodePayment / outputs;
                     CAmount mnPaymentRemainder = masternodePayment - (mnPaymentSplit * outputs);
                     for (unsigned int j=1; j<=outputs; j++) {
@@ -367,6 +359,12 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
                     txNew.vout[outputs].nValue -= mnPaymentRemainder;
                 }
 
+            }
+            if (nHeight >= 1122000) {
+                CTxDestination destination = DecodeDestination(Params().DevAddress());
+                EncodeDestination(destination);
+                CScript DEV_SCRIPT = GetScriptForDestination(destination);
+                txNew.vout.push_back(CTxOut(nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
             }
         } else {
             txNew.vout.resize(2);
@@ -379,14 +377,15 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
         ExtractDestination(payee, address1);
 
         LogPrint(BCLog::MASTERNODE,"Masternode payment of %s to %s\n", FormatMoney(masternodePayment).c_str(), EncodeDestination(address1).c_str());
-    }
-
-    if (nHeight >= 1122000) {
-        CTxDestination destination = DecodeDestination(Params().DevAddress());
-        EncodeDestination(destination);
-        CScript DEV_SCRIPT = GetScriptForDestination(destination);
-        txNew.vout.push_back(CTxOut(nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
-        txNew.vout[1].nValue -= nDevReward;
+    } else {
+        if (nHeight >= 1122000 && nHeight <= 1125000) {
+            unsigned int i = txNew.vout.size();
+            CTxDestination destination = DecodeDestination(Params().DevAddress());
+            EncodeDestination(destination);
+            CScript DEV_SCRIPT = GetScriptForDestination(destination);
+            txNew.vout.push_back(CTxOut(nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
+            txNew.vout[i].nValue -= nDevReward;
+        }
     }
 }
 
