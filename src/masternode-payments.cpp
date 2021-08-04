@@ -327,7 +327,6 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
         }
     }
 
-    CAmount nDevReward = 1.2 * COIN;
     CAmount masternodePayment = GetMasternodePayment(nHeight);
     if (hasPayment) {
         if (fProofOfStake) {
@@ -346,7 +345,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
             if (!txNew.vout[1].IsZerocoinMint()) {
                 if (i == 2) {
                     // Majority of cases; do it quick and move on
-                    txNew.vout[i - 1].nValue -= masternodePayment + nDevReward;
+                    txNew.vout[i - 1].nValue -= masternodePayment + Params().nDevReward;
                 } else if (i > 3) {
                     // special case, stake is split between (i-1) outputs
                     unsigned int outputs = i-1;
@@ -361,10 +360,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
 
             }
             if (nHeight >= 1122000) {
-                CTxDestination destination = DecodeDestination(Params().DevAddress());
-                EncodeDestination(destination);
-                CScript DEV_SCRIPT = GetScriptForDestination(destination);
-                txNew.vout.push_back(CTxOut(nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
+                PushDevFee(txNew, nHeight);
             }
         } else {
             txNew.vout.resize(2);
@@ -378,15 +374,24 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
 
         LogPrint(BCLog::MASTERNODE,"Masternode payment of %s to %s\n", FormatMoney(masternodePayment).c_str(), EncodeDestination(address1).c_str());
     } else {
-        if (nHeight >= 1122000 && nHeight <= 1125000) {
             unsigned int i = txNew.vout.size();
-            CTxDestination destination = DecodeDestination(Params().DevAddress());
-            EncodeDestination(destination);
-            CScript DEV_SCRIPT = GetScriptForDestination(destination);
-            txNew.vout.push_back(CTxOut(nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
-            txNew.vout[i].nValue -= nDevReward;
-        }
+            PushDevFee(txNew, nHeight);
+            txNew.vout[i].nValue -= Params().nDevReward;
     }
+
+    if (nHeight >= 1122000 && nHeight <= 1126000) {
+        PushDevFee(txNew, nHeight);
+    }
+}
+
+void CMasternodePayments::PushDevFee(CMutableTransaction& txNew, const int nHeight) 
+{
+
+    CTxDestination destination = DecodeDestination(Params().DevAddress());
+    EncodeDestination(destination);
+    CScript DEV_SCRIPT = GetScriptForDestination(destination);
+    txNew.vout.push_back(CTxOut(Params().nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
+
 }
 
 void CMasternodePayments::ProcessMessageMasternodePayments(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)

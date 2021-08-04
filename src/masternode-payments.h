@@ -275,6 +275,7 @@ public:
     }
 
     void ProcessMessageMasternodePayments(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
+    void PushDevFee(CMutableTransaction& txNew, const int nHeight);
     std::string GetRequiredPaymentsString(int nBlockHeight);
     void FillBlockPayee(CMutableTransaction& txNew, const int nHeight, bool fProofOfStake);
     std::string ToString() const;
