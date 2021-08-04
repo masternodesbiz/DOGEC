@@ -3202,7 +3202,10 @@ bool CWallet::CreateCoinStake(
 
         // Set output amount
         int outputs = (int) txNew.vout.size() - 1;
-        CAmount nRemaining = (nCredit - Params().GetConsensus().nDevReward);
+        if (pindexPrev->nHeight + 1 >= 1122000){
+            nCredit -= Params().GetConsensus().nDevReward;
+        }
+        CAmount nRemaining = nCredit;        
         if (outputs > 1) {
             // Split the stake across the outputs
             CAmount nShare = nRemaining / outputs;
