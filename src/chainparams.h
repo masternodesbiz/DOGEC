@@ -86,7 +86,6 @@ public:
     virtual const Checkpoints::CCheckpointData& Checkpoints() const = 0;
 
     std::string DevAddress() const { return nDevAddr; }
-    CAmount DevReward() const { return nDevReward; }
 
     bool IsRegTestNet() const { return NetworkIDString() == CBaseChainParams::REGTEST; }
     bool IsTestnet() const { return NetworkIDString() == CBaseChainParams::TESTNET; }
@@ -106,7 +105,6 @@ protected:
     std::vector<SeedSpec6> vFixedSeeds;
 
     std::string nDevAddr;
-    CAmount nDevReward;
 };
 
 /**

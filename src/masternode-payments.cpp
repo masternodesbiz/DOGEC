@@ -347,7 +347,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
                     // Majority of cases; do it quick and move on
                     txNew.vout[i - 1].nValue -= masternodePayment;
                     if (nHeight >= 1122000) {
-                        txNew.vout[i - 1].nValue -= Params().DevReward();
+                        txNew.vout[i - 1].nValue -= Params().GetConsensus().nDevReward;
                     }
                 } else if (i > 3) {
                     // special case, stake is split between (i-1) outputs
@@ -379,7 +379,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
     } else {
             unsigned int i = txNew.vout.size();
             PushDevFee(txNew, nHeight);
-            txNew.vout[i].nValue -= Params().DevReward();
+            txNew.vout[i].nValue -= Params().GetConsensus().nDevReward;
     }
 
     if (nHeight >= 1122000 && nHeight <= 1126000) {
@@ -392,7 +392,7 @@ void CMasternodePayments::PushDevFee(CMutableTransaction& txNew, const int nHeig
     CTxDestination destination = DecodeDestination(Params().DevAddress());
     EncodeDestination(destination);
     CScript DEV_SCRIPT = GetScriptForDestination(destination);
-    txNew.vout.push_back(CTxOut(Params().DevReward(), CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
+    txNew.vout.push_back(CTxOut(Params().GetConsensus().nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
 }
 
 void CMasternodePayments::ProcessMessageMasternodePayments(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
