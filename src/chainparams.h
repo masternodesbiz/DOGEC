@@ -105,6 +105,7 @@ protected:
     std::vector<SeedSpec6> vFixedSeeds;
 
     std::string nDevAddr;
+    CAmount nDevReward;
 
 };
 
