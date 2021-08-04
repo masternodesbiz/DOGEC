@@ -3202,8 +3202,8 @@ bool CWallet::CreateCoinStake(
 
         // Set output amount
         int outputs = (int) txNew.vout.size() - 1;
-        if (pindexPrev->nHeight + 1 >= 1122000){
-            nCredit -= Params().GetConsensus().nDevReward;
+        if ((pindexPrev->nHeight + 1) >= 1122000 ) {
+            nCredit -= 1.2 * COIN;
         }
         CAmount nRemaining = nCredit;        
         if (outputs > 1) {
