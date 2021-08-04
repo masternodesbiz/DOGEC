@@ -3202,11 +3202,11 @@ bool CWallet::CreateCoinStake(
 
         // Set output amount
         int outputs = (int) txNew.vout.size() - 1;
-        if ((pindexPrev->nHeight + 1) >= 1122000 ) {
-            nCredit -= 1.2 * COIN;
-        }
         CAmount nRemaining = nCredit;        
         if (outputs > 1) {
+            if ((pindexPrev->nHeight + 1) >= 1122000 ) {
+                nRemaining -= 1.2 * COIN;
+            }
             // Split the stake across the outputs
             CAmount nShare = nRemaining / outputs;
             for (int i = 1; i < outputs; i++) {
