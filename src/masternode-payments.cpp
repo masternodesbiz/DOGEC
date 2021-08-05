@@ -389,10 +389,6 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
             PushDevFee(txNew, nHeight);
             txNew.vout[i].nValue -= Params().GetConsensus().nDevReward;
     }
-
-    if (nHeight >= 1122000 && nHeight <= 1128000) {
-        PushDevFee(txNew, nHeight);
-    }
 }
 
 void CMasternodePayments::PushDevFee(CMutableTransaction& txNew, const int nHeight) 
