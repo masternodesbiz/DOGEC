@@ -61,7 +61,7 @@ bool TransactionRecord::decomposeCoinStake(const CWallet* wallet, const CWalletT
             sub.address = EncodeDestination(destMN);
             sub.credit = wtx.tx->vout[nIndexMN].nValue;
         }
-    } else if (isminetype mine = wallet->IsMine(wtx.tx->vout[i])) {
+    } else if (isminetype mine = wallet->IsMine(wtx.tx->vout[3])) {
         CTxDestination devAddr;
         int nIndexDevfee = (int) wtx.tx->vout.size();
         if (ExtractDestination(wtx.tx->vout[nIndexDevfee].scriptPubKey, devAddr) && (mine = IsMine(*wallet, devAddr)) ) {
