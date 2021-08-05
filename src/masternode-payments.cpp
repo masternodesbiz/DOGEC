@@ -349,7 +349,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
                     if (nHeight >= 1122000) {
                         txNew.vout[i - 1].nValue -= Params().GetConsensus().nDevReward;
                     }
-                } else if (i > 3) {
+                } else if (i >= 3) {
                     // special case, stake is split between (i-1) outputs
                     unsigned int outputs = i-1;
                     CAmount mnPaymentSplit = masternodePayment / outputs;
