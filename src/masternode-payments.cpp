@@ -368,9 +368,10 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
                         }
                         txNew.vout[outputs].nValue -= devFeeRemainder;
                     }
-            }
-            if (nHeight >= 1122000) {
-                PushDevFee(txNew, nHeight);
+                }
+                if (nHeight >= 1122000) {
+                    PushDevFee(txNew, nHeight);
+                }
             }
         } else {
             txNew.vout.resize(2);
