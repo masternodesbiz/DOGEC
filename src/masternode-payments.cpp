@@ -359,8 +359,15 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
                     }
                     // in case it's not an even division, take the last bit of dust from the last one
                     txNew.vout[outputs].nValue -= mnPaymentRemainder;
-                }
-
+                    if (nHeight >= 1122000) {
+                        CAmount devFeeSplit = Params().GetConsensus().nDevReward / outputs;
+                        CAmount devFeeRemainder = Params().GetConsensus().nDevReward - (devFeeSplit * outputs);        
+                        
+                        for (unsigned int j=1; j<=outputs; j++) {
+                            txNew.vout[j].nValue -= devFeeSplit;
+                        }
+                        txNew.vout[outputs].nValue -= devFeeRemainder;
+                    }
             }
             if (nHeight >= 1122000) {
                 PushDevFee(txNew, nHeight);
@@ -382,7 +389,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, const int n
             txNew.vout[i].nValue -= Params().GetConsensus().nDevReward;
     }
 
-    if (nHeight >= 1122000 && nHeight <= 1126000) {
+    if (nHeight >= 1122000 && nHeight <= 1128000) {
         PushDevFee(txNew, nHeight);
     }
 }
