@@ -882,19 +882,19 @@ CAmount GetBlockValue(int nHeight)
 
 int64_t GetMasternodePayment(int nHeight)
 {
-
-    int64_t nSubsidy;
     int64_t ret = 0;
-
-    if (nSubsidy == 0) return 0;
 
     if (nHeight <= 1122000) {
         ret = 4.32 * COIN;
     } else {
         ret = 3.5 * COIN;
     }
+    CAmount nMoneySupply = MoneySupply.Get();
+    int64_t nSubsidy = GetBlockValue(nHeight);
+    if (nMoneySupply + nSubsidy >= Params().GetConsensus().nMaxMoneyOut) {
+        ret = 0;
+    }
     return ret;
-
 }
 
 bool IsInitialBlockDownload()
