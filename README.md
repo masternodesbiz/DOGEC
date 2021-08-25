@@ -4,7 +4,7 @@ DogeCash Core integration/staging repository
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/DogeCash/DogeCash?color=%23365ace&cacheSeconds=3600)](https://github.com/dogecash/dogecash/releases)
 [![GitHub Release Date](https://img.shields.io/github/release-date/DogeCash/DogeCash?color=%23365ace&cacheSeconds=3600)](https://github.com/dogecash/dogecash/releases)
 
-## What is DOGEC?
+## What is DogeCash?
 
 DogeCash is an open source community-driven cryptocurrency, focused on five main aspects:
 
