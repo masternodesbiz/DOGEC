@@ -121,7 +121,7 @@ enum WalletFeature {
 
 enum AvailableCoinsType {
     ALL_COINS = 1,
-    ONLY_5000 = 5,                                 // find masternode outputs including locked ones (use with caution)
+    ONLY_5000 = 5,                                  // ** DEPRECATED: find masternode outputs including locked ones (use with caution)
     STAKEABLE_COINS = 6                             // UTXO's that are valid for staking
 };
 
@@ -802,6 +802,9 @@ public:
         bool fIncludeLocked{false};
         // Select outputs with value <= nMaxOutValue
         CAmount nMaxOutValue{0};
+        CAmount nMinOutValue{0}; // 0 means not active
+        CAmount nMinimumSumAmount{0}; // 0 means not active
+        unsigned int nMaximumCount{0}; // 0 means not active
     };
 
     //! >> Available coins (generic)

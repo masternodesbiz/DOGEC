@@ -14,6 +14,8 @@
 #include "qt/dogecash/guitransactionsutils.h"
 #include "qt/dogecash/qtutils.h"
 
+#include "wallet/wallet.h"
+
 #include <QFile>
 #include <QIntValidator>
 #include <QHostAddress>
@@ -162,7 +164,7 @@ bool MasterNodeWizardDialog::createMN()
     1) generate the mn key.
     2) create the mn address.
     3) if there is a valid (unlocked) collateral utxo, use it
-    4) otherwise create a receiving address and send a tx with 10k to it.
+    4) otherwise create a receiving address and send a tx with 15k to it.
     5) get the collateral output.
     6) use those values on the masternode.conf
      */
@@ -214,7 +216,7 @@ bool MasterNodeWizardDialog::createMN()
         SendCoinsRecipient sendCoinsRecipient(
                 QString::fromStdString(dest.ToString()),
                 QString::fromStdString(alias),
-                CAmount(5000) * COIN,
+                CAmount(GetMNCollateral(chainActive.Height())) * COIN,
                 "");
 
         // Send the 10 tx to one of your address
