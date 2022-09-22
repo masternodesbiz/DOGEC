@@ -2438,9 +2438,6 @@ CWallet::OutputAvailabilityResult CWallet::CheckOutputAvailability(
 {
     OutputAvailabilityResult res;
 
-    // Check for only 5k utxo
-    if (nCoinType == ONLY_5000 && output.nValue != GetMNCollateral(chainActive.Height())) return res;
-
     // Check for stakeable utxo
     if (nCoinType == STAKEABLE_COINS && output.IsZerocoinMint()) return res;
 
@@ -2449,18 +2446,18 @@ CWallet::OutputAvailabilityResult CWallet::CheckOutputAvailability(
 
     isminetype mine = IsMine(output);
 
-    // Check If not mine
+    // Check if not mine
     if (mine == ISMINE_NO) return res;
 
     // Check if watch only utxo are allowed
+    // ** NOTE: Probably obsolete // Ky
     if (mine == ISMINE_WATCH_ONLY && coinControl && !coinControl->fAllowWatchOnly) return res;
 
     // Skip locked utxo
-    if (!fIncludeLocked && IsLockedCoin(wtxid, outIndex) && nCoinType != ONLY_5000) return res;
+    if (!fIncludeLocked && IsLockedCoin(wtxid, outIndex)) return res;
 
     // Check if we should include zero value utxo
     if (output.nValue <= 0) return res;
-
     if (fCoinsSelected && coinControl && !coinControl->fAllowOtherInputs && !coinControl->IsSelected(COutPoint(wtxid, outIndex)))
         return res;
 
@@ -2495,12 +2492,13 @@ bool CWallet::AvailableCoins(std::vector<COutput>* pCoins,      // --> populates
 
     {
         LOCK(cs_wallet);
-        for (std::map<uint256, CWalletTx>::const_iterator it = mapWallet.begin(); it != mapWallet.end(); ++it) {
-            const uint256& wtxid = it->first;
-            const CWalletTx* pcoin = &(*it).second;
+        CAmount nTotal = 0;
+        for (const auto& entry : mapWallet) {
+            const uint256& wtxid = entry.first;
+            const CWalletTx* pcoin = &entry.second;
 
             // Check if the tx is selectable
-            int nDepth;
+            int nDepth = 0;
             if (!CheckTXAvailability(pcoin, coinsFilter.fOnlyConfirmed, nDepth, m_last_block_processed_height))
                 continue;
 
@@ -2515,6 +2513,9 @@ bool CWallet::AvailableCoins(std::vector<COutput>* pCoins,      // --> populates
 
                 // Filter by value if needed
                 if (coinsFilter.nMaxOutValue > 0 && output.nValue > coinsFilter.nMaxOutValue) {
+                    continue;
+                }
+                if (coinsFilter.nMinOutValue > 0 && output.nValue < coinsFilter.nMinOutValue) {
                     continue;
                 }
 
@@ -2544,6 +2545,20 @@ bool CWallet::AvailableCoins(std::vector<COutput>* pCoins,      // --> populates
                 // found valid coin
                 if (!pCoins) return true;
                 pCoins->emplace_back(pcoin, (int) i, nDepth, res.spendable, res.solvable);
+
+                // Checks the sum amount of all UTXO's.
+                if (coinsFilter.nMinimumSumAmount != 0) {
+                    nTotal += output.nValue;
+
+                    if (nTotal >= coinsFilter.nMinimumSumAmount) {
+                        return true;
+                    }
+                }
+
+                // Checks the maximum number of UTXO's.
+                if (coinsFilter.nMaximumCount > 0 && pCoins->size() >= coinsFilter.nMaximumCount) {
+                    return true;
+                }
             }
         }
         return (pCoins && !pCoins->empty());
