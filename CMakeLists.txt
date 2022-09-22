@@ -21,7 +21,7 @@ if(RUSTC_PROGRAM)
     message(STATUS "Found rustc: ${RUSTC_PROGRAM}")
 endif()
 
-project(PIVX)
+project(DogeCash)
 
 set(BDB_VER "4.8.30")
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/contrib/cmake")
@@ -55,7 +55,7 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
         message(STATUS "Compiling on WSL")
         set(ENV{DISPLAY} ":0")
         set(ENV{LIBGL_ALWAYS_INDIRECT} 1)
-        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY /home/$ENV{USER}/pivx-run)
+        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY /home/$ENV{USER}/dogecash-run)
         message(WARNING "WSL Runtime support requires VcXsrv to be installed and running")
     else()
         message(STATUS "Compiling on Linux")
@@ -98,7 +98,7 @@ else()
 endif()
 
 # run configure if pivx_config.h doesn't exist
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/config/pivx-config.h")
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/config/dogecash-config.h")
 else()
     execute_process(
         COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/configure ${CONFIGSITE} ${BDB_CONFIGURE_FLAGS} ${BIGNUM_CONFIGURE_FLAGS}
@@ -107,7 +107,7 @@ else()
 endif()
 
 # error out if configure fails
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/config/pivx-config.h")
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/config/dogecash-config.h")
 else()
     execute_process(COMMAND cat config.log WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
     message(FATAL_ERROR "configure script didn't finish properly see config.log output above")
@@ -547,13 +547,13 @@ link_directories(
 
 link_directories(${CMAKE_BINARY_DIR})
 
-set(pivx-cli_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/pivx-cli.cpp)
+set(dogecash-cli_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/dogecash-cli.cpp)
 if($ENV{target} MATCHES "Windows")
-    list(APPEND pivx-cli_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/pivx-cli-res.rc)
+    list(APPEND dogecash-cli_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/dogecash-cli-res.rc)
 endif()
-add_executable(pivx-cli ${pivx-cli_SOURCES})
-add_dependencies(pivx-cli libunivalue libzcashrust bls)
-target_link_libraries(pivx-cli
+add_executable(dogecash-cli ${dogecash-cli_SOURCES})
+add_dependencies(dogecash-cli libunivalue libzcashrust bls)
+target_link_libraries(dogecash-cli
         CLI_A
         univalue
         UTIL_A
@@ -564,19 +564,19 @@ target_link_libraries(pivx-cli
         ${Boost_LIBRARIES} ${LIBEVENT_LIB} ${sodium_LIBRARY_RELEASE} -ldl pthread
         )
 if($ENV{target} MATCHES "Windows")
-    target_link_libraries(pivx-cli ${WINDOWS_LDADD})
+    target_link_libraries(dogecash-cli ${WINDOWS_LDADD})
 endif()
 if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-    target_link_libraries(pivx-cli "-framework Cocoa")
+    target_link_libraries(dogecash-cli "-framework Cocoa")
 endif()
 
-set(pivx-tx_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/pivx-tx.cpp)
+set(dogecash-tx_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/dogecash-tx.cpp)
 if($ENV{target} MATCHES "Windows")
-    list(APPEND pivx-tx_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/pivx-tx-res.rc)
+    list(APPEND dogecash-tx_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/dogecash-tx-res.rc)
 endif()
-add_executable(pivx-tx ${pivx-tx_SOURCES})
-add_dependencies(pivx-tx libunivalue libsecp256k1 libzcashrust bls)
-target_link_libraries(pivx-tx
+add_executable(dogecash-tx ${dogecash-tx_SOURCES})
+add_dependencies(dogecash-tx libunivalue libsecp256k1 libzcashrust bls)
+target_link_libraries(dogecash-tx
         univalue
         COMMON_A
         ZEROCOIN_A
@@ -589,10 +589,10 @@ target_link_libraries(pivx-tx
         ${Boost_LIBRARIES} ${LIBEVENT_LIB} ${sodium_LIBRARY_RELEASE} ${GMP_LIBRARY} -ldl pthread
         )
 if($ENV{target} MATCHES "Windows")
-    target_link_libraries(pivx-tx ${WINDOWS_LDADD})
+    target_link_libraries(dogecash-tx ${WINDOWS_LDADD})
 endif()
 if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-    target_link_libraries(pivx-tx "-framework Cocoa")
+    target_link_libraries(dogecash-tx "-framework Cocoa")
 endif()
 
 set(pivxd_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/pivxd.cpp)

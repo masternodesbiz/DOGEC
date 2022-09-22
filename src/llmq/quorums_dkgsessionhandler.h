@@ -1,10 +1,10 @@
 // Copyright (c) 2018-2021 The Dash Core developers
-// Copyright (c) 2022 The PIVX developers
+// Copyright (c) 2022 The DogeCash developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIVX_QUORUMS_DKGSESSIONHANDLER_H
-#define PIVX_QUORUMS_DKGSESSIONHANDLER_H
+#ifndef DogeCash_QUORUMS_DKGSESSIONHANDLER_H
+#define DogeCash_QUORUMS_DKGSESSIONHANDLER_H
 
 #include "ctpl_stl.h"
 #include "llmq/quorums_dkgsession.h"
@@ -147,4 +147,4 @@ private:
 
 }
 
-#endif //PIVX_QUORUMS_DKGSESSIONHANDLER_H
+#endif //DogeCash_QUORUMS_DKGSESSIONHANDLER_H

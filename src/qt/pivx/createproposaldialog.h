@@ -1,4 +1,4 @@
-// Copyright (c) 2021 The PIVX developers
+// Copyright (c) 2021 The DogeCash developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://www.opensource.org/licenses/mit-license.php.
 
@@ -14,7 +14,7 @@ class QPushButton;
 
 class ContactsDropdown;
 class GovernanceModel;
-class PIVXGUI;
+class DogeCashGUI;
 class SnackBar;
 class WalletModel;
 
@@ -23,7 +23,7 @@ class CreateProposalDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit CreateProposalDialog(PIVXGUI* parent, GovernanceModel* _govModel, WalletModel* _walletModel);
+    explicit CreateProposalDialog(DogeCashGUI* parent, GovernanceModel* _govModel, WalletModel* _walletModel);
     ~CreateProposalDialog() override;
 protected:
     void keyPressEvent(QKeyEvent* e) override;

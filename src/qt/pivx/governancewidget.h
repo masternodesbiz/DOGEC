@@ -1,4 +1,4 @@
-// Copyright (c) 2021 The PIVX developers
+// Copyright (c) 2021 The DogeCash developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://www.opensource.org/licenses/mit-license.php.
 
@@ -23,7 +23,7 @@ class QTimer;
 QT_END_NAMESPACE
 
 class MNModel;
-class PIVXGUI;
+class DogeCashGUI;
 class GovernanceModel;
 class TooltipMenu;
 
@@ -57,7 +57,7 @@ class GovernanceWidget : public PWidget
     Q_OBJECT
 
 public:
-    explicit GovernanceWidget(PIVXGUI* parent);
+    explicit GovernanceWidget(DogeCashGUI* parent);
     ~GovernanceWidget() override;
 
     void showEvent(QShowEvent *event) override;

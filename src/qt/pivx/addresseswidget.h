@@ -1,4 +1,4 @@
-// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2019-2020 The DogeCash developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -13,7 +13,7 @@
 
 class AddressFilterProxyModel;
 class TooltipMenu;
-class PIVXGUI;
+class DogeCashGUI;
 class WalletModel;
 
 namespace Ui {
@@ -29,7 +29,7 @@ class AddressesWidget : public PWidget
     Q_OBJECT
 
 public:
-    explicit AddressesWidget(PIVXGUI* parent);
+    explicit AddressesWidget(DogeCashGUI* parent);
     ~AddressesWidget();
 
     void loadWalletModel() override;

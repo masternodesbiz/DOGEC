@@ -1,4 +1,4 @@
-// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2019-2020 The DogeCash developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -48,7 +48,7 @@ public:
     ContactDropdownRow* row = nullptr;
 };
 
-ContactsDropdown::ContactsDropdown(int minWidth, int minHeight, PIVXGUI* _window, QWidget* _parent) : PWidget(_window, _parent)
+ContactsDropdown::ContactsDropdown(int minWidth, int minHeight, DogeCashGUI* _window, QWidget* _parent) : PWidget(_window, _parent)
 {
     this->setStyleSheet(_window->styleSheet());
     init(minWidth, minHeight);

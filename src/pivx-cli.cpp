@@ -1,12 +1,12 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2021 The Bitcoin developers
 // Copyright (c) 2009-2015 The Dash developers
-// Copyright (c) 2015-2021 The PIVX developers
+// Copyright (c) 2015-2021 The DogeCash developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/pivx-config.h"
+#include "config/dogecash-config.h"
 #endif
 
 #include "chainparamsbase.h"
@@ -37,7 +37,7 @@ std::string HelpMessageCli()
     std::string strUsage;
     strUsage += HelpMessageGroup("Options:");
     strUsage += HelpMessageOpt("-?", "This help message");
-    strUsage += HelpMessageOpt("-conf=<file>", strprintf("Specify configuration file (default: %s)", PIVX_CONF_FILENAME));
+    strUsage += HelpMessageOpt("-conf=<file>", strprintf("Specify configuration file (default: %s)", DogeCash_CONF_FILENAME));
     strUsage += HelpMessageOpt("-datadir=<dir>", "Specify data directory");
     AppendParamsHelpMessages(strUsage);
     strUsage += HelpMessageOpt("-named", strprintf("Pass named instead of positional arguments (default: %s)", DEFAULT_NAMED));
@@ -91,10 +91,10 @@ static bool AppInitRPC(int argc, char* argv[])
         std::string strUsage = PACKAGE_NAME " RPC client version " + FormatFullVersion() + "\n";
         if (!gArgs.IsArgSet("-version")) {
             strUsage += "\n"
-                        "Usage:  pivx-cli [options] <command> [params]  Send command to " PACKAGE_NAME "\n"
-                        "or:     pivx-cli [options] -named <command> [name=value]... Send command to " PACKAGE_NAME " (with named arguments)\n"
-                        "or:     pivx-cli [options] help                List commands\n"
-                        "or:     pivx-cli [options] help <command>      Get help for a command\n";
+                        "Usage:  dogecash-cli [options] <command> [params]  Send command to " PACKAGE_NAME "\n"
+                        "or:     dogecash-cli [options] -named <command> [name=value]... Send command to " PACKAGE_NAME " (with named arguments)\n"
+                        "or:     dogecash-cli [options] help                List commands\n"
+                        "or:     dogecash-cli [options] help <command>      Get help for a command\n";
             strUsage += "\n" + HelpMessageCli();
         }
 
@@ -106,7 +106,7 @@ static bool AppInitRPC(int argc, char* argv[])
         return false;
     }
     try {
-        gArgs.ReadConfigFile(gArgs.GetArg("-conf", PIVX_CONF_FILENAME));
+        gArgs.ReadConfigFile(gArgs.GetArg("-conf", DogeCash_CONF_FILENAME));
     } catch (const std::exception& e) {
         fprintf(stderr, "Error reading configuration file: %s\n", e.what());
         return false;
@@ -219,7 +219,7 @@ UniValue CallRPC(const std::string& strMethod, const UniValue& params)
         if (!GetAuthCookie(&strRPCUserColonPass)) {
             throw std::runtime_error(strprintf(
                  _("Could not locate RPC credentials. No authentication cookie could be found, and no rpcpassword is set in the configuration file (%s)"),
-                    GetConfigFile(gArgs.GetArg("-conf", PIVX_CONF_FILENAME)).string().c_str()));
+                    GetConfigFile(gArgs.GetArg("-conf", DogeCash_CONF_FILENAME)).string().c_str()));
 
         }
     } else {
@@ -329,7 +329,7 @@ int CommandLineRPC(int argc, char* argv[])
                             strPrint += "error message:\n"+errMsg.get_str();
 
                         if (errCode.isNum() && errCode.get_int() == RPC_WALLET_NOT_SPECIFIED) {
-                            strPrint += "\nTry adding \"-rpcwallet=<filename>\" option to pivx-cli command line.";
+                            strPrint += "\nTry adding \"-rpcwallet=<filename>\" option to dogecash-cli command line.";
                         }
                     }
                 } else {

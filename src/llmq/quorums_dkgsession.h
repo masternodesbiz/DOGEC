@@ -1,10 +1,10 @@
 // Copyright (c) 2018-2021 The Dash Core developers
-// Copyright (c) 2022 The PIVX developers
+// Copyright (c) 2022 The DogeCash developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIVX_QUORUMS_DKGSESSION_H
-#define PIVX_QUORUMS_DKGSESSION_H
+#ifndef DogeCash_QUORUMS_DKGSESSION_H
+#define DogeCash_QUORUMS_DKGSESSION_H
 
 #include "bls/bls_ies.h"
 #include "bls/bls_worker.h"
@@ -342,4 +342,4 @@ bool SetSimulatedDKGErrorRate(const std::string& error_type, double rate);
 
 }
 
-#endif //PIVX_QUORUMS_DKGSESSION_H
+#endif //DogeCash_QUORUMS_DKGSESSION_H

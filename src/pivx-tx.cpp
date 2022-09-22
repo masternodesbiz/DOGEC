@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2015-2020 The PIVX developers
+// Copyright (c) 2015-2020 The DogeCash developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/pivx-config.h"
+#include "config/dogecash-config.h"
 #endif
 
 #include "clientversion.h"
@@ -47,9 +47,9 @@ static bool AppInitRawTx(int argc, char* argv[])
 
     if (argc < 2 || gArgs.IsArgSet("-?") || gArgs.IsArgSet("-h") || gArgs.IsArgSet("-help")) {
         // First part of help message is specific to this utility
-        std::string strUsage = PACKAGE_NAME " pivx-tx utility version " + FormatFullVersion() + "\n\n" +
-                               "Usage:  pivx-tx [options] <hex-tx> [commands]  Update hex-encoded pivx transaction\n" +
-                               "or:     pivx-tx [options] -create [commands]   Create hex-encoded pivx transaction\n" +
+        std::string strUsage = PACKAGE_NAME " dogecash-tx utility version " + FormatFullVersion() + "\n\n" +
+                               "Usage:  dogecash-tx [options] <hex-tx> [commands]  Update hex-encoded pivx transaction\n" +
+                               "or:     dogecash-tx [options] -create [commands]   Create hex-encoded pivx transaction\n" +
                                "\n";
 
         fprintf(stdout, "%s", strUsage.c_str());

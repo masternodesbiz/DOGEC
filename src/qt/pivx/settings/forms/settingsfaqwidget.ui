@@ -163,7 +163,7 @@
                       <enum>Qt::NoFocus</enum>
                      </property>
                      <property name="text">
-                      <string>1) What is PIVX?</string>
+                      <string>1) What is DogeCash?</string>
                      </property>
                      <property name="checkable">
                       <bool>true</bool>
@@ -342,7 +342,7 @@
                   <enum>Qt::NoFocus</enum>
                  </property>
                  <property name="text">
-                  <string notr="true">https://www.PIVX.org</string>
+                  <string notr="true">https://www.DogeCash.org</string>
                  </property>
                 </widget>
                </item>
@@ -495,7 +495,7 @@
                       <item>
                        <widget class="QLabel" name="labelSubtitle_Intro">
                         <property name="text">
-                         <string>What is PIVX?</string>
+                         <string>What is DogeCash?</string>
                         </property>
                         <property name="wordWrap">
                          <bool>true</bool>

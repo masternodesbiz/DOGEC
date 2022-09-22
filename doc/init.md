@@ -62,7 +62,7 @@ Lock file:           `/var/lock/subsys/pivxd` (CentOS)
 The configuration file, PID directory (if applicable) and data directory
 should all be owned by the pivx user and group.  It is advised for security
 reasons to make the configuration file and data directory only readable by the
-pivx user and group.  Access to pivx-cli and other pivxd rpc clients
+pivx user and group.  Access to dogecash-cli and other pivxd rpc clients
 can then be controlled by group membership.
 
 NOTE: When using the systemd .service file, the creation of the aforementioned
@@ -84,9 +84,9 @@ OpenRC).
 ### macOS
 
 Binary:              `/usr/local/bin/pivxd`
-Configuration file:  `~/Library/Application Support/PIVX/pivx.conf`
-Data directory:      `~/Library/Application Support/PIVX`
-Lock file:           `~/Library/Application Support/PIVX/.lock`
+Configuration file:  `~/Library/Application Support/DogeCash/pivx.conf`
+Data directory:      `~/Library/Application Support/DogeCash`
+Lock file:           `~/Library/Application Support/DogeCash/.lock`
 
 Installing Service Configuration
 -----------------------------------
@@ -124,7 +124,7 @@ use old versions of Upstart and do not supply the start-stop-daemon utility.
 Copy pivxd.init to /etc/init.d/pivxd. Test by running `service pivxd start`.
 
 Using this script, you can adjust the path and flags to the pivxd program by
-setting the PIVXD and FLAGS environment variables in the file
+setting the DogeCashD and FLAGS environment variables in the file
 /etc/sysconfig/pivxd. You can also use the DAEMONOPTS environment variable here.
 
 ### macOS

@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2020 The PIVX developers
+// Copyright (c) 2015-2020 The DogeCash developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/pivx-config.h"
+#include "config/dogecash-config.h"
 #endif
 
 #include "qt/pivx/pivxgui.h"
@@ -82,7 +82,7 @@ static void InitMessage(const std::string& message)
  */
 static std::string Translate(const char* psz)
 {
-    return QCoreApplication::translate("pivx-core", psz).toStdString();
+    return QCoreApplication::translate("dogecash-core", psz).toStdString();
 }
 
 static QString GetLangTerritory(bool forceLangFromSetting = false)
@@ -149,7 +149,7 @@ void DebugMessageHandler(QtMsgType type, const QMessageLogContext& context, cons
     }
 }
 
-/** Class encapsulating PIVX Core startup and shutdown.
+/** Class encapsulating DogeCash Core startup and shutdown.
  * Allows running startup and shutdown in a different thread from the UI thread.
  */
 class BitcoinCore : public QObject
@@ -174,7 +174,7 @@ private:
     void handleRunawayException(const std::exception* e);
 };
 
-/** Main PIVX application object */
+/** Main DogeCash application object */
 class BitcoinApplication : public QApplication
 {
     Q_OBJECT
@@ -206,7 +206,7 @@ public:
     /// Get process return value
     int getReturnValue() { return returnValue; }
 
-    /// Get window identifier of QMainWindow (PIVXGUI)
+    /// Get window identifier of QMainWindow (DogeCashGUI)
     WId getMainWinId() const;
 
 public Q_SLOTS:
@@ -227,7 +227,7 @@ private:
     QThread* coreThread{nullptr};
     OptionsModel* optionsModel{nullptr};
     ClientModel* clientModel{nullptr};
-    PIVXGUI* window{nullptr};
+    DogeCashGUI* window{nullptr};
     QTimer* pollShutdownTimer{nullptr};
 #ifdef ENABLE_WALLET
     PaymentServer* paymentServer{nullptr};
@@ -371,10 +371,10 @@ void BitcoinApplication::createOptionsModel()
 
 void BitcoinApplication::createWindow(const NetworkStyle* networkStyle)
 {
-    window = new PIVXGUI(networkStyle, nullptr);
+    window = new DogeCashGUI(networkStyle, nullptr);
 
     pollShutdownTimer = new QTimer(window);
-    connect(pollShutdownTimer, &QTimer::timeout, window, &PIVXGUI::detectShutdown);
+    connect(pollShutdownTimer, &QTimer::timeout, window, &DogeCashGUI::detectShutdown);
 }
 
 void BitcoinApplication::createSplashScreen(const NetworkStyle* networkStyle)
@@ -421,7 +421,7 @@ void BitcoinApplication::startThread()
     connect(executor, &BitcoinCore::runawayException, this, &BitcoinApplication::handleRunawayException);
     connect(this, &BitcoinApplication::requestedInitialize, executor, &BitcoinCore::initialize);
     connect(this, &BitcoinApplication::requestedShutdown, executor, &BitcoinCore::shutdown);
-    connect(window, &PIVXGUI::requestedRestart, executor, &BitcoinCore::restart);
+    connect(window, &DogeCashGUI::requestedRestart, executor, &BitcoinCore::restart);
     /*  make sure executor object is deleted in its own thread */
     connect(this, &BitcoinApplication::stopThread, executor, &QObject::deleteLater);
     connect(this, &BitcoinApplication::stopThread, coreThread, &QThread::quit);
@@ -499,8 +499,8 @@ void BitcoinApplication::initializeResult(int retval)
             mnModel->init();
 
             window->setGovModel(govModel);
-            window->addWallet(PIVXGUI::DEFAULT_WALLET, walletModel);
-            window->setCurrentWallet(PIVXGUI::DEFAULT_WALLET);
+            window->addWallet(DogeCashGUI::DEFAULT_WALLET, walletModel);
+            window->setCurrentWallet(DogeCashGUI::DEFAULT_WALLET);
             window->setMNModel(mnModel);
         }
 #endif
@@ -515,9 +515,9 @@ void BitcoinApplication::initializeResult(int retval)
 
 #ifdef ENABLE_WALLET
         // Now that initialization/startup is done, process any command-line
-        // PIVX: URIs or payment requests:
-        //connect(paymentServer, &PaymentServer::receivedPaymentRequest, window, &PIVXGUI::handlePaymentRequest);
-        connect(window, &PIVXGUI::receivedURI, paymentServer, &PaymentServer::handleURIOrFile);
+        // DogeCash: URIs or payment requests:
+        //connect(paymentServer, &PaymentServer::receivedPaymentRequest, window, &DogeCashGUI::handlePaymentRequest);
+        connect(window, &DogeCashGUI::receivedURI, paymentServer, &PaymentServer::handleURIOrFile);
         connect(paymentServer, &PaymentServer::message, [this](const QString& title, const QString& message, unsigned int style) {
           window->message(title, message, style);
         });
@@ -537,7 +537,7 @@ void BitcoinApplication::shutdownResult(int retval)
 
 void BitcoinApplication::handleRunawayException(const QString& message)
 {
-    QMessageBox::critical(nullptr, "Runaway exception", QObject::tr("A fatal error occurred. PIVX can no longer continue safely and will quit.") + QString("\n\n") + message);
+    QMessageBox::critical(nullptr, "Runaway exception", QObject::tr("A fatal error occurred. DogeCash can no longer continue safely and will quit.") + QString("\n\n") + message);
     ::exit(1);
 }
 
@@ -620,7 +620,7 @@ int main(int argc, char* argv[])
         return 1;
     }
     try {
-        gArgs.ReadConfigFile(gArgs.GetArg("-conf", PIVX_CONF_FILENAME));
+        gArgs.ReadConfigFile(gArgs.GetArg("-conf", DogeCash_CONF_FILENAME));
     } catch (const std::exception& e) {
         QMessageBox::critical(nullptr, PACKAGE_NAME,
             QObject::tr("Error: Cannot parse configuration file: %1. Only use key=value syntax.").arg(e.what()));

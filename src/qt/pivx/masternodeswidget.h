@@ -1,4 +1,4 @@
-// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2019-2020 The DogeCash developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -14,7 +14,7 @@
 #include <QTimer>
 #include <QWidget>
 
-class PIVXGUI;
+class DogeCashGUI;
 class MNModel;
 
 namespace Ui {
@@ -31,7 +31,7 @@ class MasterNodesWidget : public PWidget
 
 public:
 
-    explicit MasterNodesWidget(PIVXGUI *parent = nullptr);
+    explicit MasterNodesWidget(DogeCashGUI *parent = nullptr);
     ~MasterNodesWidget();
     void setMNModel(MNModel* _mnModel);
 

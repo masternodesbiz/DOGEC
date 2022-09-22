@@ -7,7 +7,7 @@
 #  spendfrom.py  # Lists available funds
 #  spendfrom.py --from=ADDRESS --to=ADDRESS --amount=11.00
 #
-# Assumes it will talk to a pivxd or pivx-Qt running
+# Assumes it will talk to a pivxd or dogecash-Qt running
 # on localhost.
 #
 # Depends on jsonrpc
@@ -35,9 +35,9 @@ def check_json_precision():
 def determine_db_dir():
     """Return the default location of the pivx data directory"""
     if platform.system() == "Darwin":
-        return os.path.expanduser("~/Library/Application Support/PIVX/")
+        return os.path.expanduser("~/Library/Application Support/DogeCash/")
     elif platform.system() == "Windows":
-        return os.path.join(os.environ['APPDATA'], "PIVX")
+        return os.path.join(os.environ['APPDATA'], "DogeCash")
     return os.path.expanduser("~/.pivx")
 
 def read_bitcoin_config(dbdir):
@@ -110,7 +110,7 @@ def list_available(pivxd):
         vout = rawtx["vout"][output['vout']]
         pk = vout["scriptPubKey"]
 
-        # This code only deals with ordinary pay-to-pivx-address
+        # This code only deals with ordinary pay-to-dogecash-address
         # or pay-to-script-hash outputs right now; anything exotic is ignored.
         if pk["type"] != "pubkeyhash" and pk["type"] != "scripthash":
             continue
