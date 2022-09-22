@@ -47,7 +47,7 @@ std::string HelpMessageCli()
     strUsage += HelpMessageOpt("-rpcuser=<user>", "Username for JSON-RPC connections");
     strUsage += HelpMessageOpt("-rpcpassword=<pw>", "Password for JSON-RPC connections");
     strUsage += HelpMessageOpt("-rpcclienttimeout=<n>", strprintf("Timeout in seconds during HTTP requests, or 0 for no timeout. (default: %d)", DEFAULT_HTTP_CLIENT_TIMEOUT));
-    strUsage += HelpMessageOpt("-rpcwallet=<walletname>", "Send RPC for non-default wallet on RPC server (needs to exactly match corresponding -wallet option passed to pivxd)");
+    strUsage += HelpMessageOpt("-rpcwallet=<walletname>", "Send RPC for non-default wallet on RPC server (needs to exactly match corresponding -wallet option passed to dogecashd)");
 
     return strUsage;
 }

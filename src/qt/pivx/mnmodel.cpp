@@ -2,7 +2,7 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/mnmodel.h"
+#include "qt/dogecash/mnmodel.h"
 
 #include "masternode.h"
 #include "masternodeman.h"
@@ -11,7 +11,7 @@
 #include "uint256.h"
 #include "qt/bitcoinunits.h"
 #include "qt/optionsmodel.h"
-#include "qt/pivx/guitransactionsutils.h"
+#include "qt/dogecash/guitransactionsutils.h"
 #include "qt/walletmodel.h"
 #include "qt/walletmodeltransaction.h"
 

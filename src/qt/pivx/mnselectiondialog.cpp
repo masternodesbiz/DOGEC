@@ -2,10 +2,10 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/mnselectiondialog.h"
-#include "qt/pivx/forms/ui_mnselectiondialog.h"
-#include "qt/pivx/mnmodel.h"
-#include "qt/pivx/qtutils.h"
+#include "qt/dogecash/mnselectiondialog.h"
+#include "qt/dogecash/forms/ui_mnselectiondialog.h"
+#include "qt/dogecash/mnmodel.h"
+#include "qt/dogecash/qtutils.h"
 
 MnSelectionDialog::MnSelectionDialog(QWidget *parent) :
         QDialog(parent),

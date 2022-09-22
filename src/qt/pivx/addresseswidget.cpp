@@ -2,15 +2,15 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/addresseswidget.h"
-#include "qt/pivx/forms/ui_addresseswidget.h"
-#include "qt/pivx/addressfilterproxymodel.h"
-#include "qt/pivx/addresslabelrow.h"
-#include "qt/pivx/tooltipmenu.h"
+#include "qt/dogecash/addresseswidget.h"
+#include "qt/dogecash/forms/ui_addresseswidget.h"
+#include "qt/dogecash/addressfilterproxymodel.h"
+#include "qt/dogecash/addresslabelrow.h"
+#include "qt/dogecash/tooltipmenu.h"
 
-#include "qt/pivx/addnewcontactdialog.h"
+#include "qt/dogecash/addnewcontactdialog.h"
 #include "guiutil.h"
-#include "qt/pivx/qtutils.h"
+#include "qt/dogecash/qtutils.h"
 #include "walletmodel.h"
 
 #include <QModelIndex>

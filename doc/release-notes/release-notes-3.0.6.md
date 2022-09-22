@@ -1,19 +1,19 @@
 DogeCash Core version 3.0.6 is now available from:
 
-  <https://github.com/dogecash-project/pivx/releases>
+  <https://github.com/dogecash/dogecash/releases>
 
 This is a new minor-revision version release, including various bug fixes and
 performance improvements, as well as updated translations.
 
 Please report bugs using the issue tracker at github:
 
-  <https://github.com/dogecash-project/pivx/issues>
+  <https://github.com/dogecash/dogecash/issues>
 
 
 How to Upgrade
 ==============
 
-If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/DogeCash-Qt (on Mac) or pivxd/dogecash-qt (on Linux).
+If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/DogeCash-Qt (on Mac) or dogecashd/dogecash-qt (on Linux).
 
 
 Compatibility
@@ -116,4 +116,4 @@ Thanks to everyone who directly contributed to this release:
 - sonic
 - whateverpal
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/dogecash-project-translations/).
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/dogecash-translations/).

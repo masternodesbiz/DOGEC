@@ -7,13 +7,13 @@ reset-files.bash
 *.tar.gz
 
 *.exe
-src/pivx
-src/pivxd
+src/dogecash
+src/dogecashd
 src/dogecash-cli
 src/dogecash-tx
-src/bench/bench_pivx
-src/test/test_pivx
-src/test/test_pivx_fuzzy
+src/bench/bench_dogecash
+src/test/test_dogecash
+src/test/test_dogecash_fuzzy
 src/qt/test/test_dogecash-qt
 src/test/fuzz/address_deserialize
 src/test/fuzz/addrman_deserialize
@@ -88,7 +88,7 @@ src/qt/test/moc*.cpp
 *.pyc
 *.o
 *.o-*
-.pivx
+.dogecash
 *.a
 *.pb.cc
 *.pb.h
@@ -138,7 +138,7 @@ build
 #lcov
 *.gcno
 /*.info
-test_pivx.coverage/
+test_dogecash.coverage/
 total.coverage/
 coverage_percent.txt
 
@@ -169,6 +169,6 @@ moc_*
 *.tmp
 ui_*
 build*
-pivxd.*
-pivxd-new-gui.*
+dogecashd.*
+dogecashd-new-gui.*
 /cov-int/

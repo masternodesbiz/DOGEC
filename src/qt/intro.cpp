@@ -15,7 +15,7 @@
 #include "guiutil.h"
 
 #include "util/system.h"
-#include "qt/pivx/qtutils.h"
+#include "qt/dogecash/qtutils.h"
 
 #include <QFileDialog>
 #include <QMessageBox>
@@ -226,8 +226,8 @@ bool Intro::pickDataDirectory()
     }
 
     /* Only override -datadir if different from the default, to make it possible to
-     * override -datadir in the pivx.conf file in the default data directory
-     * (to be consistent with pivxd behavior)
+     * override -datadir in the dogecash.conf file in the default data directory
+     * (to be consistent with dogecashd behavior)
      */
 
     if (dataDir != getDefaultDataDirectory())

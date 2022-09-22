@@ -76,11 +76,11 @@ Now, you can either build from self-compiled [depends](/depends/README.md) or in
 
 BerkeleyDB is required for the wallet.
 
- **For Ubuntu only:** db4.8 packages are available [here](https://launchpad.net/~pivx/+archive/pivx).
+ **For Ubuntu only:** db4.8 packages are available [here](https://launchpad.net/~dogecash/+archive/dogecash).
  You can add the repository using the following command:
 
     sudo apt-get install software-properties-common
-    sudo add-apt-repository ppa:pivx/pivx
+    sudo add-apt-repository ppa:dogecash/dogecash
     sudo apt-get update
     sudo apt-get install libdb4.8-dev libdb4.8++-dev
 
@@ -136,7 +136,7 @@ To build with Qt 5 you need the following:
 
 Notes
 -----
-The release is built with GCC and then "strip pivxd" to strip the debug
+The release is built with GCC and then "strip dogecashd" to strip the debug
 symbols, which reduces the executable size by about 90%.
 
 
@@ -218,7 +218,7 @@ Hardening enables the following features:
 
     To test that you have built PIE executable, install scanelf, part of paxutils, and use:
 
-    	scanelf -e ./pivxd
+    	scanelf -e ./dogecashd
 
     The output should contain:
 
@@ -232,7 +232,7 @@ Hardening enables the following features:
     executable without the non-executable stack protection.
 
     To verify that the stack is non-executable after compiling use:
-    `scanelf -e ./pivxd`
+    `scanelf -e ./dogecashd`
 
     The output should contain:
 	STK/REL/PTL

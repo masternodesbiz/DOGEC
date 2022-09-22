@@ -16,9 +16,9 @@
 #include "guiconstants.h"
 #include "guiutil.h"
 #include "walletmodel.h"
-#include "qt/pivx/qtutils.h"
-#include "qt/pivx/loadingdialog.h"
-#include "qt/pivx/defaultdialog.h"
+#include "qt/dogecash/qtutils.h"
+#include "qt/dogecash/loadingdialog.h"
+#include "qt/dogecash/defaultdialog.h"
 
 #include <QKeyEvent>
 #include <QMessageBox>

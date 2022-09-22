@@ -33,8 +33,8 @@ packages:
 - "ca-certificates"
 - "python3"
 remotes:
-- "url": "https://github.com/dogecash-project/pivx.git"
-  "dir": "pivx"
+- "url": "https://github.com/dogecash/dogecash.git"
+  "dir": "dogecash"
 files: []
 script: |
   set -e -o pipefail
@@ -121,7 +121,7 @@ script: |
   chmod +x ${WRAP_DIR}/${prog}
   done
 
-  cd pivx
+  cd dogecash
   BASEPREFIX="${PWD}/depends"
   # Build dependencies for each host
   for i in $HOSTS; do

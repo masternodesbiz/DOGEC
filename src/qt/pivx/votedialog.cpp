@@ -2,12 +2,12 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/votedialog.h"
-#include "qt/pivx/forms/ui_votedialog.h"
+#include "qt/dogecash/votedialog.h"
+#include "qt/dogecash/forms/ui_votedialog.h"
 
-#include "qt/pivx/mnmodel.h"
-#include "qt/pivx/mnselectiondialog.h"
-#include "qt/pivx/qtutils.h"
+#include "qt/dogecash/mnmodel.h"
+#include "qt/dogecash/mnselectiondialog.h"
+#include "qt/dogecash/qtutils.h"
 
 VoteDialog::VoteDialog(QWidget *parent, GovernanceModel* _govModel, MNModel* _mnModel) :
     QDialog(parent),

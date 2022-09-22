@@ -7,10 +7,10 @@
 #define CONTACTSDROPDOWN_H
 
 #include "addresstablemodel.h"
-#include "qt/pivx/pwidget.h"
-#include "qt/pivx/contactdropdownrow.h"
-#include "qt/pivx/furabstractlistitemdelegate.h"
-#include "qt/pivx/addressfilterproxymodel.h"
+#include "qt/dogecash/pwidget.h"
+#include "qt/dogecash/contactdropdownrow.h"
+#include "qt/dogecash/furabstractlistitemdelegate.h"
+#include "qt/dogecash/addressfilterproxymodel.h"
 #include <QListView>
 #include <QObject>
 #include <QWidget>

@@ -5,7 +5,7 @@
 #ifndef DogeCash_POS_TEST_FIXTURE_H
 #define DogeCash_POS_TEST_FIXTURE_H
 
-#include "test/test_pivx.h"
+#include "test/test_dogecash.h"
 
 class CWallet;
 

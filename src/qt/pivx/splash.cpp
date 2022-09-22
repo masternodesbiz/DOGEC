@@ -7,8 +7,8 @@
 #include "config/dogecash-config.h"
 #endif
 
-#include "qt/pivx/splash.h"
-#include "qt/pivx/forms/ui_splash.h"
+#include "qt/dogecash/splash.h"
+#include "qt/dogecash/forms/ui_splash.h"
 #include "QFile"
 
 #include "interfaces/handler.h"

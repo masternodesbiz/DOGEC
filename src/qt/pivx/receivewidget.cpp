@@ -2,13 +2,13 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/receivewidget.h"
-#include "qt/pivx/forms/ui_receivewidget.h"
-#include "qt/pivx/requestdialog.h"
-#include "qt/pivx/addnewcontactdialog.h"
-#include "qt/pivx/qtutils.h"
-#include "qt/pivx/myaddressrow.h"
-#include "qt/pivx/addressholder.h"
+#include "qt/dogecash/receivewidget.h"
+#include "qt/dogecash/forms/ui_receivewidget.h"
+#include "qt/dogecash/requestdialog.h"
+#include "qt/dogecash/addnewcontactdialog.h"
+#include "qt/dogecash/qtutils.h"
+#include "qt/dogecash/myaddressrow.h"
+#include "qt/dogecash/addressholder.h"
 #include "walletmodel.h"
 #include "guiutil.h"
 

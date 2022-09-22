@@ -1,4 +1,4 @@
-DogeCash Core version v5.3.0 is now available from: <https://github.com/dogecash-project/pivx/releases>
+DogeCash Core version v5.3.0 is now available from: <https://github.com/dogecash/dogecash/releases>
 
 Mandatory Update
 ==============
@@ -15,12 +15,12 @@ If you are running a Masternode over Tor, please read the "How To Upgrade" secti
 
 Note: In preparation for the enforcement, upgraded peers will start rejecting non-upgraded peers few hours before the enforcement block height, we recommend everyone to be updated at max a day before the final time.
 
-Please report bugs using the issue tracker at github: <https://github.com/dogecash-project/pivx/issues>
+Please report bugs using the issue tracker at github: <https://github.com/dogecash/dogecash/issues>
 
 How to Upgrade
 ==============
 
-If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/DogeCash-Qt (on Mac) or pivxd/dogecash-qt (on Linux).
+If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/DogeCash-Qt (on Mac) or dogecashd/dogecash-qt (on Linux).
 
 **Important note for Masternodes running over Tor (v2 onion address):**
 Before starting the node, copy the content of the `onion_private_key` file, located inside the data directory into a new `onion_v3_private_key` file inside the same directory.
@@ -44,7 +44,7 @@ For the following packages, no action is required by the user:
 
 For the other packages, the user must save the param files in the proper location:
 - macOS/Linux `tar.gz` tarballs include a bash script (`install-params.sh`) to copy the parameters in the appropriate location.
-- Windows `.zip` users need to manually copy the files from the `share/pivx` folder to the `%APPDATA%\DogeCashParams` directory.
+- Windows `.zip` users need to manually copy the files from the `share/dogecash` folder to the `%APPDATA%\DogeCashParams` directory.
 - self compilers can run the script from the repository sources (`params/install-params.sh`), or copy the files directly from the `params` subdirectory.
 
 Compatibility
@@ -134,7 +134,7 @@ Multi-wallet support
 
 DogeCash Core now supports loading multiple, separate wallets ([PR #2337](https://github.com/DogeCash/DogeCash/pull/2337)) with individual balances, keys and received transactions.
 
-Multi-wallet is enabled by using more than one `-wallet` argument when starting DogeCash client, either on the command line or in the `pivx.conf` config file.
+Multi-wallet is enabled by using more than one `-wallet` argument when starting DogeCash client, either on the command line or in the `dogecash.conf` config file.
 
 **In dogecash-qt, only the first wallet will be displayed and accessible for creating and signing transactions.** GUI selectable multiple wallets will be supported in a future version. However, even in 5.3, other loaded wallets will remain synchronized to the node's current tip in the background.
 
@@ -200,7 +200,7 @@ If `-wallet=<path>` is specified with paths that are names of existing data file
 
 It is now possible for a single configuration file to set different options for different networks ([PR #2324](https://github.com/DogeCash/DogeCash/pull/2324)). This is done by using sections or by prefixing the option with the network, such as:
 ```
-    main.uacomment=pivx
+    main.uacomment=dogecash
     test.uacomment=dogecash-testnet
     regtest.uacomment=regtest
     [main]
@@ -520,7 +520,7 @@ Database cache memory increased
 As a result of growth of the UTXO set, performance with the prior default database cache of 100 MiB has suffered.
 For this reason the default was changed to 300 MiB in this release.
 For nodes on low-memory systems, the database cache can be changed back to 100 MiB (or to another value) by either:
-- Adding `dbcache=100` in `pivx.conf`
+- Adding `dbcache=100` in `dogecash.conf`
 - Adding `-dbcache=100` startup flag
 - Changing it in the GUI under `Settings → Options → Main → Size of database cache`
 
@@ -877,4 +877,4 @@ Thanks to everyone who directly contributed to this release:
 - Wladimir J. van der Laan
 - wodry
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/dogecash-project-translations/), the QA team during Testing and the Node hosts supporting our Testnet.
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/dogecash-translations/), the QA team during Testing and the Node hosts supporting our Testnet.

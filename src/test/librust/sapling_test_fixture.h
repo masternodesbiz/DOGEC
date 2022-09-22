@@ -6,7 +6,7 @@
 #ifndef DogeCash_SAPLING_TEST_FIXTURE_H
 #define DogeCash_SAPLING_TEST_FIXTURE_H
 
-#include "test/test_pivx.h"
+#include "test/test_dogecash.h"
 
 /**
  * Testing setup that configures a complete environment for Sapling testing.

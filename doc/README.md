@@ -3,7 +3,7 @@ DogeCash Core
 
 Setup
 ---------------------
-[DogeCash Core](http://pivx.org/wallet) is the original DogeCash client and it builds the backbone of the network. However, it downloads and stores the entire history of DogeCash transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
+[DogeCash Core](http://dogecash.org/wallet) is the original DogeCash client and it builds the backbone of the network. However, it downloads and stores the entire history of DogeCash transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
 
 Running
 ---------------------
@@ -14,7 +14,7 @@ The following are some helpful notes on how to run DogeCash Core on your native 
 Unpack the files into a directory and run:
 
 - `bin/dogecash-qt` (GUI) or
-- `bin/pivxd` (headless)
+- `bin/dogecashd` (headless)
 
 If this is the first time running DogeCash Core (since v5.0.0), you'll need to install the sapling params by running the included `install-params.sh` script, which copies the two params files to `$HOME/.dogecash-params`
 
@@ -30,8 +30,8 @@ Drag DogeCash-Qt to your applications folder, and then run DogeCash-Qt.
 
 * See the documentation at the [DogeCash Wiki](https://github.com/DogeCash/DogeCash/wiki)
 for help and more information.
-* Ask for help on the [DogeCash Forum](http://forum.pivx.org/).
-* Join our Discord server [Discord Server](https://discord.pivx.org)
+* Ask for help on the [DogeCash Forum](http://forum.dogecash.org/).
+* Join our Discord server [Discord Server](https://discord.dogecash.org)
 
 Building
 ---------------------
@@ -51,15 +51,15 @@ The DogeCash repo's [root README](/README.md) contains relevant information on t
 - [Multiwallet Qt Development](multiwallet-qt.md)
 - [Release Notes](release-notes.md)
 - [Release Process](release-process.md)
-- [Source Code Documentation (External Link)](https://www.fuzzbawls.pw/pivx/doxygen/)
+- [Source Code Documentation (External Link)](https://www.fuzzbawls.pw/dogecash/doxygen/)
 - [Translation Process](translation_process.md)
 - [Unit Tests](unit-tests.md)
 - [Unauthenticated REST Interface](REST-interface.md)
 - [Dnsseed Policy](dnsseed-policy.md)
 
 ### Resources
-* Discuss on the [DogeCash](http://forum.pivx.org/) forum.
-* Join the [DogeCash Discord](https://discord.pivx.org).
+* Discuss on the [DogeCash](http://forum.dogecash.org/) forum.
+* Join the [DogeCash Discord](https://discord.dogecash.org).
 
 ### Miscellaneous
 - [Files](files.md)

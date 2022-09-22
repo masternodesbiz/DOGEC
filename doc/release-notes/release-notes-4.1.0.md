@@ -1,8 +1,8 @@
-DogeCash Core version *4.1.0* is now available from:  <https://github.com/dogecash-project/pivx/releases>
+DogeCash Core version *4.1.0* is now available from:  <https://github.com/dogecash/dogecash/releases>
 
 This is a new major version release, including various bug fixes and performance improvements, as well as updated translations.
 
-Please report bugs using the issue tracker at github: <https://github.com/dogecash-project/pivx/issues>
+Please report bugs using the issue tracker at github: <https://github.com/dogecash/dogecash/issues>
 
 
 Recommended Update
@@ -13,7 +13,7 @@ This version is an optional, but recommended, update for all users and services.
 How to Upgrade
 ==============
 
-If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/DogeCash-Qt (on Mac) or pivxd/dogecash-qt (on Linux).
+If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/DogeCash-Qt (on Mac) or dogecashd/dogecash-qt (on Linux).
 
 
 Compatibility
@@ -146,7 +146,7 @@ Functional Changes
 
 ### zPIV Backup Removed
 
-Automatic zPIV backup has been disabled. Thus, the following configuration options have been removed  (either as entries in the pivx.conf file or as startup flags):
+Automatic zPIV backup has been disabled. Thus, the following configuration options have been removed  (either as entries in the dogecash.conf file or as startup flags):
 - `autozpivbackup`
 - `backupzpiv`
 - `zpivbackuppath`
@@ -167,7 +167,7 @@ The default value for the stake-split threshold has been lowered from 2000 PIV, 
 Dependencies
 ------------
 
-The minimum required version of QT has been increased from 5.0 to 5.5.1 (the [depends system](https://github.com/dogecash-project/pivx/blob/master/depends/README.md) provides 5.9.7)
+The minimum required version of QT has been increased from 5.0 to 5.5.1 (the [depends system](https://github.com/dogecash/dogecash/blob/master/depends/README.md) provides 5.9.7)
 
 
 RPC Changes
@@ -200,8 +200,8 @@ RPC Changes
   ```
   {
      "staking_status": true|false,       (boolean) whether the wallet is staking or not
-     "staking_enabled": true|false,      (boolean) whether staking is enabled/disabled in pivx.conf
-     "coldstaking_enabled": true|false,  (boolean) whether cold-staking is enabled/disabled in pivx.conf
+     "staking_enabled": true|false,      (boolean) whether staking is enabled/disabled in dogecash.conf
+     "coldstaking_enabled": true|false,  (boolean) whether cold-staking is enabled/disabled in dogecash.conf
      "haveconnections": true|false,      (boolean) whether network connections are present
      "mnsync": true|false,               (boolean) whether masternode data is synced
      "walletunlocked": true|false,       (boolean) whether the wallet is unlocked
@@ -493,4 +493,4 @@ Thanks to everyone who directly contributed to this release:
 - practicalswift
 - random-zebra
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/dogecash-project-translations/), the QA team during Testing and the Node hosts supporting our Testnet.
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/dogecash-translations/), the QA team during Testing and the Node hosts supporting our Testnet.

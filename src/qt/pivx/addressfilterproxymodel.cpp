@@ -3,7 +3,7 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/addressfilterproxymodel.h"
+#include "qt/dogecash/addressfilterproxymodel.h"
 #include "qt/addresstablemodel.h"
 
 bool AddressFilterProxyModel::filterAcceptsRow(int row, const QModelIndex& parent) const

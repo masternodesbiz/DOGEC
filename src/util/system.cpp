@@ -79,7 +79,7 @@
 #include <CoreFoundation/CoreFoundation.h>
 #endif
 
-const char * const DogeCash_CONF_FILENAME = "pivx.conf";
+const char * const DogeCash_CONF_FILENAME = "dogecash.conf";
 const char * const DogeCash_MASTERNODE_CONF_FILENAME = "masternode.conf";
 
 
@@ -231,7 +231,7 @@ public:
         std::pair<bool,std::string> found_result(false, std::string());
 
         // We pass "true" to GetArgHelper in order to return the last
-        // argument value seen from the command line (so "pivxd -foo=bar
+        // argument value seen from the command line (so "dogecashd -foo=bar
         // -foo=baz" gives GetArg(am,"foo")=={true,"baz"}
         found_result = GetArgHelper(am.m_override_args, arg, true);
         if (found_result.first) {
@@ -514,7 +514,7 @@ static std::string FormatException(const std::exception* pex, const char* pszThr
     char pszModule[MAX_PATH] = "";
     GetModuleFileNameA(NULL, pszModule, sizeof(pszModule));
 #else
-    const char* pszModule = "pivx";
+    const char* pszModule = "dogecash";
 #endif
     if (pex)
         return strprintf(
@@ -536,7 +536,7 @@ fs::path GetDefaultDataDir()
 // Windows < Vista: C:\Documents and Settings\Username\Application Data\DogeCash
 // Windows >= Vista: C:\Users\Username\AppData\Roaming\DogeCash
 // Mac: ~/Library/Application Support/DogeCash
-// Unix: ~/.pivx
+// Unix: ~/.dogecash
 #ifdef WIN32
     // Windows
     return GetSpecialFolderPath(CSIDL_APPDATA) / "DogeCash";
@@ -554,7 +554,7 @@ fs::path GetDefaultDataDir()
     return pathRet / "DogeCash";
 #else
     // Unix
-    return pathRet / ".pivx";
+    return pathRet / ".dogecash";
 #endif
 #endif
 }
@@ -655,14 +655,14 @@ void initZKSNARKS()
         CFRelease(mainBundle);
 #else
         // Linux fallback path for debuild/ppa based installs
-        sapling_spend = "/usr/share/pivx/sapling-spend.params";
-        sapling_output = "/usr/share/pivx/sapling-output.params";
+        sapling_spend = "/usr/share/dogecash/sapling-spend.params";
+        sapling_output = "/usr/share/dogecash/sapling-output.params";
         if (fs::exists(sapling_spend) && fs::exists(sapling_output)) {
             fParamsFound = true;
         } else {
             // Linux fallback for local installs
-            sapling_spend = "/usr/local/share/pivx/sapling-spend.params";
-            sapling_output = "/usr/local/share/pivx/sapling-output.params";
+            sapling_spend = "/usr/local/share/dogecash/sapling-spend.params";
+            sapling_output = "/usr/local/share/dogecash/sapling-output.params";
         }
 #endif
         if (fs::exists(sapling_spend) && fs::exists(sapling_output))

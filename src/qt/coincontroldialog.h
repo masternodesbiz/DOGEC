@@ -8,7 +8,7 @@
 #define BITCOIN_QT_COINCONTROLDIALOG_H
 
 #include "amount.h"
-#include "qt/pivx/snackbar.h"
+#include "qt/dogecash/snackbar.h"
 #include "optional.h"
 #include "uint256.h"
 

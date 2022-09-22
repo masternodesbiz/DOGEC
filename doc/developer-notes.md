@@ -234,15 +234,15 @@ debug.log file if inconsistencies are detected.
 
 Valgrind is a programming tool for memory debugging, memory leak detection, and
 profiling. The repo contains a Valgrind suppressions file
-([`valgrind.supp`](https://github.com/dogecash-project/pivx/blob/master/contrib/valgrind.supp))
+([`valgrind.supp`](https://github.com/dogecash/dogecash/blob/master/contrib/valgrind.supp))
 which includes known Valgrind warnings in our dependencies that cannot be fixed
 in-tree. Example use:
 
 ```shell
-$ valgrind --suppressions=contrib/valgrind.supp src/test/test_pivx
+$ valgrind --suppressions=contrib/valgrind.supp src/test/test_dogecash
 $ valgrind --suppressions=contrib/valgrind.supp --leak-check=full \
-      --show-leak-kinds=all src/test/test_pivx --log_level=test_suite
-$ valgrind -v --leak-check=full src/pivxd -printtoconsole
+      --show-leak-kinds=all src/test/test_dogecash --log_level=test_suite
+$ valgrind -v --leak-check=full src/dogecashd -printtoconsole
 ```
 
 ### Compiling for test coverage
@@ -258,7 +258,7 @@ To enable LCOV report generation during test runs:
 make
 make cov
 
-# A coverage report will now be accessible at `./test_pivx.coverage/index.html`.
+# A coverage report will now be accessible at `./test_dogecash.coverage/index.html`.
 ```
 
 **Sanitizers**
@@ -753,7 +753,7 @@ In addition to reviewing the upstream changes in `env_posix.cc`, you can use `ls
 check this. For example, on Linux this command will show open `.ldb` file counts:
 
 ```bash
-$ lsof -p $(pidof pivxd) |\
+$ lsof -p $(pidof dogecashd) |\
     awk 'BEGIN { fd=0; mem=0; } /ldb$/ { if ($4 == "mem") mem++; else fd++ } END { printf "mem = %s, fd = %s\n", mem, fd}'
 mem = 119, fd = 0
 ```

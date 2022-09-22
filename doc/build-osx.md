@@ -48,8 +48,8 @@ Build DogeCash Core
 
 1. Clone the DogeCash Core source code:
 
-        git clone https://github.com/dogecash-project/pivx
-        cd pivx
+        git clone https://github.com/dogecash/dogecash
+        cd dogecash
 
 2.  Build DogeCash Core:
 
@@ -80,17 +80,17 @@ In this case there is no dependency on Berkeley DB 4.8.
 Running
 -------
 
-DogeCash Core is now available at `./src/pivxd`
+DogeCash Core is now available at `./src/dogecashd`
 
 Before running, you may create an empty configuration file:
 
     mkdir -p "/Users/${USER}/Library/Application Support/DogeCash"
 
-    touch "/Users/${USER}/Library/Application Support/DogeCash/pivx.conf"
+    touch "/Users/${USER}/Library/Application Support/DogeCash/dogecash.conf"
 
-    chmod 600 "/Users/${USER}/Library/Application Support/DogeCash/pivx.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/DogeCash/dogecash.conf"
 
-The first time you run pivxd, it will start downloading the blockchain. This process could take many hours, or even days on slower than average systems.
+The first time you run dogecashd, it will start downloading the blockchain. This process could take many hours, or even days on slower than average systems.
 
 You can monitor the download process by looking at the debug.log file:
 
@@ -99,7 +99,7 @@ You can monitor the download process by looking at the debug.log file:
 Other commands:
 -------
 
-    ./src/pivxd -daemon # Starts the pivx daemon.
+    ./src/dogecashd -daemon # Starts the dogecash daemon.
     ./src/dogecash-cli --help # Outputs a list of command-line options.
     ./src/dogecash-cli help # Outputs a list of RPC commands when the daemon is running.
 

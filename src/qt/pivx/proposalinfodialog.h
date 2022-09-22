@@ -5,8 +5,8 @@
 #ifndef PROPOSALINFODIALOG_H
 #define PROPOSALINFODIALOG_H
 
-#include "qt/pivx/focuseddialog.h"
-#include "qt/pivx/governancemodel.h"
+#include "qt/dogecash/focuseddialog.h"
+#include "qt/dogecash/governancemodel.h"
 
 struct ProposalInfo;
 class SnackBar;

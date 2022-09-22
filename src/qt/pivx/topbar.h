@@ -7,8 +7,8 @@
 
 #include <QWidget>
 #include "qt/askpassphrasedialog.h"
-#include "qt/pivx/pwidget.h"
-#include "qt/pivx/lockunlock.h"
+#include "qt/dogecash/pwidget.h"
+#include "qt/dogecash/lockunlock.h"
 #include "amount.h"
 #include <QTimer>
 #include <QProgressBar>

@@ -3,11 +3,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/requestdialog.h"
-#include "qt/pivx/forms/ui_requestdialog.h"
+#include "qt/dogecash/requestdialog.h"
+#include "qt/dogecash/forms/ui_requestdialog.h"
 #include <QListView>
 
-#include "qt/pivx/qtutils.h"
+#include "qt/dogecash/qtutils.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
 

@@ -11,7 +11,7 @@
 #include <QAction>
 #include "walletmodel.h"
 #include "amount.h"
-#include "qt/pivx/pwidget.h"
+#include "qt/dogecash/pwidget.h"
 
 class WalletModel;
 class SendCoinsRecipient;

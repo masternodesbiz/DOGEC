@@ -19,7 +19,7 @@
 #include "init.h"
 #include "intro.h"
 #include "guiutil.h"
-#include "qt/pivx/qtutils.h"
+#include "qt/dogecash/qtutils.h"
 #include "util/system.h"
 
 #include <stdio.h>

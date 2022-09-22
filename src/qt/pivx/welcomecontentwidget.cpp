@@ -7,8 +7,8 @@
 #include "config/dogecash-config.h"
 #endif
 
-#include "qt/pivx/welcomecontentwidget.h"
-#include "qt/pivx/forms/ui_welcomecontentwidget.h"
+#include "qt/dogecash/welcomecontentwidget.h"
+#include "qt/dogecash/forms/ui_welcomecontentwidget.h"
 
 #include "guiutil.h"
 

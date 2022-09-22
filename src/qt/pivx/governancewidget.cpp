@@ -1,12 +1,12 @@
-#include "qt/pivx/governancewidget.h"
-#include "qt/pivx/forms/ui_governancewidget.h"
+#include "qt/dogecash/governancewidget.h"
+#include "qt/dogecash/forms/ui_governancewidget.h"
 
-#include "qt/pivx/createproposaldialog.h"
-#include "qt/pivx/governancemodel.h"
-#include "qt/pivx/mnmodel.h"
-#include "qt/pivx/proposalinfodialog.h"
-#include "qt/pivx/qtutils.h"
-#include "qt/pivx/votedialog.h"
+#include "qt/dogecash/createproposaldialog.h"
+#include "qt/dogecash/governancemodel.h"
+#include "qt/dogecash/mnmodel.h"
+#include "qt/dogecash/proposalinfodialog.h"
+#include "qt/dogecash/qtutils.h"
+#include "qt/dogecash/votedialog.h"
 
 #include <QDesktopServices>
 #include <QGraphicsDropShadowEffect>

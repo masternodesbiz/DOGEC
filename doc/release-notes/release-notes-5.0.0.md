@@ -1,8 +1,8 @@
-DogeCash Core version *v5.0.0* is now available from:  <https://github.com/dogecash-project/pivx/releases>
+DogeCash Core version *v5.0.0* is now available from:  <https://github.com/dogecash/dogecash/releases>
 
 This is a new major version release, including various bug fixes and performance improvements, as well as updated translations.
 
-Please report bugs using the issue tracker at github: <https://github.com/dogecash-project/pivx/issues>
+Please report bugs using the issue tracker at github: <https://github.com/dogecash/dogecash/issues>
 
 
 Mandatory Update
@@ -21,7 +21,7 @@ Note: In preparation for the enforcement, upgraded peers will start rejecting no
 How to Upgrade
 ==============
 
-If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/DogeCash-Qt (on Mac) or pivxd/dogecash-qt (on Linux).
+If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/DogeCash-Qt (on Mac) or dogecashd/dogecash-qt (on Linux).
 
 #### Sapling Parameters
 In order to run, DogeCash Core now requires two files, `sapling-output.params` and `sapling-spend.params` (with total size ~50 MB), to be saved in a specific location.
@@ -33,7 +33,7 @@ For the following packages, no action is required by the user:
 
 For the other packages, the user must save the param files in the proper location, before being able to run DogeCash v5.0.0:
 - macOS/Linux `tar.gz` tarballs include a bash script (`install-params.sh`) to copy the parameters in the appropriate location.
-- Windows `.zip` users need to manually copy the files from the `share/pivx` folder to the `%APPDATA%\DogeCashParams` directory.
+- Windows `.zip` users need to manually copy the files from the `share/dogecash` folder to the `%APPDATA%\DogeCashParams` directory.
 - self compilers can run the script from the repository sources (`params/install-params.sh`), or copy the files directly from the `params` subdirectory.
 
 
@@ -58,7 +58,7 @@ New SHIELD Protocol Implemented!
 
 #### Overview
 Users will be able to protect their financial information by sending and receiving PIVs privately, as well as sending and receiving encrypted messages attached to the shield transactions.
-More visual information about the protocol can be found at https://pivx.org .
+More visual information about the protocol can be found at https://dogecash.org .
 
 #### GUI features
 New set of functionalities for the interaction with the SHIELD protocol:
@@ -471,7 +471,7 @@ Each new command is detailed below:
         "spend" : n,                    (numeric, sapling) the index of the spend within vShieldedSpend
         "txidPrev" : "transactionid",   (string) The id for the transaction this note was created in
         "outputPrev" : n,               (numeric, sapling) the index of the output within the vShieldedOutput
-        "address" : "pivxaddress",      (string) The DogeCash address involved in the transaction
+        "address" : "dogecashaddress",      (string) The DogeCash address involved in the transaction
         "value" : x.xxx                 (numeric) The amount in PIV
         "valueSat" : xxxx               (numeric) The amount in satoshis
       }
@@ -480,7 +480,7 @@ Each new command is detailed below:
     "outputs" : [
       {
         "output" : n,                   (numeric, sapling) the index of the output within the vShieldedOutput
-        "address" : "pivxaddress",      (string) The DogeCash address involved in the transaction
+        "address" : "dogecashaddress",      (string) The DogeCash address involved in the transaction
         "outgoing" : true|false         (boolean, sapling) True if the output is not for an address in the wallet
         "value" : x.xxx                 (numeric) The amount in PIV
         "valueSat" : xxxx               (numeric) The amount in satoshis
@@ -878,7 +878,7 @@ Detailed release notes follow. This overview includes changes that affect behavi
 - #2112 `e7283dec9e` [Consensus] Set v5 enforcement height for mainnet (furszy)
 
 ### Build Systems
-- #1856 `1bbb906059` [CMake] Add test_pivx unit test target (Fuzzbawls)
+- #1856 `1bbb906059` [CMake] Add test_dogecash unit test target (Fuzzbawls)
 - #1877 `a59e8273fb` [Misc] Fixing recurrent compiler warnings (furszy)
 - #1882 `5bd7d52c2c` [Build][Doc] Post branch-off/release maintenance (Fuzzbawls)
 - #1883 `e7d78bd2c2` [Build] Clean lcov artifacts from all paths (Fuzzbawls)
@@ -891,7 +891,7 @@ Detailed release notes follow. This overview includes changes that affect behavi
 - #2021 `3845c18723` [GA] Reduce number of concurrent jobs (Fuzzbawls)
 - #2022 `8385a96f94` [Build] Package sapling params in repo/release (Fuzzbawls)
 - #2036 `a3e75c2afa` [Build] Proper coverage for ppa (Fuzzbawls)
-- #2041 `a15dc3417d` [Build] CMake pivxd and unit tests: fixing missing MacOS framework. (furszy)
+- #2041 `a15dc3417d` [Build] CMake dogecashd and unit tests: fixing missing MacOS framework. (furszy)
 - #2087 `869b621c2c` [Build] Unify header file extensions (Fuzzbawls)
 
 ### P2P/Network
@@ -970,4 +970,4 @@ Thanks to everyone who directly contributed to this release:
 - practicalswift
 - random-zebra
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/dogecash-project-translations/), the QA team during Testing and the Node hosts supporting our Testnet.
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/dogecash-translations/), the QA team during Testing and the Node hosts supporting our Testnet.

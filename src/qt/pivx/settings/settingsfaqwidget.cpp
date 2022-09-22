@@ -7,10 +7,10 @@
 #include "config/dogecash-config.h"
 #endif
 
-#include "qt/pivx/settings/settingsfaqwidget.h"
-#include "qt/pivx/settings/forms/ui_settingsfaqwidget.h"
-#include "qt/pivx/mnmodel.h"
-#include "qt/pivx/qtutils.h"
+#include "qt/dogecash/settings/settingsfaqwidget.h"
+#include "qt/dogecash/settings/forms/ui_settingsfaqwidget.h"
+#include "qt/dogecash/mnmodel.h"
+#include "qt/dogecash/qtutils.h"
 
 #include <QScrollBar>
 #include <QMetaObject>

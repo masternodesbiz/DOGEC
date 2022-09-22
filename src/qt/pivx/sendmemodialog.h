@@ -5,7 +5,7 @@
 #ifndef SENDMEMODIALOG_H
 #define SENDMEMODIALOG_H
 
-#include "qt/pivx/focuseddialog.h"
+#include "qt/dogecash/focuseddialog.h"
 
 class WalletModel;
 class SnackBar;

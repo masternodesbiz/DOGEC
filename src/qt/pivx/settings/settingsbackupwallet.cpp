@@ -2,13 +2,13 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/settings/settingsbackupwallet.h"
+#include "qt/dogecash/settings/settingsbackupwallet.h"
 
-#include "qt/pivx/settings/forms/ui_settingsbackupwallet.h"
+#include "qt/dogecash/settings/forms/ui_settingsbackupwallet.h"
 
 #include "guiinterface.h"
 #include "guiutil.h"
-#include "qt/pivx/qtutils.h"
+#include "qt/dogecash/qtutils.h"
 
 #include <QGraphicsDropShadowEffect>
 

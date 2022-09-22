@@ -111,7 +111,7 @@ CClientUIInterface uiInterface;  // Declared but not defined in guiinterface.h
 /**
  * The PID file facilities.
  */
-const char * const DogeCash_PID_FILENAME = "pivx.pid";
+const char * const DogeCash_PID_FILENAME = "dogecash.pid";
 
 fs::path GetPidFile()
 {

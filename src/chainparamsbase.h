@@ -11,7 +11,7 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between dogecash-cli and pivxd)
+ * CBaseChainParams defines the base parameters (shared between dogecash-cli and dogecashd)
  * of a given instance of the Pivx system.
  */
 class CBaseChainParams

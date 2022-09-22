@@ -97,7 +97,7 @@ else()
     )
 endif()
 
-# run configure if pivx_config.h doesn't exist
+# run configure if dogecash_config.h doesn't exist
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/config/dogecash-config.h")
 else()
     execute_process(
@@ -595,19 +595,19 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     target_link_libraries(dogecash-tx "-framework Cocoa")
 endif()
 
-set(pivxd_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/pivxd.cpp)
+set(dogecashd_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/dogecashd.cpp)
 if($ENV{target} MATCHES "Windows")
-    list(APPEND pivxd_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/pivxd-res.rc)
+    list(APPEND dogecashd_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/dogecashd-res.rc)
 endif()
-add_executable(pivxd ${pivxd_SOURCES} ${BitcoinHeaders})
-add_dependencies(pivxd libunivalue libsecp256k1 libzcashrust leveldb crc32c bls)
-target_include_directories(pivxd PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src
+add_executable(dogecashd ${dogecashd_SOURCES} ${BitcoinHeaders})
+add_dependencies(dogecashd libunivalue libsecp256k1 libzcashrust leveldb crc32c bls)
+target_include_directories(dogecashd PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src
         ${CMAKE_CURRENT_SOURCE_DIR}/src/leveldb
         ${CMAKE_CURRENT_SOURCE_DIR}/src/leveldb/include
         ${CMAKE_CURRENT_SOURCE_DIR}/src/leveldb/helpers/memenv
         ${LIBEVENT_INCLUDE_DIR}
         ${GMP_INCLUDE_DIR})
-target_link_libraries(pivxd
+target_link_libraries(dogecashd
         pthread
         SERVER_A
         WALLET_A
@@ -626,27 +626,27 @@ target_link_libraries(pivxd
         )
 if($ENV{target} MATCHES "Windows")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wstack-protector -fstack-protector-all -fPIE -pipe -O2 -pthread -Wl,--dynamicbase -Wl,--nxcompat -Wl,--high-entropy-va -pie --static")
-    target_link_libraries(pivxd ${WINDOWS_LDADD})
+    target_link_libraries(dogecashd ${WINDOWS_LDADD})
 endif()
 if(ZMQ_FOUND)
-    target_link_libraries(pivxd ZMQ_A ${ZMQ_LIB})
-    target_include_directories(pivxd PUBLIC ${ZMQ_INCLUDE_DIR})
+    target_link_libraries(dogecashd ZMQ_A ${ZMQ_LIB})
+    target_include_directories(dogecashd PUBLIC ${ZMQ_INCLUDE_DIR})
 endif()
 if(MINIUPNP_FOUND)
-    target_compile_definitions(pivxd PUBLIC "-DSTATICLIB -DMINIUPNP_STATICLIB")
-    target_link_libraries(pivxd ${MINIUPNP_LIBRARY})
-    target_include_directories(pivxd PUBLIC ${MINIUPNP_INCLUDE_DIR})
+    target_compile_definitions(dogecashd PUBLIC "-DSTATICLIB -DMINIUPNP_STATICLIB")
+    target_link_libraries(dogecashd ${MINIUPNP_LIBRARY})
+    target_include_directories(dogecashd PUBLIC ${MINIUPNP_INCLUDE_DIR})
 endif()
 if(NAT-PMP_FOUND)
-    target_link_libraries(pivxd ${NAT-PMP_LIBRARY})
-    target_include_directories(pivxd PUBLIC ${NAT-PMP_INCLUDE_DIR})
+    target_link_libraries(dogecashd ${NAT-PMP_LIBRARY})
+    target_include_directories(dogecashd PUBLIC ${NAT-PMP_INCLUDE_DIR})
 endif()
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-    target_link_libraries(pivxd "-framework Cocoa")
+    target_link_libraries(dogecashd "-framework Cocoa")
 endif()
 
-target_link_libraries(pivxd ${sodium_LIBRARY_RELEASE} -ldl -lpthread)
+target_link_libraries(dogecashd ${sodium_LIBRARY_RELEASE} -ldl -lpthread)
 
 add_subdirectory(src/qt)
 add_subdirectory(src/test)

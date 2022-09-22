@@ -6,8 +6,8 @@
 #define SENDCUSTOMFEEDIALOG_H
 
 #include "policy/feerate.h"
-#include "qt/pivx/focuseddialog.h"
-#include "qt/pivx/snackbar.h"
+#include "qt/dogecash/focuseddialog.h"
+#include "qt/dogecash/snackbar.h"
 
 class DogeCashGUI;
 class WalletModel;

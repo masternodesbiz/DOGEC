@@ -312,7 +312,7 @@ class FullBlockTest(PivxTestFramework):
         b26 = self.update_block(26, [])
         self.send_blocks([b26], False, "bad-cb-length", reconnect=True)
 
-        # Extend the b26 chain to make sure pivxd isn't accepting b26
+        # Extend the b26 chain to make sure dogecashd isn't accepting b26
         b27 = self.next_block(27, spend=out[7])
         self.send_blocks([b27], False)
 
@@ -324,7 +324,7 @@ class FullBlockTest(PivxTestFramework):
         b28 = self.update_block(28, [])
         self.send_blocks([b28], False, "bad-cb-length", reconnect=True)
 
-        # Extend the b28 chain to make sure pivxd isn't accepting b28
+        # Extend the b28 chain to make sure dogecashd isn't accepting b28
         b29 = self.next_block(29, spend=out[7])
         self.send_blocks([b29], False)
         # b30
@@ -998,7 +998,7 @@ class FullBlockTest(PivxTestFramework):
         #
         #    The tx'es must be unsigned and pass the node's mempool policy.  It is unsigned for the
         #    rather obscure reason that the Python signature code does not distinguish between
-        #    Low-S and High-S values (whereas the pivx code has custom code which does so);
+        #    Low-S and High-S values (whereas the dogecash code has custom code which does so);
         #    as a result of which, the odds are 50% that the python code will use the right
         #    value and the transaction will be accepted into the mempool. Until we modify the
         #    test framework to support low-S signing, we are out of luck.

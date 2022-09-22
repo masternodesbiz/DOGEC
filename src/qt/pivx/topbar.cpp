@@ -2,16 +2,16 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/topbar.h"
-#include "qt/pivx/forms/ui_topbar.h"
-#include "qt/pivx/lockunlock.h"
-#include "qt/pivx/qtutils.h"
-#include "qt/pivx/receivedialog.h"
-#include "qt/pivx/loadingdialog.h"
+#include "qt/dogecash/topbar.h"
+#include "qt/dogecash/forms/ui_topbar.h"
+#include "qt/dogecash/lockunlock.h"
+#include "qt/dogecash/qtutils.h"
+#include "qt/dogecash/receivedialog.h"
+#include "qt/dogecash/loadingdialog.h"
 #include "askpassphrasedialog.h"
 
 #include "bitcoinunits.h"
-#include "qt/pivx/balancebubble.h"
+#include "qt/dogecash/balancebubble.h"
 #include "clientmodel.h"
 #include "qt/guiutil.h"
 #include "optionsmodel.h"

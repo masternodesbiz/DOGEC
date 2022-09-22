@@ -8,7 +8,7 @@
 
 #include <QWidget>
 #include <QDataWidgetMapper>
-#include "qt/pivx/pwidget.h"
+#include "qt/dogecash/pwidget.h"
 
 namespace Ui {
 class SettingsNetworkWidget;

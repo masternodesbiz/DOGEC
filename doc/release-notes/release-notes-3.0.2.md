@@ -1,13 +1,13 @@
 DogeCash Core version 3.0.2 is now available from:
 
-  <https://github.com/dogecash-project/pivx/releases>
+  <https://github.com/dogecash/dogecash/releases>
 
 This is a new minor-revision version release, including various bug fixes and
 performance improvements, as well as updated translations.
 
 Please report bugs using the issue tracker at github:
 
-  <https://github.com/dogecash-project/pivx/issues>
+  <https://github.com/dogecash/dogecash/issues>
 
 Recommended Update
 ==============
@@ -19,7 +19,7 @@ zPIV spending requires this update.
 How to Upgrade
 ==============
 
-If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/DogeCash-Qt (on Mac) or pivxd/dogecash-qt (on Linux).
+If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/DogeCash-Qt (on Mac) or dogecashd/dogecash-qt (on Linux).
 
 Compatibility
 ==============
@@ -47,7 +47,7 @@ Auto Wallet Backup
 ---------------------
 In addition to the automatic wallet backup that is done at each start of the client, a new automatic backup function has been added that will, by default, create a backup of the wallet file during each zPIV mint operation (zPIV spends which re-mint their change are also included in this). This functionality is controlled by the `-backupzpiv` command-line option, which defaults to `1` (enabled, auto-backup).
 
-Users that wish to prevent this behavior (not recommended) can pass `-backupzpiv=0` at the command-line when starting the client, or add `backupzpiv=0` to their `pivx.conf` file.
+Users that wish to prevent this behavior (not recommended) can pass `-backupzpiv=0` at the command-line when starting the client, or add `backupzpiv=0` to their `dogecash.conf` file.
 
 zPIV Automint Calculations
 ---------------------
@@ -125,4 +125,4 @@ Thanks to everyone who directly contributed to this release:
 - rejectedpromise
 - Warrows
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/dogecash-project-translations/).
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/dogecash-translations/).

@@ -8,13 +8,13 @@
 #include <QWidget>
 #include <QPushButton>
 
-#include "qt/pivx/pwidget.h"
-#include "qt/pivx/contactsdropdown.h"
-#include "qt/pivx/sendmultirow.h"
-#include "qt/pivx/sendcustomfeedialog.h"
+#include "qt/dogecash/pwidget.h"
+#include "qt/dogecash/contactsdropdown.h"
+#include "qt/dogecash/sendmultirow.h"
+#include "qt/dogecash/sendcustomfeedialog.h"
 #include "walletmodel.h"
 #include "coincontroldialog.h"
-#include "qt/pivx/tooltipmenu.h"
+#include "qt/dogecash/tooltipmenu.h"
 
 #include <atomic>
 

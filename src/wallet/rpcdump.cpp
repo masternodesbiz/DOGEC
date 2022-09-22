@@ -468,7 +468,7 @@ UniValue dumpprivkey(const JSONRPCRequest& request)
             HelpRequiringPassphrase(pwallet) + "\n"
 
             "\nArguments:\n"
-            "1. \"address\"   (string, required) The pivx address for the private key\n"
+            "1. \"address\"   (string, required) The dogecash address for the private key\n"
 
             "\nResult:\n"
             "\"key\"                (string) The private key\n"
@@ -1098,7 +1098,7 @@ UniValue importmulti(const JSONRPCRequest& mainRequest)
                                                           "block from time %d, which is after or within %d seconds of key creation, and "
                                                           "could contain transactions pertaining to the key. As a result, transactions "
                                                           "and coins using this key may not appear in the wallet. This error could be "
-                                                          "caused by pruning or data corruption (see pivxd log for details) and could "
+                                                          "caused by pruning or data corruption (see dogecashd log for details) and could "
                                                           "be dealt with by downloading and rescanning the relevant blocks (see -reindex "
                                                           "and -rescan options).",
                                                           GetImportTimestamp(request, now), scannedTime - TIMESTAMP_WINDOW - 1, TIMESTAMP_WINDOW)));
@@ -1126,7 +1126,7 @@ UniValue bip38encrypt(const JSONRPCRequest& request)
             HelpRequiringPassphrase(pwallet) + "\n"
 
             "\nArguments:\n"
-            "1. \"address\"      (string, required) The pivx address for the private key (you must hold the key already)\n"
+            "1. \"address\"      (string, required) The dogecash address for the private key (you must hold the key already)\n"
             "2. \"passphrase\"   (string, required) The passphrase you want the private key to be encrypted with - Valid special chars: !#$%&'()*+,-./:;<=>?`{|}~ \n"
 
             "\nResult:\n"

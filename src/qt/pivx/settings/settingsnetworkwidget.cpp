@@ -3,10 +3,10 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/settings/settingsnetworkwidget.h"
-#include "qt/pivx/settings/forms/ui_settingsnetworkwidget.h"
+#include "qt/dogecash/settings/settingsnetworkwidget.h"
+#include "qt/dogecash/settings/forms/ui_settingsnetworkwidget.h"
 #include "optionsmodel.h"
-#include "qt/pivx/qtutils.h"
+#include "qt/dogecash/qtutils.h"
 
 SettingsNetworkWidget::SettingsNetworkWidget(DogeCashGUI* _window, QWidget *parent) :
     PWidget(_window, parent),

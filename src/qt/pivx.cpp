@@ -9,7 +9,7 @@
 #include "config/dogecash-config.h"
 #endif
 
-#include "qt/pivx/pivxgui.h"
+#include "qt/dogecash/dogecashgui.h"
 
 
 #include "fs.h"
@@ -22,8 +22,8 @@
 #include "qt/intro.h"
 #include "qt/optionsmodel.h"
 #include "qt/networkstyle.h"
-#include "qt/pivx/splash.h"
-#include "qt/pivx/welcomecontentwidget.h"
+#include "qt/dogecash/splash.h"
+#include "qt/dogecash/welcomecontentwidget.h"
 #include "qt/winshutdownmonitor.h"
 #include "rpc/server.h"
 #include "shutdown.h"
@@ -32,8 +32,8 @@
 #include "warnings.h"
 
 #ifdef ENABLE_WALLET
-#include "qt/pivx/governancemodel.h"
-#include "qt/pivx/mnmodel.h"
+#include "qt/dogecash/governancemodel.h"
+#include "qt/dogecash/mnmodel.h"
 #include "paymentserver.h"
 #include "walletmodel.h"
 #include "interfaces/wallet.h"
@@ -130,11 +130,11 @@ static void initTranslations(QTranslator& qtTranslatorBase, QTranslator& qtTrans
     if (qtTranslator.load("qt_" + lang_territory, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
         QApplication::installTranslator(&qtTranslator);
 
-    // Load e.g. bitcoin_de.qm (shortcut "de" needs to be defined in pivx.qrc)
+    // Load e.g. bitcoin_de.qm (shortcut "de" needs to be defined in dogecash.qrc)
     if (translatorBase.load(lang, ":/translations/"))
         QApplication::installTranslator(&translatorBase);
 
-    // Load e.g. bitcoin_de_DE.qm (shortcut "de_DE" needs to be defined in pivx.qrc)
+    // Load e.g. bitcoin_de_DE.qm (shortcut "de_DE" needs to be defined in dogecash.qrc)
     if (translator.load(lang_territory, ":/translations/"))
         QApplication::installTranslator(&translator);
 }
@@ -242,7 +242,7 @@ private:
     void startThread();
 };
 
-#include "pivx.moc"
+#include "dogecash.moc"
 
 BitcoinCore::BitcoinCore() : QObject()
 {
@@ -566,8 +566,8 @@ int main(int argc, char* argv[])
 // Do not refer to data directory yet, this can be overridden by Intro::pickDataDirectory
 
 /// 2. Basic Qt initialization (not dependent on parameters or configuration)
-    Q_INIT_RESOURCE(pivx_locale);
-    Q_INIT_RESOURCE(pivx);
+    Q_INIT_RESOURCE(dogecash_locale);
+    Q_INIT_RESOURCE(dogecash);
 
     // Generate high-dpi pixmaps
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
@@ -613,7 +613,7 @@ int main(int argc, char* argv[])
     if (!Intro::pickDataDirectory())
         return 0;
 
-    /// 6. Determine availability of data directory and parse pivx.conf
+    /// 6. Determine availability of data directory and parse dogecash.conf
     /// - Do not call GetDataDir(true) before this step finishes
     if (!CheckDataDirOption()) {
         QMessageBox::critical(nullptr, PACKAGE_NAME,
@@ -664,7 +664,7 @@ int main(int argc, char* argv[])
         exit(0);
 
     // Start up the payment server early, too, so impatient users that click on
-    // pivx: links repeatedly have their payment requests routed to this process:
+    // dogecash: links repeatedly have their payment requests routed to this process:
     app.createPaymentServer();
 #endif
 

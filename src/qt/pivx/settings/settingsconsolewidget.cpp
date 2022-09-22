@@ -2,10 +2,10 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/settings/settingsconsolewidget.h"
-#include "qt/pivx/settings/forms/ui_settingsconsolewidget.h"
+#include "qt/dogecash/settings/settingsconsolewidget.h"
+#include "qt/dogecash/settings/forms/ui_settingsconsolewidget.h"
 
-#include "qt/pivx/qtutils.h"
+#include "qt/dogecash/qtutils.h"
 #include "qt/rpcexecutor.h"
 
 #include "clientmodel.h"

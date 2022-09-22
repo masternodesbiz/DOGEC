@@ -1529,7 +1529,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../pivx.qrc"/>
+  <include location="../dogecash.qrc"/>
  </resources>
  <connections/>
 </ui>

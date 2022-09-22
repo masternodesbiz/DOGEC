@@ -6,17 +6,17 @@
 #define SETTINGSWIDGET_H
 
 #include <QWidget>
-#include "qt/pivx/pwidget.h"
-#include "qt/pivx/settings/settingsbackupwallet.h"
-#include "qt/pivx/settings/settingsexportcsv.h"
-#include "qt/pivx/settings/settingsbittoolwidget.h"
-#include "qt/pivx/settings/settingssignmessagewidgets.h"
-#include "qt/pivx/settings/settingswalletrepairwidget.h"
-#include "qt/pivx/settings/settingswalletoptionswidget.h"
-#include "qt/pivx/settings/settingsmainoptionswidget.h"
-#include "qt/pivx/settings/settingsdisplayoptionswidget.h"
-#include "qt/pivx/settings/settingsinformationwidget.h"
-#include "qt/pivx/settings/settingsconsolewidget.h"
+#include "qt/dogecash/pwidget.h"
+#include "qt/dogecash/settings/settingsbackupwallet.h"
+#include "qt/dogecash/settings/settingsexportcsv.h"
+#include "qt/dogecash/settings/settingsbittoolwidget.h"
+#include "qt/dogecash/settings/settingssignmessagewidgets.h"
+#include "qt/dogecash/settings/settingswalletrepairwidget.h"
+#include "qt/dogecash/settings/settingswalletoptionswidget.h"
+#include "qt/dogecash/settings/settingsmainoptionswidget.h"
+#include "qt/dogecash/settings/settingsdisplayoptionswidget.h"
+#include "qt/dogecash/settings/settingsinformationwidget.h"
+#include "qt/dogecash/settings/settingsconsolewidget.h"
 
 class DogeCashGUI;
 

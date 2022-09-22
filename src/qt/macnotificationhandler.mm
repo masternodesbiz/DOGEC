@@ -14,7 +14,7 @@
 - (NSString *)__bundleIdentifier
 {
     if (self == [NSBundle mainBundle]) {
-        return @"io.pivx.DogeCash-Qt";
+        return @"io.dogecash.DogeCash-Qt";
     } else {
         return [self __bundleIdentifier];
     }

@@ -8,7 +8,7 @@
 #else
 #define UNUSED
 #endif
-static const char UNUSED *pivx_strings[] = {
+static const char UNUSED *dogecash_strings[] = {
 QT_TRANSLATE_NOOP("dogecash-core", ""
 "Cannot find the Sapling parameters in the following directory:\n"
 "%s\n"

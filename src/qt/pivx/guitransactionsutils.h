@@ -7,7 +7,7 @@
 #define FURSZY_DogeCash_GUITRANSACTIONSUTILS_H
 
 #include "walletmodel.h"
-#include "qt/pivx/pwidget.h"
+#include "qt/dogecash/pwidget.h"
 
 
 namespace GuiTransactionsUtils {

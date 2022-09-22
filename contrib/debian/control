@@ -1,4 +1,4 @@
-Source: pivx
+Source: dogecash
 Section: utils
 Priority: optional
 Maintainer: Fuzzbawls <fuzzbawls@gmail.com>
@@ -28,11 +28,11 @@ Build-Depends: debhelper,
  libzmq3-dev,
  dh-systemd
 Standards-Version: 3.9.2
-Homepage: http://www.pivx.org
+Homepage: http://www.dogecash.org
 Vcs-Git: git://github.com/DogeCash/DogeCash.git
 Vcs-Browser: http://github.com/DogeCash/DogeCash
 
-Package: pivxd
+Package: dogecashd
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - daemon
@@ -45,7 +45,7 @@ Description: peer-to-peer network based digital currency - daemon
  Full transaction history is stored locally at each client.  This
  requires 18.5+ GB of space, slowly growing.
  .
- This package provides the daemon, pivxd, and the CLI tool
+ This package provides the daemon, dogecashd, and the CLI tool
  dogecash-cli to interact with the daemon.
 
 Package: dogecash-qt

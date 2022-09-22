@@ -6,7 +6,7 @@
 #define SETTINGSBACKUPWALLET_H
 
 #include <QWidget>
-#include "qt/pivx/pwidget.h"
+#include "qt/dogecash/pwidget.h"
 
 namespace Ui {
 class SettingsBackupWallet;

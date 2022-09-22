@@ -2,7 +2,7 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/governancemodel.h"
+#include "qt/dogecash/governancemodel.h"
 
 #include "budget/budgetmanager.h"
 #include "budget/budgetutil.h"
@@ -10,7 +10,7 @@
 #include "guiconstants.h"
 #include "qt/transactiontablemodel.h"
 #include "qt/transactionrecord.h"
-#include "qt/pivx/mnmodel.h"
+#include "qt/dogecash/mnmodel.h"
 #include "tiertwo/tiertwo_sync_state.h"
 #include "utilmoneystr.h"
 #include "utilstrencodings.h"

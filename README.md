@@ -19,7 +19,7 @@ DogeCash is an open source community-driven cryptocurrency, focused on five main
 
 (5) Ease of Use: DogeCash is determined to offer the best possible graphical interface for a core node/wallet. A full featured graphical product for new and advanced users.
 
-A lot more information and specs at [DogeCash.org](https://www.pivx.org/). Join the community at [DogeCash Discord](https://discordapp.com/invite/jzqVsJd).
+A lot more information and specs at [DogeCash.org](https://www.dogecash.org/). Join the community at [DogeCash Discord](https://discordapp.com/invite/jzqVsJd).
 
 ## License
 DogeCash Core is released under the terms of the MIT license. See [COPYING](https://github.com/DogeCash/DogeCash/blob/master/COPYING) for more information or see https://opensource.org/licenses/MIT.

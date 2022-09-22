@@ -6,7 +6,7 @@
 
 #define BOOST_TEST_MODULE Pivx Test Suite
 
-#include "test/test_pivx.h"
+#include "test/test_dogecash.h"
 
 #include "blockassembler.h"
 #include "consensus/merkle.h"
@@ -66,7 +66,7 @@ std::ostream& operator<<(std::ostream& os, const uint256& num)
 }
 
 BasicTestingSetup::BasicTestingSetup(const std::string& chainName)
-    : m_path_root{fs::temp_directory_path() / "test_pivx" / std::to_string(g_insecure_rand_ctx_temp_path.rand32())}
+    : m_path_root{fs::temp_directory_path() / "test_dogecash" / std::to_string(g_insecure_rand_ctx_temp_path.rand32())}
 {
     ECC_Start();
     BLSInit();
