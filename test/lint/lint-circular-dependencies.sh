@@ -33,7 +33,7 @@ EXPECTED_CIRCULAR_DEPENDENCIES=(
     "spork -> validation -> spork"
     "txmempool -> validation -> txmempool"
     "validation -> validationinterface -> validation"
-    "validation -> zpiv/zpivmodule -> validation"
+    "validation -> zdogec/zdogecmodule -> validation"
     "wallet/fees -> wallet/wallet -> wallet/fees"
     "wallet/scriptpubkeyman -> wallet/wallet -> wallet/scriptpubkeyman"
     "wallet/wallet -> wallet/walletdb -> wallet/wallet"

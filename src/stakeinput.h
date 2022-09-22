@@ -25,29 +25,29 @@ public:
     virtual const CBlockIndex* GetIndexFrom() const = 0;
     virtual bool GetTxOutFrom(CTxOut& out) const = 0;
     virtual CAmount GetValue() const = 0;
-    virtual bool IsZPIV() const = 0;
+    virtual bool IsZDOGEC() const = 0;
     virtual CDataStream GetUniqueness() const = 0;
 };
 
 
-class CPivStake : public CStakeInput
+class CDogecStake : public CStakeInput
 {
 private:
     const CTxOut outputFrom;
     const COutPoint outpointFrom;
 
 public:
-    CPivStake(const CTxOut& _from, const COutPoint& _outPointFrom, const CBlockIndex* _pindexFrom) :
+    CDogecStake(const CTxOut& _from, const COutPoint& _outPointFrom, const CBlockIndex* _pindexFrom) :
             CStakeInput(_pindexFrom), outputFrom(_from), outpointFrom(_outPointFrom) {}
 
-    static CPivStake* NewPivStake(const CTxIn& txin, int nHeight, uint32_t nTime);
+    static CDogecStake* NewDogecStake(const CTxIn& txin, int nHeight, uint32_t nTime);
 
     const CBlockIndex* GetIndexFrom() const override;
     bool GetTxOutFrom(CTxOut& out) const override;
     CAmount GetValue() const override;
     CDataStream GetUniqueness() const override;
     CTxIn GetTxIn() const;
-    bool IsZPIV() const override { return false; }
+    bool IsZDOGEC() const override { return false; }
 };
 
 

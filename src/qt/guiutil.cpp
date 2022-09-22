@@ -117,14 +117,14 @@ CAmount parseValue(const QString& amount, int displayUnit)
     return isValid ? value : 0;
 }
 
-QString formatBalance(CAmount amount, int nDisplayUnit, bool isZpiv)
+QString formatBalance(CAmount amount, int nDisplayUnit, bool isZdogec)
 {
-    return (amount == 0) ? ("0.00 " + BitcoinUnits::name(nDisplayUnit, isZpiv)) : BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, amount, false, BitcoinUnits::separatorAlways, true, isZpiv);
+    return (amount == 0) ? ("0.00 " + BitcoinUnits::name(nDisplayUnit, isZdogec)) : BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, amount, false, BitcoinUnits::separatorAlways, true, isZdogec);
 }
 
-QString formatBalanceWithoutHtml(CAmount amount, int nDisplayUnit, bool isZpiv)
+QString formatBalanceWithoutHtml(CAmount amount, int nDisplayUnit, bool isZdogec)
 {
-    return (amount == 0) ? ("0.00 " + BitcoinUnits::name(nDisplayUnit, isZpiv)) : BitcoinUnits::floorWithUnit(nDisplayUnit, amount, false, BitcoinUnits::separatorAlways, true, isZpiv);
+    return (amount == 0) ? ("0.00 " + BitcoinUnits::name(nDisplayUnit, isZdogec)) : BitcoinUnits::floorWithUnit(nDisplayUnit, amount, false, BitcoinUnits::separatorAlways, true, isZdogec);
 }
 
 void setupAddressWidget(QValidatedLineEdit* widget, QWidget* parent)
@@ -187,7 +187,7 @@ bool parseBitcoinURI(const QUrl& uri, SendCoinsRecipient* out)
             fShouldReturnFalse = false;
         } else if (i->first == "amount") {
             if (!i->second.isEmpty()) {
-                if (!BitcoinUnits::parse(BitcoinUnits::PIV, i->second, &rv.amount)) {
+                if (!BitcoinUnits::parse(BitcoinUnits::DOGEC, i->second, &rv.amount)) {
                     return false;
                 }
             }
@@ -222,7 +222,7 @@ QString formatBitcoinURI(const SendCoinsRecipient& info)
     int paramCount = 0;
 
     if (info.amount) {
-        ret += QString("?amount=%1").arg(BitcoinUnits::format(BitcoinUnits::PIV, info.amount, false, BitcoinUnits::separatorNever));
+        ret += QString("?amount=%1").arg(BitcoinUnits::format(BitcoinUnits::DOGEC, info.amount, false, BitcoinUnits::separatorNever));
         paramCount++;
     }
 

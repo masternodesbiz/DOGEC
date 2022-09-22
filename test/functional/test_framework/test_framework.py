@@ -75,7 +75,7 @@ TEST_EXIT_SKIPPED = 77
 TMPDIR_PREFIX = "dogecash_func_test_"
 
 
-class PivxTestFramework():
+class DogeCashTestFramework():
     """Base class for a dogecash test script.
 
     Individual dogecash test scripts should subclass this class and override the set_test_params() and run_test() methods.
@@ -1194,7 +1194,7 @@ class PivxTestFramework():
                                    get_collateral_vout(controller.getrawtransaction(dmn.proTx, True)))
 
     """
-    Create a ProReg tx, which references an 100 PIV UTXO as collateral.
+    Create a ProReg tx, which references an 100 DOGEC UTXO as collateral.
     The controller node owns the collateral and creates the ProReg tx.
     """
     def protx_register(self, miner, controller, dmn, collateral_addr):
@@ -1343,7 +1343,7 @@ class SkipTest(Exception):
 
 
 '''
-PivxTestFramework extensions
+DogeCashTestFramework extensions
 '''
 
 class ExpectedDKGMessages:
@@ -1359,7 +1359,7 @@ class ExpectedDKGMessages:
         self.recv_justif = r_justif
         self.recv_commit = r_commit
 
-class PivxDMNTestFramework(PivxTestFramework):
+class DogeCashDMNTestFramework(DogeCashTestFramework):
 
     def set_base_test_params(self):
         # 1 miner, 1 controller, 6 remote mns
@@ -1613,7 +1613,7 @@ class PivxDMNTestFramework(PivxTestFramework):
         return qfc, bad_member
 
 # !TODO: remove after obsoleting legacy system
-class PivxTier2TestFramework(PivxTestFramework):
+class DogeCashTier2TestFramework(DogeCashTestFramework):
 
     def set_test_params(self):
         self.setup_clean_chain = True

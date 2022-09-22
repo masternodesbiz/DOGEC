@@ -48,7 +48,7 @@
 #include "utilmoneystr.h"
 #include "validationinterface.h"
 #include "warnings.h"
-#include "zpiv/zpivmodule.h"
+#include "zdogec/zdogecmodule.h"
 
 #include <future>
 
@@ -100,7 +100,7 @@ size_t nCoinCacheUsage = 5000 * 300;
 /* If the tip is older than this (in seconds), the node is considered to be in initial block download. */
 int64_t nMaxTipAge = DEFAULT_MAX_TIP_AGE;
 
-/** Fees smaller than this (in upiv) are considered zero fee (for relaying, mining and transaction creation)
+/** Fees smaller than this (in udogec) are considered zero fee (for relaying, mining and transaction creation)
  * We are ~100 times smaller then bitcoin now (2015-06-23), set minRelayTxFee only 10 times higher
  * so it's still 10 times lower comparing to bitcoin.
  */
@@ -813,7 +813,7 @@ CAmount GetBlockValue(int nHeight)
     if (Params().IsRegTestNet()) {
         return 250 * COIN;
     }
-    // Testnet high-inflation blocks [2, 200] with value 250k PIV
+    // Testnet high-inflation blocks [2, 200] with value 250k DOGEC
     const bool isTestnet = Params().IsTestnet();
     if (isTestnet && nHeight < 201 && nHeight > 1) {
         return 250000 * COIN;
@@ -1694,13 +1694,13 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
         CacheAccChecksum(pindex, true);
         // Clean coinspends cache every 50k blocks, so it does not grow unnecessarily
         if (pindex->nHeight % 50000 == 0) {
-            ZPIVModule::CleanCoinSpendsCache();
+            ZDOGECModule::CleanCoinSpendsCache();
         }
     } else if (accumulatorCache && pindex->nHeight > consensus.height_last_ZC_AccumCheckpoint + 100) {
         // 100 blocks After last Checkpoint block, wipe the checksum database and cache
         accumulatorCache->Wipe();
         accumulatorCache.reset();
-        ZPIVModule::CleanCoinSpendsCache();
+        ZDOGECModule::CleanCoinSpendsCache();
     }
 
     // 100 blocks after the last invalid out, clean the map contents
@@ -2818,10 +2818,10 @@ bool CheckWork(const CBlock& block, const CBlockIndex* const pindexPrev)
     }
 
     if (block.nBits != nBitsRequired) {
-        // Pivx Specific reference to the block with the wrong threshold was used.
+        // DogeCash Specific reference to the block with the wrong threshold was used.
         const Consensus::Params& consensus = Params().GetConsensus();
-        if ((block.nTime == (uint32_t) consensus.nPivxBadBlockTime) &&
-                (block.nBits == (uint32_t) consensus.nPivxBadBlockBits)) {
+        if ((block.nTime == (uint32_t) consensus.nDogeCashBadBlockTime) &&
+                (block.nBits == (uint32_t) consensus.nDogeCashBadBlockBits)) {
             // accept DogeCash block minted with incorrect proof of work threshold
             return true;
         }
@@ -3048,8 +3048,8 @@ static bool CheckInBlockDoubleSpends(const CBlock& block, int nHeight, CValidati
 {
     const Consensus::Params& consensus = Params().GetConsensus();
     libzerocoin::ZerocoinParams* params = consensus.Zerocoin_Params(false);
-    const bool zpivActive = consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_ZC);
-    const bool publicZpivActive = consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_ZC_PUBLIC);
+    const bool zdogecActive = consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_ZC);
+    const bool publicZdogecActive = consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_ZC_PUBLIC);
     const bool v5Active = consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_V5_0);
 
     // First collect the tx inputs, and check double spends
@@ -3058,23 +3058,23 @@ static bool CheckInBlockDoubleSpends(const CBlock& block, int nHeight, CValidati
         CTransactionRef tx = block.vtx[i];
         for (const CTxIn& in: tx->vin) {
             bool isPublicSpend = in.IsZerocoinPublicSpend();
-            if (isPublicSpend && (!publicZpivActive || v5Active)) {
+            if (isPublicSpend && (!publicZdogecActive || v5Active)) {
                 return state.DoS(100, error("%s: public zerocoin spend at height %d", __func__, nHeight));
             }
             bool isPrivZerocoinSpend = !isPublicSpend && in.IsZerocoinSpend();
-            if (isPrivZerocoinSpend && (!zpivActive || publicZpivActive)) {
+            if (isPrivZerocoinSpend && (!zdogecActive || publicZdogecActive)) {
                 return state.DoS(100, error("%s: private zerocoin spend at height %d", __func__, nHeight));
             }
             if (isPrivZerocoinSpend || isPublicSpend) {
                 libzerocoin::CoinSpend spend;
                 if (isPublicSpend) {
                     PublicCoinSpend publicSpend(params);
-                    if (!ZPIVModule::ParseZerocoinPublicSpend(in, *tx, state, publicSpend)){
+                    if (!ZDOGECModule::ParseZerocoinPublicSpend(in, *tx, state, publicSpend)){
                         return false;
                     }
                     spend = publicSpend;
                 } else {
-                    spend = ZPIVModule::TxInToZerocoinSpend(in);
+                    spend = ZDOGECModule::TxInToZerocoinSpend(in);
                 }
                 // Check for serials double spending in the same block
                 const CBigNum& s = spend.getCoinSerialNumber();
@@ -3170,7 +3170,7 @@ static bool IsUnspentOnFork(std::unordered_set<COutPoint, SaltedOutpointHasher>&
                     }
                 } else {
                     // zerocoin serial
-                    const CBigNum& s = ZPIVModule::TxInToZerocoinSpend(in).getCoinSerialNumber();
+                    const CBigNum& s = ZDOGECModule::TxInToZerocoinSpend(in).getCoinSerialNumber();
                     if (serials.find(s) != serials.end()) {
                         return state.DoS(100, false, REJECT_INVALID, "bad-txns-serials-spent-fork-post-split");
                     }
@@ -3342,10 +3342,10 @@ static bool AcceptBlock(const CBlock& block, CValidationState& state, CBlockInde
         const CTransaction& coinstake = *block.vtx[1];
         const CTxIn& coinstake_in = coinstake.vin[0];
         if (coinstake_in.IsZerocoinSpend()) {
-            libzerocoin::CoinSpend spend = ZPIVModule::TxInToZerocoinSpend(coinstake_in);
+            libzerocoin::CoinSpend spend = ZDOGECModule::TxInToZerocoinSpend(coinstake_in);
             if (!ContextualCheckZerocoinSpend(coinstake, &spend, pindex->nHeight)) {
                 return state.DoS(100,error("%s: main chain ContextualCheckZerocoinSpend failed for tx %s", __func__,
-                        coinstake.GetHash().GetHex()), REJECT_INVALID, "bad-txns-invalid-zpiv");
+                        coinstake.GetHash().GetHex()), REJECT_INVALID, "bad-txns-invalid-zdogec");
             }
         }
 

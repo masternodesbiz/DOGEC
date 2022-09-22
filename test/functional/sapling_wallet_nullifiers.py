@@ -6,10 +6,10 @@
 
 from decimal import Decimal
 
-from test_framework.test_framework import PivxTestFramework
+from test_framework.test_framework import DogeCashTestFramework
 from test_framework.util import assert_equal, assert_true, get_coinstake_address
 
-class WalletNullifiersTest(PivxTestFramework):
+class WalletNullifiersTest(DogeCashTestFramework):
 
     def set_test_params(self):
         self.num_nodes = 4

@@ -735,7 +735,7 @@ public:
     // Staker status (last hashed block and time)
     CStakerStatus* pStakerStatus = nullptr;
 
-    // User-defined fee PIV/kb
+    // User-defined fee DOGEC/kb
     bool fUseCustomFee;
     CAmount nCustomFee;
 
@@ -850,7 +850,7 @@ public:
      */
     std::map<libzcash::SaplingPaymentAddress, std::vector<SaplingNoteEntry>> ListNotes() const;
 
-    /// Get 10000 PIV output and keys which can be used for the Masternode
+    /// Get 10000 DOGEC output and keys which can be used for the Masternode
     bool GetMasternodeVinAndKeys(CPubKey& pubKeyRet,
                                  CKey& keyRet,
                                  const COutPoint& collateralOut,
@@ -1097,7 +1097,7 @@ public:
     CWallet::CommitResult CommitTransaction(CTransactionRef tx, CReserveKey& opReservekey, CConnman* connman);
     CWallet::CommitResult CommitTransaction(CTransactionRef tx, CReserveKey* reservekey, CConnman* connman, mapValue_t* extraValues=nullptr);
 
-    bool CreateCoinstakeOuts(const CPivStake& stakeInput, std::vector<CTxOut>& vout, CAmount nTotal) const;
+    bool CreateCoinstakeOuts(const CDogecStake& stakeInput, std::vector<CTxOut>& vout, CAmount nTotal) const;
     bool CreateCoinStake(const CBlockIndex* pindexPrev,
                          unsigned int nBits,
                          CMutableTransaction& txNew,

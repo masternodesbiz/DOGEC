@@ -6,13 +6,13 @@
 import random
 from time import sleep
 
-from test_framework.test_framework import PivxTestFramework
+from test_framework.test_framework import DogeCashTestFramework
 from test_framework.util import (
     assert_equal,
 )
 
 
-class BlockHashCacheTest(PivxTestFramework):
+class BlockHashCacheTest(DogeCashTestFramework):
 
     def set_test_params(self):
         self.num_nodes = 1

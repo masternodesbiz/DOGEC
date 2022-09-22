@@ -12,7 +12,7 @@
 #include "txdb.h" // for zerocoinDb
 #include "utilmoneystr.h"        // for FormatMoney
 #include "../validation.h"
-#include "zpiv/zpivmodule.h"
+#include "zdogec/zdogecmodule.h"
 
 
 static bool CheckZerocoinSpend(const CTransactionRef _tx, CValidationState& state)
@@ -56,12 +56,12 @@ static bool CheckZerocoinSpend(const CTransactionRef _tx, CValidationState& stat
             }
             libzerocoin::ZerocoinParams* params = consensus.Zerocoin_Params(false);
             PublicCoinSpend publicSpend(params);
-            if (!ZPIVModule::parseCoinSpend(txin, tx, prevOut, publicSpend)){
+            if (!ZDOGECModule::parseCoinSpend(txin, tx, prevOut, publicSpend)){
                 return state.DoS(100, error("%s: public zerocoin spend parse failed", __func__));
             }
             newSpend = publicSpend;
         } else {
-            newSpend = ZPIVModule::TxInToZerocoinSpend(txin);
+            newSpend = ZDOGECModule::TxInToZerocoinSpend(txin);
         }
 
         //check that the denomination is valid
@@ -79,7 +79,7 @@ static bool CheckZerocoinSpend(const CTransactionRef _tx, CValidationState& stat
         if (isPublicSpend) {
             libzerocoin::ZerocoinParams* params = consensus.Zerocoin_Params(false);
             PublicCoinSpend ret(params);
-            if (!ZPIVModule::validateInput(txin, prevOut, tx, ret)){
+            if (!ZDOGECModule::validateInput(txin, prevOut, tx, ret)){
                 return state.DoS(100, error("%s: public zerocoin spend did not verify", __func__));
             }
         }
@@ -219,7 +219,7 @@ bool ContextualCheckZerocoinSpend(const CTransaction& tx, const libzerocoin::Coi
     //Reject serial's that are already in the blockchain
     int nHeightTx = 0;
     if (IsSerialInBlockchain(spend->getCoinSerialNumber(), nHeightTx))
-        return error("%s : zPIV spend with serial %s is already in block %d\n", __func__,
+        return error("%s : zDOGEC spend with serial %s is already in block %d\n", __func__,
                      spend->getCoinSerialNumber().GetHex(), nHeightTx);
 
     return true;
@@ -228,11 +228,11 @@ bool ContextualCheckZerocoinSpend(const CTransaction& tx, const libzerocoin::Coi
 bool ContextualCheckZerocoinSpendNoSerialCheck(const CTransaction& tx, const libzerocoin::CoinSpend* spend, int nHeight)
 {
     const Consensus::Params& consensus = Params().GetConsensus();
-    //Check to see if the zPIV is properly signed
+    //Check to see if the zDOGEC is properly signed
     if (consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_ZC_V2)) {
         try {
             if (!spend->HasValidSignature())
-                return error("%s: V2 zPIV spend does not have a valid signature\n", __func__);
+                return error("%s: V2 zDOGEC spend does not have a valid signature\n", __func__);
         } catch (const libzerocoin::InvalidSerialException& e) {
             // Check if we are in the range of the attack
             if(!isBlockBetweenFakeSerialAttackRange(nHeight))
@@ -245,7 +245,7 @@ bool ContextualCheckZerocoinSpendNoSerialCheck(const CTransaction& tx, const lib
         if (tx.IsCoinStake())
             expectedType = libzerocoin::SpendType::STAKE;
         if (spend->getSpendType() != expectedType) {
-            return error("%s: trying to spend zPIV without the correct spend type. txid=%s\n", __func__,
+            return error("%s: trying to spend zDOGEC without the correct spend type. txid=%s\n", __func__,
                          tx.GetHash().GetHex());
         }
     }
@@ -256,7 +256,7 @@ bool ContextualCheckZerocoinSpendNoSerialCheck(const CTransaction& tx, const lib
     if (!spend->HasValidSerial(consensus.Zerocoin_Params(fUseV1Params)))  {
         // Up until this block our chain was not checking serials correctly..
         if (!isBlockBetweenFakeSerialAttackRange(nHeight))
-            return error("%s : zPIV spend with serial %s from tx %s is not in valid range\n", __func__,
+            return error("%s : zDOGEC spend with serial %s from tx %s is not in valid range\n", __func__,
                      spend->getCoinSerialNumber().GetHex(), tx.GetHash().GetHex());
         else
             LogPrintf("%s:: HasValidSerial :: Invalid serial detected within range in block %d\n", __func__, nHeight);
@@ -285,7 +285,7 @@ bool ParseAndValidateZerocoinSpends(const Consensus::Params& consensus,
         if (isPublicSpend) {
             libzerocoin::ZerocoinParams* params = consensus.Zerocoin_Params(false);
             PublicCoinSpend publicSpend(params);
-            if (!ZPIVModule::ParseZerocoinPublicSpend(txIn, tx, state, publicSpend)) {
+            if (!ZDOGECModule::ParseZerocoinPublicSpend(txIn, tx, state, publicSpend)) {
                 return false;
             }
             //queue for db write after the 'justcheck' section has concluded
@@ -296,7 +296,7 @@ bool ParseAndValidateZerocoinSpends(const Consensus::Params& consensus,
             }
             vSpendsRet.emplace_back(publicSpend.getCoinSerialNumber(), tx.GetHash());
         } else {
-            libzerocoin::CoinSpend spend = ZPIVModule::TxInToZerocoinSpend(txIn);
+            libzerocoin::CoinSpend spend = ZDOGECModule::TxInToZerocoinSpend(txIn);
             //queue for db write after the 'justcheck' section has concluded
             if (!ContextualCheckZerocoinSpend(tx, &spend, chainHeight)) {
                 return state.DoS(100, error("%s: failed to add block %s with invalid zerocoinspend", __func__,

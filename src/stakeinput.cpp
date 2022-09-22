@@ -20,10 +20,10 @@ static bool HasStakeMinAgeOrDepth(int nHeight, uint32_t nTime, const CBlockIndex
     return true;
 }
 
-CPivStake* CPivStake::NewPivStake(const CTxIn& txin, int nHeight, uint32_t nTime)
+CDogecStake* CDogecStake::NewDogecStake(const CTxIn& txin, int nHeight, uint32_t nTime)
 {
     if (txin.IsZerocoinSpend()) {
-        error("%s: unable to initialize CPivStake from zerocoin spend", __func__);
+        error("%s: unable to initialize CDogecStake from zerocoin spend", __func__);
         return nullptr;
     }
 
@@ -36,7 +36,7 @@ CPivStake* CPivStake::NewPivStake(const CTxIn& txin, int nHeight, uint32_t nTime
             return nullptr;
         }
         // All good
-        return new CPivStake(coin.out, txin.prevout, pindexFrom);
+        return new CDogecStake(coin.out, txin.prevout, pindexFrom);
     }
 
     // Otherwise find the previous transaction in database
@@ -61,38 +61,38 @@ CPivStake* CPivStake::NewPivStake(const CTxIn& txin, int nHeight, uint32_t nTime
         return nullptr;
     }
     // All good
-    return new CPivStake(txPrev->vout[txin.prevout.n], txin.prevout, pindexFrom);
+    return new CDogecStake(txPrev->vout[txin.prevout.n], txin.prevout, pindexFrom);
 }
 
-bool CPivStake::GetTxOutFrom(CTxOut& out) const
+bool CDogecStake::GetTxOutFrom(CTxOut& out) const
 {
     out = outputFrom;
     return true;
 }
 
-CTxIn CPivStake::GetTxIn() const
+CTxIn CDogecStake::GetTxIn() const
 {
     return CTxIn(outpointFrom.hash, outpointFrom.n);
 }
 
-CAmount CPivStake::GetValue() const
+CAmount CDogecStake::GetValue() const
 {
     return outputFrom.nValue;
 }
 
-CDataStream CPivStake::GetUniqueness() const
+CDataStream CDogecStake::GetUniqueness() const
 {
-    //The unique identifier for a PIV stake is the outpoint
+    //The unique identifier for a DOGEC stake is the outpoint
     CDataStream ss(SER_NETWORK, 0);
     ss << outpointFrom.n << outpointFrom.hash;
     return ss;
 }
 
 //The block that the UTXO was added to the chain
-const CBlockIndex* CPivStake::GetIndexFrom() const
+const CBlockIndex* CDogecStake::GetIndexFrom() const
 {
     // Sanity check, pindexFrom is set on the constructor.
-    if (!pindexFrom) throw std::runtime_error("CPivStake: uninitialized pindexFrom");
+    if (!pindexFrom) throw std::runtime_error("CDogecStake: uninitialized pindexFrom");
     return pindexFrom;
 }
 

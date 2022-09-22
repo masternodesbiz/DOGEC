@@ -23,18 +23,18 @@ BitcoinUnits::BitcoinUnits(QObject* parent) : QAbstractListModel(parent),
 QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(PIV);
-    unitlist.append(mPIV);
-    unitlist.append(uPIV);
+    unitlist.append(DOGEC);
+    unitlist.append(mDOGEC);
+    unitlist.append(uDOGEC);
     return unitlist;
 }
 
 bool BitcoinUnits::valid(int unit)
 {
     switch (unit) {
-    case PIV:
-    case mPIV:
-    case uPIV:
+    case DOGEC:
+    case mDOGEC:
+    case uDOGEC:
         return true;
     default:
         return false;
@@ -44,40 +44,40 @@ bool BitcoinUnits::valid(int unit)
 QString BitcoinUnits::id(int unit)
 {
     switch (unit) {
-    case PIV:
+    case DOGEC:
         return QString("dogecash");
-    case mPIV:
+    case mDOGEC:
         return QString("mdogecash");
-    case uPIV:
+    case uDOGEC:
         return QString::fromUtf8("udogecash");
     default:
         return QString("???");
     }
 }
 
-QString BitcoinUnits::name(int unit, bool isZpiv)
+QString BitcoinUnits::name(int unit, bool isZdogec)
 {
     const QString CURR_UNIT = QString(CURRENCY_UNIT.c_str());
     QString z = "";
-    if(isZpiv) z = "z";
+    if(isZdogec) z = "z";
     if (Params().NetworkIDString() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case PIV:
+        case DOGEC:
             return z + CURR_UNIT;
-        case mPIV:
+        case mDOGEC:
             return z + QString("m") + CURR_UNIT;
-        case uPIV:
+        case uDOGEC:
             return z + QString::fromUtf8("μ") + CURR_UNIT;
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
-        case PIV:
+        case DOGEC:
             return z + QString("t") + CURR_UNIT;
-        case mPIV:
+        case mDOGEC:
             return z + QString("mt") + CURR_UNIT;
-        case uPIV:
+        case uDOGEC:
             return z + QString::fromUtf8("μt") + CURR_UNIT;
         default:
             return QString("???");
@@ -90,22 +90,22 @@ QString BitcoinUnits::description(int unit)
     const QString CURR_UNIT = QString(CURRENCY_UNIT.c_str());
     if (Params().NetworkIDString() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case PIV:
+        case DOGEC:
             return CURR_UNIT;
-        case mPIV:
+        case mDOGEC:
             return QString("Milli-") + CURR_UNIT + QString(" (1 / 1" THIN_SP_UTF8 "000)");
-        case uPIV:
+        case uDOGEC:
             return QString("Micro-") + CURR_UNIT + QString(" (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
-        case PIV:
+        case DOGEC:
             return QString("Test") + CURR_UNIT;
-        case mPIV:
+        case mDOGEC:
             return QString("Milli-Test") + CURR_UNIT + QString(" (1 / 1" THIN_SP_UTF8 "000)");
-        case uPIV:
+        case uDOGEC:
             return QString("Micro-Test") + CURR_UNIT + QString(" (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
@@ -116,11 +116,11 @@ QString BitcoinUnits::description(int unit)
 qint64 BitcoinUnits::factor(int unit)
 {
     switch (unit) {
-    case PIV:
+    case DOGEC:
         return 100000000;
-    case mPIV:
+    case mDOGEC:
         return 100000;
-    case uPIV:
+    case uDOGEC:
         return 100;
     default:
         return 100000000;
@@ -130,11 +130,11 @@ qint64 BitcoinUnits::factor(int unit)
 int BitcoinUnits::decimals(int unit)
 {
     switch (unit) {
-    case PIV:
+    case DOGEC:
         return 8;
-    case mPIV:
+    case mDOGEC:
         return 5;
-    case uPIV:
+    case uDOGEC:
         return 2;
     default:
         return 0;
@@ -216,7 +216,7 @@ QString BitcoinUnits::formatHtmlWithUnit(int unit, const CAmount& amount, bool p
     return QString("<span style='white-space: nowrap;'>%1</span>").arg(str);
 }
 
-QString BitcoinUnits::floorWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators, bool cleanRemainderZeros, bool isZPIV)
+QString BitcoinUnits::floorWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators, bool cleanRemainderZeros, bool isZDOGEC)
 {
     QSettings settings;
     int digits = settings.value("digits").toInt();
@@ -233,12 +233,12 @@ QString BitcoinUnits::floorWithUnit(int unit, const CAmount& amount, bool plussi
         }
     }
 
-    return result + QString(" ") + name(unit, isZPIV);
+    return result + QString(" ") + name(unit, isZDOGEC);
 }
 
-QString BitcoinUnits::floorHtmlWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators, bool cleanRemainderZeros, bool isZPIV)
+QString BitcoinUnits::floorHtmlWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators, bool cleanRemainderZeros, bool isZDOGEC)
 {
-    QString str(floorWithUnit(unit, amount, plussign, separators, cleanRemainderZeros, isZPIV));
+    QString str(floorWithUnit(unit, amount, plussign, separators, cleanRemainderZeros, isZDOGEC));
     str.replace(QChar(THIN_SP_CP), QString(COMMA_HTML));
     return QString("<span style='white-space: nowrap;'>%1</span>").arg(str);
 }

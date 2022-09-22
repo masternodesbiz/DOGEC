@@ -51,7 +51,7 @@ public:
         HideCharts,          // bool
         HideZeroBalances,    // bool
         HideOrphans,    // bool
-        AnonymizePivxAmount, //int
+        AnonymizeDogeCashAmount, //int
         ShowMasternodesTab,  // bool
         Listen,              // bool
         ShowColdStakingScreen,  // bool
