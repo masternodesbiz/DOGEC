@@ -1,11 +1,9 @@
-// Copyright (c) 2017-2020 The PIVX Developers
-// Copyright (c) 2020 The DogeCash Developers
-
+// Copyright (c) 2019-2020 The PIVX developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 //
-#ifndef DOGEC_ZDOGECMODULE_H
-#define DOGEC_ZDOGECMODULE_H
+#ifndef PIVX_ZPIVMODULE_H
+#define PIVX_ZPIVMODULE_H
 
 #include "libzerocoin/bignum.h"
 #include "libzerocoin/Denominations.h"
@@ -19,7 +17,6 @@
 #include "uint256.h"
 #include <streams.h>
 #include <utilstrencodings.h>
-#include "zdogec/zerocoin.h"
 #include "chainparams.h"
 
 static int const PUBSPEND_SCHNORR = 4;
@@ -46,29 +43,18 @@ public:
     unsigned int outputIndex = -1;
     libzerocoin::PublicCoin pubCoin;
 
-    ADD_SERIALIZE_METHODS;
-
-    template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action) {
-
-        READWRITE(version);
-
-        if (version < PUBSPEND_SCHNORR) {
-            READWRITE(coinSerialNumber);
-            READWRITE(randomness);
-            READWRITE(pubkey);
-            READWRITE(vchSig);
-
+    SERIALIZE_METHODS(PublicCoinSpend, obj) {
+        READWRITE(obj.version);
+        if (obj.version < PUBSPEND_SCHNORR) {
+            READWRITE(obj.coinSerialNumber, obj.randomness, obj.pubkey, obj.vchSig);
         } else {
-            READWRITE(coinVersion);
-            if (coinVersion < libzerocoin::PrivateCoin::PUBKEY_VERSION) {
-                READWRITE(coinSerialNumber);
+            READWRITE(obj.coinVersion);
+            if (obj.coinVersion < libzerocoin::PUBKEY_VERSION) {
+                READWRITE(obj.coinSerialNumber);
+            } else {
+                READWRITE(obj.pubkey, obj.vchSig);
             }
-            else {
-                READWRITE(pubkey);
-                READWRITE(vchSig);
-            }
-            READWRITE(schnorrSig);
+            READWRITE(obj.schnorrSig);
         }
     }
 };
@@ -76,10 +62,11 @@ public:
 
 class CValidationState;
 
-namespace ZDOGECModule {
+namespace ZPIVModule {
     CDataStream ScriptSigToSerializedSpend(const CScript& scriptSig);
     PublicCoinSpend parseCoinSpend(const CTxIn &in);
     bool parseCoinSpend(const CTxIn &in, const CTransaction& tx, const CTxOut &prevOut, PublicCoinSpend& publicCoinSpend);
+    libzerocoin::CoinSpend TxInToZerocoinSpend(const CTxIn& txin);
     bool validateInput(const CTxIn &in, const CTxOut &prevOut, const CTransaction& tx, PublicCoinSpend& ret);
 
     // Public zc spend parse
@@ -91,7 +78,10 @@ namespace ZDOGECModule {
      * @return true if everything went ok
      */
     bool ParseZerocoinPublicSpend(const CTxIn &in, const CTransaction& tx, CValidationState& state, PublicCoinSpend& publicCoinSpend);
+
+    // Clear the coinspend cache
+    void CleanCoinSpendsCache();
 };
 
 
-#endif //DOGEC_ZDOGECMODULE_H
+#endif //PIVX_ZPIVMODULE_H
