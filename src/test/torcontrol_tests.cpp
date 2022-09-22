@@ -1,12 +1,18 @@
 // Copyright (c) 2017 The Zcash developers
 // Copyright (c) 2017-2019 The PIVX developers
-// Copyright (c) 2020 The DogeCash Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "torcontrol.cpp"
+#include "torcontrol.h"
 
 #include <boost/test/unit_test.hpp>
+
+#include <map>
+#include <string>
+#include <utility>
+
+std::pair<std::string, std::string> SplitTorReplyLine(const std::string& s);
+std::map<std::string, std::string> ParseTorReplyMapping(const std::string& s);
 
 
 BOOST_AUTO_TEST_SUITE(torcontrol_tests)
@@ -23,8 +29,8 @@ BOOST_AUTO_TEST_CASE(util_SplitTorReplyLine)
 {
     // Data we should receive during normal usage
     CheckSplitTorReplyLine(
-        "PROTOCOLINFO DOGECERSION",
-        "PROTOCOLINFO", "DOGECERSION");
+        "PROTOCOLINFO PIVERSION",
+        "PROTOCOLINFO", "PIVERSION");
     CheckSplitTorReplyLine(
         "AUTH METHODS=COOKIE,SAFECOOKIE COOKIEFILE=\"/home/x/.tor/control_auth_cookie\"",
         "AUTH", "METHODS=COOKIE,SAFECOOKIE COOKIEFILE=\"/home/x/.tor/control_auth_cookie\"");

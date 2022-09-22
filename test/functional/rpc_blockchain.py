@@ -19,26 +19,22 @@ Tests correspond to code in rpc/blockchain.cpp.
 """
 
 from decimal import Decimal
-import http.client
-import subprocess
 
-from test_framework.test_framework import DogeCashTestFramework
+from test_framework.test_framework import PivxTestFramework
 from test_framework.util import (
     assert_equal,
-    assert_greater_than,
     assert_greater_than_or_equal,
-    assert_raises,
     assert_raises_rpc_error,
     assert_is_hex_string,
     assert_is_hash_string,
 )
 
-class BlockchainTest(DogeCashTestFramework):
+class BlockchainTest(PivxTestFramework):
     def set_test_params(self):
         self.num_nodes = 1
 
     def run_test(self):
-        #self._test_getblockchaininfo()
+        self._test_getblockchaininfo()
         self._test_gettxoutsetinfo()
         self._test_getblockheader()
         #self._test_getdifficulty()
@@ -54,6 +50,10 @@ class BlockchainTest(DogeCashTestFramework):
             'chainwork',
             'difficulty',
             'headers',
+            'initial_block_downloading',
+            'shield_pool_value',
+            'softforks',
+            'upgrades',
             'verificationprogress',
             'warnings',
         ]
@@ -79,8 +79,8 @@ class BlockchainTest(DogeCashTestFramework):
     def _test_getblockheader(self):
         node = self.nodes[0]
 
-        assert_raises_rpc_error(-5, "Block not found",
-                              node.getblockheader, "nonsense")
+        assert_raises_rpc_error(-8, "blockhash must be of length 64 (not 8, for 'nonsense')",
+                                node.getblockheader, "nonsense")
 
         besthash = node.getbestblockhash()
         secondbesthash = node.getblockhash(199)

@@ -1,11 +1,9 @@
 // Copyright (c) 2013 The Bitcoin Core developers
-// Copyright (c) 2017-2020 The PIVX Developers
-// Copyright (c) 2020 The DogeCash Developers
-
+// Copyright (c) 2017-2020 The PIVX developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "test/test_dogecash.h"
+#include "test/test_pivx.h"
 
 #include "test/data/sighash.json.h"
 
@@ -13,7 +11,7 @@
 #include "serialize.h"
 #include "script/script.h"
 #include "script/interpreter.h"
-#include "util.h"
+#include "util/system.h"
 #include "validation.h"
 #include "version.h"
 
@@ -97,11 +95,7 @@ void static RandomScript(CScript &script) {
 
 void static RandomTransaction(CMutableTransaction &tx, bool fSingle) {
     bool isSapling = !(InsecureRand32() % 7);
-    if (isSapling) {
-        tx.nVersion = 2;
-    } else {
-        do tx.nVersion = InsecureRand32(); while (tx.nVersion == 2);
-    }
+    tx.nVersion = isSapling ? CTransaction::TxVersion::SAPLING : CTransaction::TxVersion::LEGACY;
     tx.vin.clear();
     tx.vout.clear();
     tx.sapData->vShieldedSpend.clear();
@@ -154,8 +148,6 @@ BOOST_FIXTURE_TEST_SUITE(sighash_tests, BasicTestingSetup)
 
 BOOST_AUTO_TEST_CASE(sighash_test)
 {
-    SeedInsecureRand(false);
-
     #if defined(PRINT_SIGHASH_JSON)
     std::cout << "[\n";
     std::cout << "\t[\"raw_transaction, script, input_index, hashType, signature_hash (result)\"],\n";
@@ -180,7 +172,7 @@ BOOST_AUTO_TEST_CASE(sighash_test)
         CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
         ss << txTo;
         std::cout << "\t[\"" ;
-        std::cout << HexStr(ss.begin(), ss.end()) << "\", \"";
+        std::cout << HexStr(ss) << "\", \"";
         std::cout << HexStr(scriptCode) << "\", ";
         std::cout << nIn << ", ";
         std::cout << nHashType << ", \"";
@@ -234,7 +226,7 @@ BOOST_AUTO_TEST_CASE(sighash_from_data)
           stream >> tx;
 
           CValidationState state;
-          BOOST_CHECK_MESSAGE(CheckTransaction(*tx, false, state), strTest);
+          BOOST_CHECK_MESSAGE(CheckTransaction(*tx, state, false), strTest);
           BOOST_CHECK(state.IsValid());
 
           std::vector<unsigned char> raw = ParseHex(raw_script);
