@@ -6,10 +6,10 @@ etc.
 This directory contains the following sets of tests:
 
 - [functional](/test/functional) which test the functionality of
-pivxd and pivx-qt by interacting with them through the RPC and P2P
+pivxd and dogecash-qt by interacting with them through the RPC and P2P
 interfaces.
 - [util](/test/util) which tests the pivx utilities, currently only
-pivx-tx.
+dogecash-tx.
 - [lint](/test/lint) which perform various static analysis checks.
 
 The util tests are run as part of `make check` target. The functional

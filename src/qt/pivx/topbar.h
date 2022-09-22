@@ -1,4 +1,4 @@
-// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2019-2020 The DogeCash developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -14,7 +14,7 @@
 #include <QProgressBar>
 
 class BalanceBubble;
-class PIVXGUI;
+class DogeCashGUI;
 class WalletModel;
 class ClientModel;
 
@@ -27,7 +27,7 @@ class TopBar : public PWidget
     Q_OBJECT
 
 public:
-    explicit TopBar(PIVXGUI* _mainWindow, QWidget *parent = nullptr);
+    explicit TopBar(DogeCashGUI* _mainWindow, QWidget *parent = nullptr);
     ~TopBar();
 
     void showTop();

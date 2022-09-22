@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2021 The PIVX Core developers
+# Copyright (c) 2021 The DogeCash Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test deterministic masternodes"""
@@ -302,7 +302,7 @@ class DIP3Test(PivxTestFramework):
                                 miner.protx_update_service, mns[0].proTx, "",
                                 miner.getnewaddress(), mns[0].operator_sk)
         self.log.info("Trying to update the operator payee to an invalid address...")
-        assert_raises_rpc_error(-5, "invalid PIVX address InvalidPayee",
+        assert_raises_rpc_error(-5, "invalid DogeCash address InvalidPayee",
                                 miner.protx_update_service, dmn2c.proTx, "", "InvalidPayee", "")
         self.log.info("Update IP address...")
         mns[0].ipport = "127.0.0.1:1000"
@@ -336,7 +336,7 @@ class DIP3Test(PivxTestFramework):
         assert_raises_rpc_error(-1, "bad-protx-dup-key", controller.protx_update_registrar,
                                 mns[0].proTx, mns[1].operator_pk, "", "")
         self.log.info("Trying to update the payee to an invalid address...")
-        assert_raises_rpc_error(-5, "invalid PIVX address InvalidPayee", controller.protx_update_registrar,
+        assert_raises_rpc_error(-5, "invalid DogeCash address InvalidPayee", controller.protx_update_registrar,
                                 mns[0].proTx, "", "", "InvalidPayee")
         self.log.info("Update operator keys...")
         bls_keypair = self.nodes[mns[0].idx].generateblskeypair()

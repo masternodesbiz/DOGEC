@@ -1,12 +1,12 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2020 The PIVX developers
+// Copyright (c) 2015-2020 The DogeCash developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/pivx-config.h"
+#include "config/dogecash-config.h"
 #endif
 
 #include "util/system.h"
@@ -78,11 +78,11 @@
 #include <CoreFoundation/CoreFoundation.h>
 #endif
 
-const char * const PIVX_CONF_FILENAME = "pivx.conf";
-const char * const PIVX_MASTERNODE_CONF_FILENAME = "masternode.conf";
+const char * const DogeCash_CONF_FILENAME = "pivx.conf";
+const char * const DogeCash_MASTERNODE_CONF_FILENAME = "masternode.conf";
 
 
-// PIVX only features
+// DogeCash only features
 // Masternode
 std::atomic<bool> fMasterNode{false};
 
@@ -532,13 +532,13 @@ void PrintExceptionContinue(const std::exception* pex, const char* pszThread)
 
 fs::path GetDefaultDataDir()
 {
-// Windows < Vista: C:\Documents and Settings\Username\Application Data\PIVX
-// Windows >= Vista: C:\Users\Username\AppData\Roaming\PIVX
-// Mac: ~/Library/Application Support/PIVX
+// Windows < Vista: C:\Documents and Settings\Username\Application Data\DogeCash
+// Windows >= Vista: C:\Users\Username\AppData\Roaming\DogeCash
+// Mac: ~/Library/Application Support/DogeCash
 // Unix: ~/.pivx
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "PIVX";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "DogeCash";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -550,7 +550,7 @@ fs::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     TryCreateDirectories(pathRet);
-    return pathRet / "PIVX";
+    return pathRet / "DogeCash";
 #else
     // Unix
     return pathRet / ".pivx";
@@ -567,13 +567,13 @@ static RecursiveMutex csPathCached;
 static fs::path ZC_GetBaseParamsDir()
 {
     // Copied from GetDefaultDataDir and adapter for zcash params.
-    // Windows < Vista: C:\Documents and Settings\Username\Application Data\PIVXParams
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\PIVXParams
-    // Mac: ~/Library/Application Support/PIVXParams
-    // Unix: ~/.pivx-params
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\DogeCashParams
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\DogeCashParams
+    // Mac: ~/Library/Application Support/DogeCashParams
+    // Unix: ~/.dogecash-params
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "PIVXParams";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "DogeCashParams";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -585,10 +585,10 @@ static fs::path ZC_GetBaseParamsDir()
     // Mac
     pathRet /= "Library/Application Support";
     TryCreateDirectories(pathRet);
-    return pathRet / "PIVXParams";
+    return pathRet / "DogeCashParams";
 #else
     // Unix
-    return pathRet / ".pivx-params";
+    return pathRet / ".dogecash-params";
 #endif
 #endif
 }
@@ -775,7 +775,7 @@ fs::path GetConfigFile(const std::string& confPath)
 
 fs::path GetMasternodeConfigFile()
 {
-    fs::path pathConfigFile(gArgs.GetArg("-mnconf", PIVX_MASTERNODE_CONF_FILENAME));
+    fs::path pathConfigFile(gArgs.GetArg("-mnconf", DogeCash_MASTERNODE_CONF_FILENAME));
     return AbsPathForConfigVal(pathConfigFile);
 }
 

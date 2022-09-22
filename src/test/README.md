@@ -14,9 +14,9 @@ To add more pivxd tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
 .cpp files in the `test/` directory or add new .cpp files that
 implement new BOOST_FIXTURE_TEST_SUITE sections.
 
-To run the pivx-qt tests manually, launch `src/qt/test/test_pivx-qt`
+To run the dogecash-qt tests manually, launch `src/qt/test/test_dogecash-qt`
 
-To add more pivx-qt tests, add them to the `src/qt/test/` directory and
+To add more dogecash-qt tests, add them to the `src/qt/test/` directory and
 the `src/qt/test/test_main.cpp` file.
 
 ### Running individual tests

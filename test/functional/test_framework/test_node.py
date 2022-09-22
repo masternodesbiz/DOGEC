@@ -82,7 +82,7 @@ class TestNode():
             "-uacomment=testnode%d" % i
         ]
 
-        self.cli = TestNodeCLI(os.getenv("BITCOINCLI", "pivx-cli"), self.datadir)
+        self.cli = TestNodeCLI(os.getenv("BITCOINCLI", "dogecash-cli"), self.datadir)
         self.use_cli = use_cli
 
         self.running = False
@@ -304,8 +304,8 @@ class TestNode():
             # So syncing here is redundant when we only want to send a message, but the cost is low (a few milliseconds)
             # in comparison to the upside of making tests less fragile and unexpected intermittent errors less likely.
             p2p_conn.sync_with_ping()
-            # Consistency check that the PIVX Core has received our user agent string. This checks the
-            # node's newest peer. It could be racy if another PIVX Core node has connected since we opened
+            # Consistency check that the DogeCash Core has received our user agent string. This checks the
+            # node's newest peer. It could be racy if another DogeCash Core node has connected since we opened
             # our connection, but we don't expect that to happen.
             assert_equal(self.getpeerinfo()[-1]['subver'], MY_SUBVERSION)
 
@@ -338,7 +338,7 @@ class TestNodeCLIAttr:
         return lambda: self(*args, **kwargs)
 
 class TestNodeCLI():
-    """Interface to pivx-cli for an individual node"""
+    """Interface to dogecash-cli for an individual node"""
 
     def __init__(self, binary, datadir):
         self.options = []
@@ -348,7 +348,7 @@ class TestNodeCLI():
         self.log = logging.getLogger('TestFramework.bitcoincli')
 
     def __call__(self, *options, input=None):
-        # TestNodeCLI is callable with pivx-cli command-line options
+        # TestNodeCLI is callable with dogecash-cli command-line options
         cli = TestNodeCLI(self.binary, self.datadir)
         cli.options = [str(o) for o in options]
         cli.input = input
@@ -367,11 +367,11 @@ class TestNodeCLI():
         return results
 
     def send_cli(self, command=None, *args, **kwargs):
-        """Run pivx-cli command. Deserializes returned string as python object."""
+        """Run dogecash-cli command. Deserializes returned string as python object."""
 
         pos_args = [str(arg) for arg in args]
         named_args = [str(key) + "=" + str(value) for (key, value) in kwargs.items()]
-        assert not (pos_args and named_args), "Cannot use positional arguments and named arguments in the same pivx-cli call"
+        assert not (pos_args and named_args), "Cannot use positional arguments and named arguments in the same dogecash-cli call"
         p_args = [self.binary, "-datadir=" + self.datadir] + self.options
         if named_args:
             p_args += ["-named"]

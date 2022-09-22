@@ -1,4 +1,4 @@
-// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2019-2020 The DogeCash developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://www.opensource.org/licenses/mit-license.php.
 
@@ -16,7 +16,7 @@
 
 #define REQUEST_UPDATE_COUNTS 0
 
-SettingsInformationWidget::SettingsInformationWidget(PIVXGUI* _window,QWidget *parent) :
+SettingsInformationWidget::SettingsInformationWidget(DogeCashGUI* _window,QWidget *parent) :
     PWidget(_window,parent),
     ui(new Ui::SettingsInformationWidget)
 {

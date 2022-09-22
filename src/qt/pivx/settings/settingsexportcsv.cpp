@@ -1,4 +1,4 @@
-// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2019-2020 The DogeCash developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -11,7 +11,7 @@
 #include "qt/pivx/qtutils.h"
 #include "guiinterface.h"
 
-SettingsExportCSV::SettingsExportCSV(PIVXGUI* _window, QWidget *parent) :
+SettingsExportCSV::SettingsExportCSV(DogeCashGUI* _window, QWidget *parent) :
     PWidget(_window, parent),
     ui(new Ui::SettingsExportCSV)
 {
