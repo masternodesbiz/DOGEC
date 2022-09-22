@@ -14,14 +14,14 @@
 #
 # These caches can be manually removed if necessary. This is one of the very
 # few manual operations that is possible with Travis, and it can be done by a
-# DogeCash GitHub member via the Travis web interface [0].
+# PIVX GitHub member via the Travis web interface [0].
 #
 # Travis CI uploads the cache after the script phase of the build [1].
 # However, the build is terminated without saving the chache if it takes over
 # 50 minutes [2]. Thus, if we spent too much time in early build stages, fail
 # with an error and save the cache.
 #
-# [0] https://travis-ci.org/DogeCash/DogeCash/caches
+# [0] https://travis-ci.org/pivx-project/pivx/caches
 # [1] https://docs.travis-ci.com/user/caching/#build-phases
 # [2] https://docs.travis-ci.com/user/customizing-the-build#build-timeouts
 
@@ -34,7 +34,7 @@ cache:
     - $TRAVIS_BUILD_DIR/depends/built
     - $TRAVIS_BUILD_DIR/depends/sdk-sources
     - $HOME/.ccache
-    - $HOME/.dogecash-params
+    - $HOME/.pivx-params
 stages:
   - lint
   - cmake
@@ -52,7 +52,7 @@ env:
     - CCACHE_TEMPDIR=/tmp/.ccache-temp
     - CCACHE_COMPRESS=1
     - CCACHE_DIR=$HOME/.ccache
-    - PARAMS_DIR=$HOME/.dogecash-params
+    - PARAMS_DIR=$HOME/.pivx-params
     - BASE_OUTDIR=$TRAVIS_BUILD_DIR/out
     - SDK_URL=https://bitcoincore.org/depends-sources/sdks
     - WINEDEBUG=fixme-all
@@ -228,7 +228,7 @@ jobs:
     - stage: test
       name: 'macOS 10.10  [GOAL: deploy] [no functional tests]'
       env: >-
-        HOST=x86_64-apple-darwin16
+        HOST=x86_64-apple-darwin14
         PACKAGES="cmake imagemagick libcap-dev librsvg2-bin libz-dev libbz2-dev libtiff-tools python3-dev python3-setuptools"
         OSX_SDK=10.11
         RUN_UNIT_TESTS=false
