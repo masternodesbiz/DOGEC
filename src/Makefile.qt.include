@@ -514,6 +514,24 @@ RES_ICONS = \
   qt/pivx/res/img/img-empty-governance.svg \
   qt/pivx/res/img/img-empty-dark-governance.svg
 
+RES_FONTS = \
+  qt/pivx/res/font/Aileron-Black.otf
+  qt/pivx/res/font/Aileron-BlackItalic.otf
+  qt/pivx/res/font/Aileron-Bold.otf
+  qt/pivx/res/font/Aileron-BoldItalic.otf
+  qt/pivx/res/font/Aileron-Heavy.otf
+  qt/pivx/res/font/Aileron-HeavyItalic.otf
+  qt/pivx/res/font/Aileron-Italic.otf
+  qt/pivx/res/font/Aileron-Light.otf
+  qt/pivx/res/font/Aileron-LightItalic.otf
+  qt/pivx/res/font/Aileron-Regular.otf
+  qt/pivx/res/font/Aileron-SemiBold.otf
+  qt/pivx/res/font/Aileron-SemiBoldItalic.otf
+  qt/pivx/res/font/Aileron-Thin.otf
+  qt/pivx/res/font/Aileron-ThinItalic.otf
+  qt/pivx/res/font/Aileron-UltraLight.otf
+  qt/pivx/res/font/Aileron-UltraLightItalic.otf
+
 BITCOIN_QT_BASE_CPP = \
   qt/bantablemodel.cpp \
   qt/bitcoinaddressvalidator.cpp \
