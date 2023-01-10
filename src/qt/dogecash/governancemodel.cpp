@@ -1,4 +1,4 @@
-// Copyright (c) 2021 The DogeCash developers
+// Copyright (c) 2021 The PIVX developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://www.opensource.org/licenses/mit-license.php.
 
@@ -65,7 +65,7 @@ ProposalInfo GovernanceModel::buildProposalInfo(const CBudgetProposal* prop, boo
             status = ProposalInfo::FINISHED;
         } else if (isPassing) {
             status = ProposalInfo::PASSING;
-        } else if (allocatedAmount + prop->GetAmount() > getMaxAvailableBudgetAmount() && votesYes - votesNo > mnCount / 10) {
+        } else if (votesYes - votesNo > mnCount / 10) {
             status = ProposalInfo::PASSING_NOT_FUNDED;
         } else {
             status = ProposalInfo::NOT_PASSING;
@@ -182,34 +182,26 @@ std::vector<VoteInfo> GovernanceModel::getLocalMNsVotesForProposal(const Proposa
 
 OperationResult GovernanceModel::validatePropName(const QString& name) const
 {
-    std::string strName = SanitizeString(name.toStdString());
-    if (strName != name.toStdString()) { // invalid characters
-        return {false, _("Invalid name, invalid characters")};
-    }
-    if (strName.size() > (int)PROP_NAME_MAX_SIZE) { // limit
-        return {false, strprintf(_("Invalid name, maximum size of %d exceeded"), PROP_NAME_MAX_SIZE)};
+    if (name.toUtf8().size() > (int)PROP_NAME_MAX_SIZE) { // limit
+        return {false, _("Invalid name, maximum size exceeded")};
     }
     return {true};
 }
 
 OperationResult GovernanceModel::validatePropURL(const QString& url) const
 {
-    std::string strURL = SanitizeString(url.toStdString());
-    if (strURL != url.toStdString()) {
-        return {false, _("Invalid URL, invalid characters")};
-    }
     std::string strError;
-    return {validateURL(strURL, strError, PROP_URL_MAX_SIZE), strError};
+    return {validateURL(url.toStdString(), strError, PROP_URL_MAX_SIZE), strError};
 }
 
 OperationResult GovernanceModel::validatePropAmount(CAmount amount) const
 {
     if (amount < PROPOSAL_MIN_AMOUNT) { // Future: move constant to a budget interface.
-        return {false, strprintf(_("Amount below the minimum of %s DOGEC"), FormatMoney(PROPOSAL_MIN_AMOUNT))};
+        return {false, strprintf(_("Amount below the minimum of %s PIV"), FormatMoney(PROPOSAL_MIN_AMOUNT))};
     }
 
     if (amount > getMaxAvailableBudgetAmount()) {
-        return {false, strprintf(_("Amount exceeding the maximum available of %s DOGEC"), FormatMoney(getMaxAvailableBudgetAmount()))};
+        return {false, strprintf(_("Amount exceeding the maximum available of %s PIV"), FormatMoney(getMaxAvailableBudgetAmount()))};
     }
     return {true};
 }

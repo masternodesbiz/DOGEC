@@ -1,4 +1,4 @@
-// Copyright (c) 2021 The DogeCash developers
+// Copyright (c) 2021 The PIVX developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://www.opensource.org/licenses/mit-license.php.
 
@@ -34,7 +34,7 @@ public:
     int votesNo{0};
     /** Payment script destination */
     std::string recipientAdd;
-    /** Amount of DOGEC paid per month */
+    /** Amount of PIV paid per month */
     CAmount amount{0};
     /** Amount of times that the proposal will be paid */
     int totalPayments{0};

@@ -1,4 +1,4 @@
-// Copyright (c) 2021 The DogeCash developers
+// Copyright (c) 2021 The PIVX developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://www.opensource.org/licenses/mit-license.php.
 
@@ -113,7 +113,7 @@ void VoteDialog::showEvent(QShowEvent *event)
 
 void VoteDialog::onMnSelectionClicked()
 {
-    DogeCashGUI* window = dynamic_cast<DogeCashGUI*>(parent());
+    DOGECGUI* window = dynamic_cast<DOGECGUI*>(parent());
     if (!mnSelectionDialog) {
         mnSelectionDialog = new MnSelectionDialog(window);
         mnSelectionDialog->setModel(mnModel, govModel->getProposalVoteUpdateMinTime());

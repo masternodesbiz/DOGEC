@@ -1,4 +1,4 @@
-// Copyright (c) 2021 The DogeCash developers
+// Copyright (c) 2021 The PIVX developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or https://www.opensource.org/licenses/mit-license.php.
 
@@ -23,7 +23,7 @@ void initPageIndexBtn(QPushButton* btn)
     btn->setVisible(false);
 }
 
-CreateProposalDialog::CreateProposalDialog(DogeCashGUI* parent, GovernanceModel* _govModel, WalletModel* _walletModel) :
+CreateProposalDialog::CreateProposalDialog(DOGECGUI* parent, GovernanceModel* _govModel, WalletModel* _walletModel) :
     QDialog(parent),
     ui(new Ui::CreateProposalDialog),
     govModel(_govModel),
@@ -92,7 +92,7 @@ void CreateProposalDialog::setupPageTwo()
 {
     setCssProperty(ui->labelTitleDest, "text-title-dialog");
     setCssProperty(ui->labelMessageDest, "dialog-proposal-message");
-    setEditBoxStyle(ui->labelAmount, ui->lineEditAmount, "e.g 500 DOGEC");
+    setEditBoxStyle(ui->labelAmount, ui->lineEditAmount, "e.g 500 PIV");
     setCssProperty(ui->labelMonths, "text-title");
     setEditBoxStyle(ui->labelAddress, ui->lineEditAddress, "e.g D...something..");
     setCssProperty(ui->lineEditAddress, "edit-primary-multi-book");
@@ -342,7 +342,7 @@ void CreateProposalDialog::onAddrListClicked()
         menuContacts = new ContactsDropdown(
                 width,
                 height,
-                dynamic_cast<DogeCashGUI*>(parent()),
+                dynamic_cast<DOGECGUI*>(parent()),
                 this
         );
         menuContacts->setWalletModel(walletModel, {AddressTableModel::Send, AddressTableModel::Receive});
