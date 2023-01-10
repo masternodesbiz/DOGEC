@@ -515,21 +515,21 @@ RES_ICONS = \
   qt/dogecash/res/img/img-empty-dark-governance.svg
 
 RES_FONTS = \
-  qt/dogecash/res/font/Aileron-Black.otf
-  qt/dogecash/res/font/Aileron-BlackItalic.otf
-  qt/dogecash/res/font/Aileron-Bold.otf
-  qt/dogecash/res/font/Aileron-BoldItalic.otf
-  qt/dogecash/res/font/Aileron-Heavy.otf
-  qt/dogecash/res/font/Aileron-HeavyItalic.otf
-  qt/dogecash/res/font/Aileron-Italic.otf
-  qt/dogecash/res/font/Aileron-Light.otf
-  qt/dogecash/res/font/Aileron-LightItalic.otf
-  qt/dogecash/res/font/Aileron-Regular.otf
-  qt/dogecash/res/font/Aileron-SemiBold.otf
-  qt/dogecash/res/font/Aileron-SemiBoldItalic.otf
-  qt/dogecash/res/font/Aileron-Thin.otf
-  qt/dogecash/res/font/Aileron-ThinItalic.otf
-  qt/dogecash/res/font/Aileron-UltraLight.otf
+  qt/dogecash/res/font/Aileron-Black.otf \
+  qt/dogecash/res/font/Aileron-BlackItalic.otf \
+  qt/dogecash/res/font/Aileron-Bold.otf \
+  qt/dogecash/res/font/Aileron-BoldItalic.otf \
+  qt/dogecash/res/font/Aileron-Heavy.otf \
+  qt/dogecash/res/font/Aileron-HeavyItalic.otf \
+  qt/dogecash/res/font/Aileron-Italic.otf \
+  qt/dogecash/res/font/Aileron-Light.otf \
+  qt/dogecash/res/font/Aileron-LightItalic.otf \
+  qt/dogecash/res/font/Aileron-Regular.otf \
+  qt/dogecash/res/font/Aileron-SemiBold.otf \
+  qt/dogecash/res/font/Aileron-SemiBoldItalic.otf \
+  qt/dogecash/res/font/Aileron-Thin.otf \
+  qt/dogecash/res/font/Aileron-ThinItalic.otf \
+  qt/dogecash/res/font/Aileron-UltraLight.otf \
   qt/dogecash/res/font/Aileron-UltraLightItalic.otf
 
 BITCOIN_QT_BASE_CPP = \
