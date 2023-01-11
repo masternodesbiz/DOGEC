@@ -353,6 +353,42 @@ QPushButton[cssClass="img-nav-logo"] {
     color: #3779ed;
 }
 
+
+*[cssClass="btn-nav-governance"] {
+    qproperty-icon: url("://ic-nav-governance") off,
+                    url("://ic-nav-governance-active") on ;
+    qproperty-iconSize: 36px 36px;
+    background-color:transparent;
+    font-size:14px;
+    color: #938da5;
+}
+
+*[cssClass="btn-nav-governance"]:checked {
+    background-color: qlineargradient(x1:0, x2: 1, stop: 0 #3c2559, stop: 1 #1f162b);
+    font-size:14px;
+    color: #B088FF;
+}
+
+*[cssClass="btn-nav-governance"]:checked:hover {
+    background-color: qlineargradient(x1:0, x2: 1, stop: 0 #3c2559, stop: 1 #1f162b);
+    color: #B088FF;
+}
+
+*[cssClass="btn-nav-governance"]:hover {
+    qproperty-icon: url("://ic-nav-governance-hover");
+    qproperty-iconSize: 36px 36px;
+    background-color: #1A000000;
+    color: #938da5;
+}
+
+*[cssClass="btn-nav-governance-active"] {
+    qproperty-icon:url("://ic-nav-governance-active")  ;
+    qproperty-iconSize: 36px 36px;
+    background-color: qlineargradient(x1:0, x2: 1, stop: 0 #3c2559, stop: 1 #1f162b);
+    font-size:14px;
+    color: #B088FF;
+}
+
 /*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 HH       TOP BAR
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
@@ -2138,6 +2174,111 @@ QSpinBox[cssClass="btn-spin-box"]::down-button, QDoubleSpinBox[cssClass="btn-spi
     margin:0px 5px 0px 0px;
 }
 
+/*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+HH       VOTE DIALOG
+HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
+
+
+
+*[cssClass="vote-title"] {
+    color:#4D4D4D;
+    font-size:22px;
+}
+
+*[cssClass="vote-amount"] {
+    color:#4D4D4D;
+    font-size:20px;
+}
+
+*[cssClass="vote-time"] {
+    color:#707070;
+    font-size:18px;
+}
+
+*[cssClass="btn-vote-select"] {
+    background: transparent;
+    border: 0px;
+    color:#216BEB;
+    font-size:16px;
+}
+
+*[cssClass="btn-vote-select"]:hover {
+    text-decoration: underline;
+}
+
+*[cssClass="vote-message"] {
+    color:#707070;
+    font-size:14px;
+}
+
+*[cssClass="vote-grid"] {
+    border: 1px solid #BABABA;
+    background-color:transparent;
+}
+
+*[cssClass="vote-progress"] {
+    color: #4d4d4d;
+    font-size:14px;
+    background-color: transparent;
+    border-radius: 2px;
+}
+
+*[cssClass="vote-progress"]::chunk:horizontal {
+    background: rgba(238, 238, 238, 0.85);
+    border-right:1px solid  #bababa;
+}
+
+*[cssClass="vote-progress-no"] {
+    height: 36px;
+    color: #4d4d4d;
+    font-size:14px;
+    background-color: transparent;
+    border-radius: 2px;
+}
+
+*[cssClass="vote-progress-no"]::chunk:horizontal {
+    background: rgba(238, 238, 238, 0.85);
+    height: 36px;
+}
+
+*[cssClass="vote-progress-yes"] {
+    min-height: 36px;
+    color: #4d4d4d;
+    font-size:14px;
+    background-color: transparent;
+    border-radius: 2px;
+}
+
+*[cssClass="vote-progress-yes"]::chunk:horizontal {
+    background: rgba(33, 107, 235, 0.2);
+}
+
+QCheckBox[cssClass="check-vote"] {
+    spacing: 5px;
+    padding:5px;
+    font-size:18px;
+    color:#707070;
+}
+
+QCheckBox:checked[cssClass="check-vote"]  {
+    spacing: 5px;
+    font-size:18px;
+    color:#216BEB;
+}
+
+QCheckBox::indicator[cssClass="check-vote"] {
+    width: 24px;
+    height: 24px;
+}
+
+QCheckBox::indicator:unchecked[cssClass="check-vote"] {
+    image: url("://ic-check-vote");
+}
+
+QCheckBox::indicator:checked[cssClass="check-vote"] {
+    image: url("://ic-check-vote-active");
+}
+
 
 /*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 HH       COMBO BOX
@@ -2407,7 +2548,7 @@ QPushButton[cssClass="btn-name-check"] {
     background-color: #FFFFFF;
     border:none;
     font-size:20px;
-    color: rgba(125, 95, 75 0.5);
+    color: rgba(33, 107, 235, 0.5);
 }
 
 QPushButton[cssClass="btn-name-check"]:checked {
