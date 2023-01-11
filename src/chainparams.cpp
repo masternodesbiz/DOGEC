@@ -351,8 +351,8 @@ public:
         nDefaultPort = 56740;
 
         // Note that of those with the service bits flag, most only support a subset of possible options
-        vSeeds.emplace_back("seeds.dogec.io", "seeds.dogec.io", true);     // Primary DNS Seeder from Liquid369
-        vSeeds.emplace_back("x9.seeds.dogec.io", "x9.seeds.dogec.io", true);    // Secondary DNS Seeder from DanielHalford
+        vSeeds.emplace_back("seeds.dogec.io", true);     // Primary DNS Seeder from Liquid369
+        vSeeds.emplace_back("x9.seeds.dogec.io", true);    // Secondary DNS Seeder from DanielHalford
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 30);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);
