@@ -206,6 +206,8 @@ struct Params {
     int64_t nDogeCashBadBlockTime;
     unsigned int nDogeCashBadBlockBits;
 
+    std::string nDevReward;
+
     // Map with network updates
     NetworkUpgrade vUpgrades[MAX_NETWORK_UPGRADES];
 

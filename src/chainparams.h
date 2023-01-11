@@ -118,8 +118,6 @@ protected:
     std::vector<uint8_t> vFixedSeeds;
     bool fRequireStandard;
 
-    std::string nDevReward;
-
     // Tier two
     int nLLMQConnectionRetryTimeout;
     int nFulfilledRequestExpireTime;
