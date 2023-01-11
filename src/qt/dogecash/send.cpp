@@ -105,7 +105,7 @@ SendWidget::SendWidget(DogeCashGUI* parent) :
     coinIcon->show();
     coinIcon->raise();
 
-    setCssProperty(coinIcon, "coin-icon-dogec");
+    setCssProperty(coinIcon, "coin-icon-dogecash");
 
     QSize BUTTON_SIZE = QSize(24, 24);
     coinIcon->setMinimumSize(BUTTON_SIZE);

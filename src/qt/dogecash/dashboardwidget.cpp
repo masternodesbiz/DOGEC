@@ -51,9 +51,9 @@ DashboardWidget::DashboardWidget(DogeCashGUI* parent) :
 
     // Staking Information
     setCssSubtitleScreen(ui->labelMessage);
-    setCssProperty(ui->labelSquareDogec, "square-chart-dogec");
+    setCssProperty(ui->labelSquareDogec, "square-chart-dogecash");
     setCssProperty(ui->labelSquareMN, "square-chart-mn");
-    setCssProperty(ui->labelDogec, "text-chart-dogec");
+    setCssProperty(ui->labelDogec, "text-chart-dogecash");
     setCssProperty(ui->labelMN, "text-chart-mn");
 
     // Staking Amount
@@ -61,7 +61,7 @@ DashboardWidget::DashboardWidget(DogeCashGUI* parent) :
     fontBold.setWeight(QFont::Bold);
 
     setCssProperty(ui->labelChart, "legend-chart");
-    setCssProperty(ui->labelAmountDogec, "text-stake-dogec-disable");
+    setCssProperty(ui->labelAmountDogec, "text-stake-dogecash-disable");
     setCssProperty(ui->labelAmountMN, "text-stake-mn-disable");
 
     setCssProperty({ui->pushButtonAll,  ui->pushButtonMonth, ui->pushButtonYear}, "btn-check-time");
@@ -682,10 +682,10 @@ void DashboardWidget::onChartRefreshed()
     // Total
     nDisplayUnit = walletModel->getOptionsModel()->getDisplayUnit();
     if (chartData->totalDogec > 0 || chartData->totalMN > 0) {
-        setCssProperty(ui->labelAmountDogec, "text-stake-dogec");
+        setCssProperty(ui->labelAmountDogec, "text-stake-dogecash");
         setCssProperty(ui->labelAmountMN, "text-stake-mn");
     } else {
-        setCssProperty(ui->labelAmountDogec, "text-stake-dogec-disable");
+        setCssProperty(ui->labelAmountDogec, "text-stake-dogecash-disable");
         setCssProperty(ui->labelAmountMN, "text-stake-mn-disable");
     }
     forceUpdateStyle({ui->labelAmountDogec, ui->labelAmountMN});
