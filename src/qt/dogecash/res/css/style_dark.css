@@ -3386,7 +3386,7 @@ QPushButton[cssClass="btn-dots-welcome"]:pressed {
 *[cssClass="edit-primary-welcome"] {
     border:1px solid #216BEB;
     border-right: 0px;
-    background-color:#221710;
+    background-color:#216BEB;
     font-size:18px;
     border-radius: 2px;
     padding:8px;
@@ -3411,7 +3411,7 @@ QPushButton[cssClass="btn-dots-welcome"]:pressed {
 *[cssClass="edit-primary-welcome-disabled"] {
     border:1px solid #FFFFFF;
     border-right: 0px;
-    background-color:#221710;
+    background-color:#216BEB;
     font-size:18px;
     border-radius: 2px;
     padding:8px;
