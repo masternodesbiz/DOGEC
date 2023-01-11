@@ -113,7 +113,7 @@ void VoteDialog::showEvent(QShowEvent *event)
 
 void VoteDialog::onMnSelectionClicked()
 {
-    DOGECGUI* window = dynamic_cast<DOGECGUI*>(parent());
+    DogeCashGUI* window = dynamic_cast<DogeCashGUI*>(parent());
     if (!mnSelectionDialog) {
         mnSelectionDialog = new MnSelectionDialog(window);
         mnSelectionDialog->setModel(mnModel, govModel->getProposalVoteUpdateMinTime());

@@ -23,7 +23,7 @@ void initPageIndexBtn(QPushButton* btn)
     btn->setVisible(false);
 }
 
-CreateProposalDialog::CreateProposalDialog(DOGECGUI* parent, GovernanceModel* _govModel, WalletModel* _walletModel) :
+CreateProposalDialog::CreateProposalDialog(DogeCashGUI* parent, GovernanceModel* _govModel, WalletModel* _walletModel) :
     QDialog(parent),
     ui(new Ui::CreateProposalDialog),
     govModel(_govModel),
@@ -342,7 +342,7 @@ void CreateProposalDialog::onAddrListClicked()
         menuContacts = new ContactsDropdown(
                 width,
                 height,
-                dynamic_cast<DOGECGUI*>(parent()),
+                dynamic_cast<DogeCashGUI*>(parent()),
                 this
         );
         menuContacts->setWalletModel(walletModel, {AddressTableModel::Send, AddressTableModel::Receive});
