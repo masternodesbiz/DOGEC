@@ -95,8 +95,6 @@ public:
     const std::vector<uint8_t>& FixedSeeds() const { return vFixedSeeds; }
     virtual const CCheckpointData& Checkpoints() const = 0;
 
-    std::string DevAddress() const { return nDevReward; }
-
     bool IsRegTestNet() const { return NetworkIDString() == CBaseChainParams::REGTEST; }
     bool IsTestnet() const { return NetworkIDString() == CBaseChainParams::TESTNET; }
 
