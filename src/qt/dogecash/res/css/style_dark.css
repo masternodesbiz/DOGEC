@@ -1876,7 +1876,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
     color:#216BEB;
     font-size:16px;
     padding:10px;
-    border-bottom: 5px solid #216BEB;
+    border-bottom: 5px solid #AFC9F7;
 }
 
 *[cssClass="text-stake-dogecash-disable"] {
@@ -1887,7 +1887,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 *[cssClass="text-stake-mn"] {
-    color:#216BEB;
+    color:#AFC9F7;
     font-size:16px;
     padding:10px;
     border-bottom: 5px solid #216BEB;
