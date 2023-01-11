@@ -174,6 +174,7 @@ void setSortTxTypeFilter(QComboBox* filter, SortEdit* lineEditType)
     filter->addItem(QObject::tr("Mined"), TransactionFilterProxy::TYPE(TransactionRecord::Generated));
     filter->addItem(QObject::tr("Minted"), TransactionFilterProxy::TYPE(TransactionRecord::StakeMint));
     filter->addItem(QObject::tr("MN reward"), TransactionFilterProxy::TYPE(TransactionRecord::MNReward));
+    filter->addItem(QObject::tr("Dev Reward"), TransactionFilterProxy::TYPE(TransactionRecord::DevReward));
     filter->addItem(QObject::tr("To yourself"), TransactionFilterProxy::TYPE(TransactionRecord::SendToSelf) |
                                             TransactionFilterProxy::TYPE(TransactionRecord::SendToSelfShieldedAddress) |
                                             TransactionFilterProxy::TYPE(TransactionRecord::SendToSelfShieldToShieldChangeAddress) |
@@ -235,7 +236,7 @@ QColor getRowColor(bool isLightTheme, bool isHovered, bool isSelected)
     } else if (isHovered) {
         return QColor("#25bababa");
     } else {
-        return isLightTheme ? QColor("#ffffff") : QColor("#0f0b16");
+        return isLightTheme ? QColor("#ffffff") : QColor("#041636");
     }
 }
 

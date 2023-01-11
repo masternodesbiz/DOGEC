@@ -266,6 +266,9 @@ public:
         consensus.nFutureTimeDriftPoS = 180;
         consensus.nMasternodeCountDrift = 20;       // num of MN we allow the see-saw payments to be off by
         consensus.nMaxMoneyOut = 21000000 * COIN;
+        consensus.nMNCollateralAmt = 15000 * COIN;
+        consensus.nMNBlockReward = 3.5 * COIN;
+        consensus.nMNCollateralMinConf = 15;
         consensus.nPoolMaxTransactions = 3;
         consensus.nProposalEstablishmentTime = 60 * 60 * 24;    // must be at least a day old to make it into a budget
         consensus.nStakeMinAge = 60 * 60;
@@ -421,8 +424,8 @@ public:
         consensus.nFutureTimeDriftPoW = 7200;
         consensus.nFutureTimeDriftPoS = 180;
         consensus.nMaxMoneyOut = 21000000 * COIN;
-        consensus.nMNCollateralAmt = 10000 * COIN;
-        consensus.nMNBlockReward = 3 * COIN;
+        consensus.nMNCollateralAmt = 15000 * COIN;
+        consensus.nMNBlockReward = 3.5 * COIN;
         consensus.nMNCollateralMinConf = 15;
         consensus.nProposalEstablishmentTime = 60 * 5;  // at least 5 min old to make it into a budget
         consensus.nStakeMinAge = 60 * 60;
