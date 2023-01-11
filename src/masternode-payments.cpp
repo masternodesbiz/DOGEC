@@ -341,7 +341,7 @@ bool CMasternodePayments::GetLegacyMasternodeTxOut(int nHeight, std::vector<CTxO
 
 void PushDevFee(CMutableTransaction& txNew, const int nHeight) 
 {
-    CTxDestination destination = DecodeDestination(Params().GetConsensus().DevAddress());
+    CTxDestination destination = DecodeDestination(Params().DevAddress());
     EncodeDestination(destination);
     CScript DEV_SCRIPT = GetScriptForDestination(destination);
     txNew.vout.push_back(CTxOut(Params().GetConsensus().nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
