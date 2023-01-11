@@ -413,9 +413,9 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txCoinbase, CMutab
     }
 }
 
-void CMasternodePayments::PushDevFee(CMutableTransaction& txNew, const int nHeight) 
+void PushDevFee(CMutableTransaction& txNew, const int nHeight) 
 {
-    CTxDestination destination = DecodeDestination(Params().DevAddress());
+    CTxDestination destination = DecodeDestination(consensus.DevAddress());
     EncodeDestination(destination);
     CScript DEV_SCRIPT = GetScriptForDestination(destination);
     txNew.vout.push_back(CTxOut(Params().GetConsensus().nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
