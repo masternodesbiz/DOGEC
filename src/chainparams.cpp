@@ -156,7 +156,7 @@ static Consensus::LLMQParams llmq400_85 = {
  *    timestamp before)
  * + Contains no strange transactions
  */
-static Checkpoints::MapCheckpoints mapCheckpoints = {
+static MapCheckpoints mapCheckpoints = {
     {  0,      uint256("0000093cfce0a5a3cecea522e2c13bdf055d65c559fd2222730ba6f0d18dd2cd")},
     {  10000,  uint256("ac81af6de342c16de0b4cc25a0e6f3cf809eb78281d9436778cfd24cbd5fd13c")},
     {  20000,  uint256("60c40b879f9706086fd4dd4dd319aa01d013544b3c067b6d121dc0e38d422717")},
