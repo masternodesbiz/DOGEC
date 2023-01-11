@@ -360,33 +360,33 @@ QPushButton[cssClass="img-nav-logo"] {
     qproperty-iconSize: 36px 36px;
     background-color:transparent;
     font-size:14px;
-    color: #938da5;
+    color: #3779ed;
 }
 
 *[cssClass="btn-nav-governance"]:checked {
-    background-color: qlineargradient(x1:0, x2: 1, stop: 0 #3c2559, stop: 1 #1f162b);
+    background-color: qlineargradient(x1:0, x2: 1, stop: 0 #a6c3f7, stop: 1 #1f162b);
     font-size:14px;
-    color: #B088FF;
+    color: #041636;
 }
 
 *[cssClass="btn-nav-governance"]:checked:hover {
-    background-color: qlineargradient(x1:0, x2: 1, stop: 0 #3c2559, stop: 1 #1f162b);
-    color: #B088FF;
+    background-color: qlineargradient(x1:0, x2: 1, stop: 0 #a6c3f7, stop: 1 #1f162b);
+    color: #041636;
 }
 
 *[cssClass="btn-nav-governance"]:hover {
     qproperty-icon: url("://ic-nav-governance-hover");
     qproperty-iconSize: 36px 36px;
     background-color: #1A000000;
-    color: #938da5;
+    color: #3779ed;
 }
 
 *[cssClass="btn-nav-governance-active"] {
     qproperty-icon:url("://ic-nav-governance-active")  ;
     qproperty-iconSize: 36px 36px;
-    background-color: qlineargradient(x1:0, x2: 1, stop: 0 #3c2559, stop: 1 #1f162b);
+    background-color: qlineargradient(x1:0, x2: 1, stop: 0 #a6c3f7, stop: 1 #1f162b);
     font-size:14px;
-    color: #B088FF;
+    color: #041636;
 }
 
 /*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
@@ -1227,8 +1227,8 @@ QPushButton[cssClass="btn-check-right"]:checked:hover {
 }
 
 QPushButton[cssClass="btn-check-right"]:checked:pressed {
-    border:  1px solid #2e1c12;
-    background-color:#2e1c12;
+    border:  1px solid #4dffcd88;
+    background-color:#4dffcd88;
     font-size:18px;
     padding:4px;
     color: #3779ed;
@@ -1286,8 +1286,8 @@ QPushButton[cssClass="btn-check-left"]:checked:hover {
 }
 
 QPushButton[cssClass="btn-check-left"]:checked:pressed {
-    border:  1px solid #2e1c12;
-    background-color:#2e1c12;
+    border:  1px solid #4dffcd88;
+    background-color:#4dffcd88;
     font-size:18px;
     padding:4px;
     color: #3779ed;
@@ -1916,7 +1916,7 @@ QPushButton[cssClass="btn-chart-arrow"] {
 }
 
 QPushButton[cssClass="btn-chart-arrow"]:hover {
-    background-color: #2e1c12;
+    background-color: #4dffcd88;
 }
 
 QPushButton[cssClass="btn-chart-arrow"]:pressed {
@@ -1932,7 +1932,7 @@ QPushButton[cssClass="btn-chart-arrow-right"] {
 }
 
 QPushButton[cssClass="btn-chart-arrow-right"]:hover {
-    background-color: #2e1c12;
+    background-color: #4dffcd88;
 }
 
 QPushButton[cssClass="btn-chart-arrow-right"]:pressed {
@@ -2039,7 +2039,7 @@ QPushButton[cssClass="btn-check-time"]:hover {
 }
 
 QPushButton[cssClass="btn-check-time"]:pressed {
-    background-color:#2e1c12;
+    background-color:#4dffcd88;
     border-radius:2px;
     font-size:14px;
     padding:4px;
