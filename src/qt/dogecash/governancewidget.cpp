@@ -28,7 +28,7 @@ void initComboView(PWidget* parent, QComboBox* comboBox, const QString& filterHi
     comboBox->setCurrentIndex(0);
 }
 
-GovernanceWidget::GovernanceWidget(PIVXGUI* parent) :
+GovernanceWidget::GovernanceWidget(DOGECGUI* parent) :
         PWidget(parent),
         ui(new Ui::governancewidget)
 {
@@ -188,12 +188,15 @@ void GovernanceWidget::onMenuClicked(ProposalCard* card)
 {
     if (!propMenu) {
         propMenu = new TooltipMenu(window, this);
-        connect(propMenu, &TooltipMenu::message, this, &GovernanceWidget::message);
-        propMenu->addBtn(0, tr("Copy Url"), [this](){onCopyUrl();});
-        propMenu->addBtn(1, tr("Open Url"), [this](){onOpenClicked();});
-        propMenu->addBtn(2, tr("More Info"), [this](){onMoreInfoClicked();});
+        propMenu->setCopyBtnText(tr("Copy Url"));
+        propMenu->setEditBtnText(tr("Open Url"));
+        propMenu->setDeleteBtnText(tr("More Info"));
         propMenu->setMaximumWidth(propMenu->maximumWidth() + 5);
         propMenu->setFixedWidth(propMenu->width() + 5);
+        connect(propMenu, &TooltipMenu::message, this, &GovernanceWidget::message);
+        connect(propMenu, &TooltipMenu::onCopyClicked, this, &GovernanceWidget::onCopyUrl);
+        connect(propMenu, &TooltipMenu::onEditClicked, this, &GovernanceWidget::onOpenClicked);
+        connect(propMenu, &TooltipMenu::onDeleteClicked, this, &GovernanceWidget::onMoreInfoClicked);
     } else {
         propMenu->hide();
     }
