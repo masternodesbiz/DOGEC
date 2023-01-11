@@ -65,7 +65,7 @@ bool TransactionRecord::decomposeCoinStake(const CWallet* wallet, const CWalletT
     } else if (isminetype mine = wallet->IsMine(wtx.tx->vout[3])) {
         CTxDestination destDev;
         int nIndexDev = (int) wtx.tx->vout.size() - 1;
-        if (ExtractDestination(wtx.tx->vout[nIndexDev].scriptPubKey, destDev) && (mine = IsMine(*wallet, destMN)) ) {
+        if (ExtractDestination(wtx.tx->vout[nIndexDev].scriptPubKey, destDev) && (mine = IsMine(*wallet, destDev)) ) {
             sub.involvesWatchAddress = mine & ISMINE_WATCH_ONLY;
             sub.type = TransactionRecord::DevReward;
             sub.address = EncodeDestination(destDev);
