@@ -79,8 +79,8 @@
 #include <CoreFoundation/CoreFoundation.h>
 #endif
 
-const char * const DogeCash_CONF_FILENAME = "dogecash.conf";
-const char * const DogeCash_MASTERNODE_CONF_FILENAME = "masternode.conf";
+const char * const DOGECASH_CONF_FILENAME = "dogecash.conf";
+const char * const DOGECASH_MASTERNODE_CONF_FILENAME = "masternode.conf";
 
 
 // DogeCash only features
@@ -776,7 +776,7 @@ fs::path GetConfigFile(const std::string& confPath)
 
 fs::path GetMasternodeConfigFile()
 {
-    fs::path pathConfigFile(gArgs.GetArg("-mnconf", DogeCash_MASTERNODE_CONF_FILENAME));
+    fs::path pathConfigFile(gArgs.GetArg("-mnconf", DOGECASH_MASTERNODE_CONF_FILENAME));
     return AbsPathForConfigVal(pathConfigFile);
 }
 

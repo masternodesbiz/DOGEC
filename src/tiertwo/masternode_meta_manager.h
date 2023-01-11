@@ -3,8 +3,8 @@
 // Distributed under the X11 software license, see the accompanying
 // file COPYING or https://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DogeCash_MASTERNODE_META_MANAGER_H
-#define DogeCash_MASTERNODE_META_MANAGER_H
+#ifndef DOGECASH_MASTERNODE_META_MANAGER_H
+#define DOGECASH_MASTERNODE_META_MANAGER_H
 
 #include "serialize.h"
 #include "sync.h"
@@ -92,4 +92,4 @@ public:
 
 extern CMasternodeMetaMan g_mmetaman;
 
-#endif //DogeCash_MASTERNODE_META_MANAGER_H
+#endif //DOGECASH_MASTERNODE_META_MANAGER_H

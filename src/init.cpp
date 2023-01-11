@@ -111,11 +111,11 @@ CClientUIInterface uiInterface;  // Declared but not defined in guiinterface.h
 /**
  * The PID file facilities.
  */
-const char * const DogeCash_PID_FILENAME = "dogecash.pid";
+const char * const DOGECASH_PID_FILENAME = "dogecash.pid";
 
 fs::path GetPidFile()
 {
-    fs::path pathPidFile(gArgs.GetArg("-pid", DogeCash_PID_FILENAME));
+    fs::path pathPidFile(gArgs.GetArg("-pid", DOGECASH_PID_FILENAME));
     return AbsPathForConfigVal(pathPidFile);
 }
 
@@ -394,7 +394,7 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-checkblocks=<n>", strprintf("How many blocks to check at startup (default: %u, 0 = all)", DEFAULT_CHECKBLOCKS));
     strUsage += HelpMessageOpt("-checklevel=<n>", strprintf("How thorough the block verification of -checkblocks is (0-4, default: %u)", DEFAULT_CHECKLEVEL));
 
-    strUsage += HelpMessageOpt("-conf=<file>", strprintf("Specify configuration file (default: %s)", DogeCash_CONF_FILENAME));
+    strUsage += HelpMessageOpt("-conf=<file>", strprintf("Specify configuration file (default: %s)", DOGECASH_CONF_FILENAME));
     if (mode == HMM_BITCOIND) {
 #if !defined(WIN32)
         strUsage += HelpMessageOpt("-daemon", "Run in the background as a daemon and accept commands");
@@ -416,7 +416,7 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-persistmempool", strprintf("Whether to save the mempool on shutdown and load on restart (default: %u)", DEFAULT_PERSIST_MEMPOOL));
     strUsage += HelpMessageOpt("-par=<n>", strprintf("Set the number of script verification threads (%u to %d, 0 = auto, <0 = leave that many cores free, default: %d)", -GetNumCores(), MAX_SCRIPTCHECK_THREADS, DEFAULT_SCRIPTCHECK_THREADS));
 #ifndef WIN32
-    strUsage += HelpMessageOpt("-pid=<file>", strprintf("Specify pid file (default: %s)", DogeCash_PID_FILENAME));
+    strUsage += HelpMessageOpt("-pid=<file>", strprintf("Specify pid file (default: %s)", DOGECASH_PID_FILENAME));
 #endif
     strUsage += HelpMessageOpt("-reindex-chainstate", "Rebuild chain state from the currently indexed blocks");
     strUsage += HelpMessageOpt("-reindex", "Rebuild block chain index from current blk000??.dat files on startup");
@@ -1191,7 +1191,7 @@ bool AppInitMain()
         LogPrintf("Startup time: %s\n", FormatISO8601DateTime(GetTime()));
     LogPrintf("Default data directory %s\n", GetDefaultDataDir().string());
     LogPrintf("Using data directory %s\n", GetDataDir().string());
-    LogPrintf("Using config file %s\n", GetConfigFile(gArgs.GetArg("-conf", DogeCash_CONF_FILENAME)).string());
+    LogPrintf("Using config file %s\n", GetConfigFile(gArgs.GetArg("-conf", DOGECASH_CONF_FILENAME)).string());
     LogPrintf("Using at most %i automatic connections (%i file descriptors available)\n", nMaxConnections, nFD);
     std::ostringstream strErrors;
 
