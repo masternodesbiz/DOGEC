@@ -686,7 +686,7 @@ QPushButton[cssClass="btn-check-status-staking"] {
 
 QPushButton[cssClass="btn-check-text"] {
     color:#7f7c87;
-    background-color:#4c422a;
+    background-color:#216BEB;
     font-size:18px;
     border-bottom:2px solid #3779ed;
 }
@@ -2651,7 +2651,7 @@ QPushButton[cssClass="btn-settings-options"] {
 }
 
 QPushButton[cssClass="btn-settings-options"]:checked {
-    background-color:#614f3e;
+    background-color:#216BEB;
     border:none;
     font-size:20px;
     color: #FFFFFF;
