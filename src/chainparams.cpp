@@ -214,7 +214,7 @@ static MapCheckpoints mapCheckpoints = {
     {  570000, uint256S("74687dbc5671933f53704345a0863d62cbce67c004c69707bd545fced2ef8279")}
 };
 
-static const Checkpoints::CCheckpointData data = {
+static const CCheckpointData data = {
     &mapCheckpoints,
     1599995385, // * UNIX timestamp of last checkpoint block
     1497323,     // * total number of transactions between genesis and last checkpoint
@@ -264,12 +264,10 @@ public:
         consensus.nCoinbaseMaturity = 30;
         consensus.nFutureTimeDriftPoW = 7200;
         consensus.nFutureTimeDriftPoS = 180;
-        consensus.nMasternodeCountDrift = 20;       // num of MN we allow the see-saw payments to be off by
         consensus.nMaxMoneyOut = 21000000 * COIN;
         consensus.nMNCollateralAmt = 15000 * COIN;
         consensus.nMNBlockReward = 3.5 * COIN;
         consensus.nMNCollateralMinConf = 15;
-        consensus.nPoolMaxTransactions = 3;
         consensus.nProposalEstablishmentTime = 60 * 60 * 24;    // must be at least a day old to make it into a budget
         consensus.nStakeMinAge = 60 * 60;
         consensus.nStakeMinDepth = 100;

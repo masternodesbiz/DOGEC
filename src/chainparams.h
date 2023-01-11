@@ -118,7 +118,7 @@ protected:
     std::vector<uint8_t> vFixedSeeds;
     bool fRequireStandard;
 
-    std::string nDevAddr;
+    std::string nDevReward;
 
     // Tier two
     int nLLMQConnectionRetryTimeout;
