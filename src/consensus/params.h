@@ -206,7 +206,7 @@ struct Params {
     int64_t nDogeCashBadBlockTime;
     unsigned int nDogeCashBadBlockBits;
 
-    std::string nDevReward;
+    CAmount nDevReward;
 
     // Map with network updates
     NetworkUpgrade vUpgrades[MAX_NETWORK_UPGRADES];
@@ -216,7 +216,6 @@ struct Params {
     bool MoneyRange(const CAmount& nValue) const { return (nValue >= 0 && nValue <= nMaxMoneyOut); }
     bool IsTimeProtocolV2(const int nHeight) const { return NetworkUpgradeActive(nHeight, UPGRADE_V4_0); }
     int MasternodeCollateralMinConf() const { return nMNCollateralMinConf; }
-    std::string DevAddress() const { return nDevReward; }
 
     int FutureBlockTimeDrift(const int nHeight) const
     {
