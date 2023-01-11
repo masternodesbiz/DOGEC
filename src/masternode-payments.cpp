@@ -339,6 +339,14 @@ bool CMasternodePayments::GetLegacyMasternodeTxOut(int nHeight, std::vector<CTxO
     return true;
 }
 
+void PushDevFee(CMutableTransaction& txNew, const int nHeight) 
+{
+    CTxDestination destination = DecodeDestination(Params().GetConsensus().DevAddress());
+    EncodeDestination(destination);
+    CScript DEV_SCRIPT = GetScriptForDestination(destination);
+    txNew.vout.push_back(CTxOut(Params().GetConsensus().nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
+}
+
 static void SubtractMnPaymentFromCoinstake(CMutableTransaction& txCoinstake, CAmount masternodePayment, int stakerOuts)
 {
     assert (stakerOuts >= 2);
@@ -411,14 +419,6 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txCoinbase, CMutab
     } else {
         txCoinbase.vout[0].nValue = GetBlockValue(nHeight) - masternodePayment;
     }
-}
-
-void PushDevFee(CMutableTransaction& txNew, const int nHeight) 
-{
-    CTxDestination destination = DecodeDestination(consensus.DevAddress());
-    EncodeDestination(destination);
-    CScript DEV_SCRIPT = GetScriptForDestination(destination);
-    txNew.vout.push_back(CTxOut(Params().GetConsensus().nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
 }
 
 bool CMasternodePayments::ProcessMessageMasternodePayments(CNode* pfrom, std::string& strCommand, CDataStream& vRecv, CValidationState& state)
