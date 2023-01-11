@@ -676,7 +676,7 @@ QPushButton[cssClass="btn-check-tor-inactive"] {
     qproperty-icon: url("://ic-check-tor-off");
     qproperty-iconSize: 24px 24px;
     color:#FFFFFF;
-    background-color:#216BEB;
+    background-color:transparent;
     border-bottom:2px solid #3779ed;
     border-radius:2px;
 }
