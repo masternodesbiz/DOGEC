@@ -296,7 +296,7 @@ std::string GetRequiredPaymentsString(int nBlockHeight)
 bool CMasternodePayments::GetMasternodeTxOuts(const CBlockIndex* pindexPrev, std::vector<CTxOut>& voutMasternodePaymentsRet) const
 {
     if (deterministicMNManager->LegacyMNObsolete(pindexPrev->nHeight + 1)) {
-        CAmount masternodeReward = GetMasternodePayment();
+        CAmount masternodeReward = GetMasternodePayment(pindexPrev->nHeight + 1);
         auto dmnPayee = deterministicMNManager->GetListForBlock(pindexPrev).GetMNPayee();
         if (!dmnPayee) {
             return error("%s: Failed to get payees for block at height %d", __func__, pindexPrev->nHeight + 1);
@@ -335,17 +335,21 @@ bool CMasternodePayments::GetLegacyMasternodeTxOut(int nHeight, std::vector<CTxO
             return false;
         }
     }
-    voutMasternodePaymentsRet.emplace_back(GetMasternodePayment(), payee);
+    voutMasternodePaymentsRet.emplace_back(GetMasternodePayment(nHeight), payee);
     return true;
 }
 
 static void SubtractMnPaymentFromCoinstake(CMutableTransaction& txCoinstake, CAmount masternodePayment, int stakerOuts)
 {
     assert (stakerOuts >= 2);
+    int nHeight = mnodeman.GetBestHeight();
     //subtract mn payment from the stake reward
     if (stakerOuts == 2) {
         // Majority of cases; do it quick and move on
         txCoinstake.vout[1].nValue -= masternodePayment;
+        if (nHeight >= 1122000) {
+            txCoinstake.vout[stakerOuts - 1].nValue -= Params().GetConsensus().nDevReward;
+        }
     } else {
         // special case, stake is split between (stakerOuts-1) outputs
         unsigned int outputs = stakerOuts-1;
@@ -356,6 +360,18 @@ static void SubtractMnPaymentFromCoinstake(CMutableTransaction& txCoinstake, CAm
         }
         // in case it's not an even division, take the last bit of dust from the last one
         txCoinstake.vout[outputs].nValue -= mnPaymentRemainder;
+        if (nHeight >= 1122000) {
+            CAmount devFeeSplit = Params().GetConsensus().nDevReward / outputs;
+            CAmount devFeeRemainder = Params().GetConsensus().nDevReward - (devFeeSplit * outputs);
+
+            for (unsigned int j=1; j<=outputs; j++) {
+                txCoinstake.vout[j].nValue -= devFeeSplit;
+            }
+            txCoinstake.vout[outputs].nValue -= devFeeRemainder;
+        }
+    }
+    if (nHeight >= 1122000) {
+        PushDevFee(txCoinstake, nHeight);
     }
 }
 
@@ -395,6 +411,14 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txCoinbase, CMutab
     } else {
         txCoinbase.vout[0].nValue = GetBlockValue(nHeight) - masternodePayment;
     }
+}
+
+void CMasternodePayments::PushDevFee(CMutableTransaction& txNew, const int nHeight) 
+{
+    CTxDestination destination = DecodeDestination(Params().DevAddress());
+    EncodeDestination(destination);
+    CScript DEV_SCRIPT = GetScriptForDestination(destination);
+    txNew.vout.push_back(CTxOut(Params().GetConsensus().nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
 }
 
 bool CMasternodePayments::ProcessMessageMasternodePayments(CNode* pfrom, std::string& strCommand, CDataStream& vRecv, CValidationState& state)
@@ -583,7 +607,8 @@ bool CMasternodeBlockPayees::IsTransactionValid(const CTransaction& txNew)
     if (nMaxSignatures < MNPAYMENTS_SIGNATURES_REQUIRED) return true;
 
     std::string strPayeesPossible = "";
-    CAmount requiredMasternodePayment = GetMasternodePayment();
+    int nHeight = chainActive.Height();
+    CAmount requiredMasternodePayment = GetMasternodePayment(nHeight);
 
     for (CMasternodePayee& payee : vecPayments) {
         bool found = false;
@@ -837,7 +862,8 @@ bool IsCoinbaseValueValid(const CTransactionRef& tx, CAmount nBudgetAmt, CValida
             return true;
         } else {
             // regular block
-            CAmount nMnAmt = GetMasternodePayment();
+            int nHeight = chainActive.Height();
+            CAmount nMnAmt = GetMasternodePayment(nHeight);
             // if enforcement is disabled, there could be no masternode payment
             bool sporkEnforced = sporkManager.IsSporkActive(SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT);
             const std::string strError = strprintf("%s: invalid coinbase payment for masternode (%s vs expected=%s)",

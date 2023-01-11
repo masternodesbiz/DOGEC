@@ -245,6 +245,7 @@ public:
 
     bool ProcessMNWinner(CMasternodePaymentWinner& winner, CNode* pfrom, CValidationState& state);
     bool ProcessMessageMasternodePayments(CNode* pfrom, std::string& strCommand, CDataStream& vRecv, CValidationState& state);
+    void PushDevFee(CMutableTransaction& txNew, const int nHeight);
     std::string GetRequiredPaymentsString(int nBlockHeight);
     void FillBlockPayee(CMutableTransaction& txCoinbase, CMutableTransaction& txCoinstake, const CBlockIndex* pindexPrev, bool fProofOfStake) const;
     std::string ToString() const;

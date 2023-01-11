@@ -95,6 +95,8 @@ public:
     const std::vector<uint8_t>& FixedSeeds() const { return vFixedSeeds; }
     virtual const CCheckpointData& Checkpoints() const = 0;
 
+    std::string DevAddress() const { return nDevAddr; }
+
     bool IsRegTestNet() const { return NetworkIDString() == CBaseChainParams::REGTEST; }
     bool IsTestnet() const { return NetworkIDString() == CBaseChainParams::TESTNET; }
 
@@ -115,6 +117,8 @@ protected:
     std::string bech32HRPs[MAX_BECH32_TYPES];
     std::vector<uint8_t> vFixedSeeds;
     bool fRequireStandard;
+
+    std::string nDevAddr;
 
     // Tier two
     int nLLMQConnectionRetryTimeout;

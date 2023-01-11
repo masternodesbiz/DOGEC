@@ -809,38 +809,49 @@ double ConvertBitsToDouble(unsigned int nBits)
 
 CAmount GetBlockValue(int nHeight)
 {
-    // Fixed block value on regtest
-    if (Params().IsRegTestNet()) {
-        return 250 * COIN;
+    int64_t nSubsidy = 0;
+    if (nHeight < 2) {
+        nSubsidy = 0 * COIN;
+    } else if (nHeight == 2) {
+         nSubsidy = 7000000 * COIN;
+    } else if (nHeight <= 200 && nHeight > 2) {
+         nSubsidy = 10.8 * COIN;
+    } else if (nHeight <= 238621 && nHeight >= 201) {
+         nSubsidy = 10.8 * COIN;
+    } else if (nHeight <= 788621 && nHeight > 238621) {
+         nSubsidy = 9 * COIN;
+    } else if (nHeight <= 1122000 && nHeight > 788621) {
+         nSubsidy = 5.4 * COIN;
+    } else {
+         nSubsidy = 6.2 * COIN;
     }
-    // Testnet high-inflation blocks [2, 200] with value 250k DOGEC
-    const bool isTestnet = Params().IsTestnet();
-    if (isTestnet && nHeight < 201 && nHeight > 1) {
-        return 250000 * COIN;
+
+    CAmount nMoneySupply = MoneySupply.Get();
+    int64_t nBlockValue = nSubsidy;
+    if (nMoneySupply + nSubsidy >= Params().GetConsensus().nMaxMoneyOut) {
+        nBlockValue = 0;
+        return nBlockValue;
+    } else {
+        return nBlockValue;
     }
-    // Mainnet/Testnet block reward reduction schedule
-    const int nLast = Params().GetConsensus().vUpgrades[Consensus::UPGRADE_ZC_V2].nActivationHeight;
-    if (nHeight > nLast)   return 5    * COIN;
-    if (nHeight > 648000)  return 4.5  * COIN;
-    if (nHeight > 604800)  return 9    * COIN;
-    if (nHeight > 561600)  return 13.5 * COIN;
-    if (nHeight > 518400)  return 18   * COIN;
-    if (nHeight > 475200)  return 22.5 * COIN;
-    if (nHeight > 432000)  return 27   * COIN;
-    if (nHeight > 388800)  return 31.5 * COIN;
-    if (nHeight > 345600)  return 36   * COIN;
-    if (nHeight > 302400)  return 40.5 * COIN;
-    if (nHeight > 151200)  return 45   * COIN;
-    if (nHeight > 86400)   return 225  * COIN;
-    if (nHeight !=1)       return 250  * COIN;
-    // Premine for 6 masternodes at block 1
-    return 60001 * COIN;
+    return nBlockValue;
 }
 
-int64_t GetMasternodePayment()
+int64_t GetMasternodePayment(int nHeight)
 {
-    // Future: refactor function callers to use this line directly.
-    return Params().GetConsensus().nMNBlockReward;
+    int64_t ret = 0;
+
+    if (nHeight <= 1122000) {
+        ret = 4.32 * COIN;
+    } else {
+        ret = 3.5 * COIN;
+    }
+    CAmount nMoneySupply = MoneySupply.Get();
+    int64_t nSubsidy = GetBlockValue(nHeight);
+    if (nMoneySupply + nSubsidy >= Params().GetConsensus().nMaxMoneyOut) {
+        ret = 0;
+    }
+    return ret;
 }
 
 bool IsInitialBlockDownload()
@@ -2624,7 +2635,7 @@ bool CheckColdStakeFreeOutput(const CTransaction& tx, const int nHeight)
             // after v6.0, masternode and budgets are paid in the coinbase. No more free outputs allowed.
             return false;
         }
-        if (lastOut.nValue == GetMasternodePayment())
+        if (lastOut.nValue == GetMasternodePayment(nHeight))
             return true;
 
         // if mnsync is incomplete, we cannot verify if this is a budget block.
