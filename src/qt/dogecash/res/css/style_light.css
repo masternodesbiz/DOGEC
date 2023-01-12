@@ -364,13 +364,13 @@ QPushButton[cssClass="img-nav-logo"] {
 }
 
 *[cssClass="btn-nav-governance"]:checked {
-    background-color: qlineargradient(x1:0, x2: 1, stop: 0 #a6c3f7, stop: 1 #1f162b);
+    background-color: #18171D
     font-size:14px;
     color: #FFFFFF;
 }
 
 *[cssClass="btn-nav-governance"]:checked:hover {
-    background-color: qlineargradient(x1:0, x2: 1, stop: 0 #a6c3f7, stop: 1 #1f162b);
+    background-color: #18171D
     color: #FFFFFF;
 }
 
@@ -384,7 +384,7 @@ QPushButton[cssClass="img-nav-logo"] {
 *[cssClass="btn-nav-governance-active"] {
     qproperty-icon:url("://ic-nav-governance-active")  ;
     qproperty-iconSize: 36px 36px;
-    background-color: qlineargradient(x1:0, x2: 1, stop: 0 #a6c3f7, stop: 1 #1f162b);
+    background-color: #18171D
     font-size:14px;
     color: #3779ed;
 }
