@@ -386,7 +386,7 @@ QPushButton[cssClass="img-nav-logo"] {
     qproperty-iconSize: 36px 36px;
     background-color: qlineargradient(x1:0, x2: 1, stop: 0 #a6c3f7, stop: 1 #1f162b);
     font-size:14px;
-    color: #041636;
+    color: #3779ed;
 }
 
 /*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
@@ -666,7 +666,7 @@ QPushButton[cssClass="btn-check-tor"] {
     qproperty-icon: url("://ic-check-tor") ;
     qproperty-iconSize: 24px 24px;
     color:#ffffff;
-    background-color:transparent;
+    background-color:#507d6c4b;
     border-bottom:2px solid #3779ed;
     border-radius:2px;
 }
@@ -676,7 +676,7 @@ QPushButton[cssClass="btn-check-tor-inactive"] {
     qproperty-icon: url("://ic-check-tor-off");
     qproperty-iconSize: 24px 24px;
     color:#FFFFFF;
-    background-color:transparent;
+    background-color:#507d6c4b;
     border-bottom:2px solid #3779ed;
     border-radius:2px;
 }
