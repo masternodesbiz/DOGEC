@@ -1150,7 +1150,7 @@ QPushButton[cssClass="btn-switch"]:checked {
 }
 
 QPushButton[cssClass="btn-check"] {
-    border:  1px solid #7d714b;
+    border:  1px solid #EBF1FD;
     background-color:#FFFFFF;
     padding:4px;
     font-size:18px;
@@ -1179,7 +1179,7 @@ QPushButton[cssClass="btn-check"]:pressed {
 
 
 QPushButton[cssClass="btn-check-right"] {
-    border:  1px solid #7d714b;
+    border:  1px solid #EBF1FD;
     background-color:#FFFFFF;
     font-size:18px;
     color: #707070;
@@ -1238,7 +1238,7 @@ QPushButton[cssClass="btn-check-right"]:checked:pressed {
 
 
 QPushButton[cssClass="btn-check-left"] {
-    border:  1px solid #7d714b;
+    border:  1px solid #EBF1FD;
     background-color:#FFFFFF;
     font-size:18px;
     color: #707070;
@@ -3011,7 +3011,7 @@ QPushButton[cssClass="ic-step-confirm-welcome"] {
     background-image: url("://ic-check-white");
     background-position:center;
     background-repeat:no-repeat;
-    border:  1px solid rgb(126, 88, 66);
+    border:  1px solid rgb(77, 77, 77);
     border-radius:11px;
     background-color: rgb(33, 107, 235);
 }
