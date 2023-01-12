@@ -415,7 +415,7 @@ QPushButton[cssClass="btn-check-cold-staking"]:checked {
     color: #216BEB;
 }
 
-*[cssClass="btn-nav-#EBF1FD"]:checked {
+*[cssClass="btn-nav-governance"]:checked {
     background-color: #18171D;
     font-size:14px;
     color: #FFFFFF;
