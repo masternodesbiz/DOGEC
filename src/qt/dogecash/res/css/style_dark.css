@@ -69,7 +69,7 @@ QPushButton[cssClass="img-nav-logo"] {
     qproperty-iconSize: 24px 40px;
     background-color:#000000;
     font-size:14px;
-    color: #707070;
+    color: #216BEB;
 }
 
 *[cssClass="btn-nav-receive"]:checked {
@@ -108,7 +108,7 @@ QPushButton[cssClass="img-nav-logo"] {
     qproperty-iconSize: 24px 40px;
     background-color:#000000;
     font-size:14px;
-    color: #707070;
+    color: #216BEB;
 }
 
 *[cssClass="btn-nav-cold-staking"]:checked {
@@ -199,7 +199,7 @@ QPushButton[cssClass="btn-check-cold-staking"]:checked {
     qproperty-iconSize: 24px 40px;
     background-color:#000000;
     font-size:14px;
-    color: #707070;
+    color: #216BEB;
 }
 
 *[cssClass="btn-nav-settings"]:checked {
@@ -234,7 +234,7 @@ QPushButton[cssClass="btn-check-cold-staking"]:checked {
     qproperty-iconSize: 24px 40px;
     background-color:#000000;
     font-size:14px;
-    color: #707070;
+    color: #216BEB;
 }
 
 *[cssClass="btn-nav-dash"]:checked {
@@ -270,7 +270,7 @@ QPushButton[cssClass="btn-check-cold-staking"]:checked {
     qproperty-iconSize: 24px 40px;
     background-color:#000000;
     font-size:14px;
-    color: #707070;
+    color: #216BEB;
 }
 
 *[cssClass="btn-nav-send"]:checked {
@@ -305,7 +305,7 @@ QPushButton[cssClass="btn-check-cold-staking"]:checked {
     qproperty-iconSize: 24px 40px;
     background-color:#000000;
     font-size:14px;
-    color: #707070;
+    color: #216BEB;
 }
 
 *[cssClass="btn-nav-address"]:checked {
@@ -341,7 +341,7 @@ QPushButton[cssClass="btn-check-cold-staking"]:checked {
     qproperty-iconSize: 24px 40px;
     background-color:#000000;
     font-size:14px;
-    color: #707070;
+    color: #216BEB;
 }
 
 *[cssClass="btn-nav-privacy"]:checked {
@@ -376,7 +376,7 @@ QPushButton[cssClass="btn-check-cold-staking"]:checked {
     qproperty-iconSize: 24px 30px;
     background-color:#000000;
     font-size:14px;
-    color: #707070;
+    color: #216BEB;
 }
 
 *[cssClass="btn-nav-master"]:checked {
@@ -412,7 +412,7 @@ QPushButton[cssClass="btn-check-cold-staking"]:checked {
     qproperty-iconSize: 36px 36px;
     background-color:transparent;
     font-size:14px;
-    color: #707070;
+    color: #216BEB;
 }
 
 *[cssClass="btn-nav-#EBF1FD"]:checked {
