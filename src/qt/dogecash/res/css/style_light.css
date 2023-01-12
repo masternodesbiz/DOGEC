@@ -132,7 +132,7 @@ QPushButton[cssClass="img-nav-logo"] {
 *[cssClass="btn-nav-cold-staking-active"] {
     qproperty-icon:url("://ic-nav-cold-staking-active")  ;
     qproperty-iconSize: 24px 40px;
-    background-color: #18171D
+    background-color: #18171D;
     font-size:14px;
     color: #3779ed;
 }
