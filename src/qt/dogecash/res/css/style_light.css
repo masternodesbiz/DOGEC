@@ -1808,9 +1808,9 @@ QProgressBar[cssClass="progress-splash"]::chunk:horizontal {
     y1: 0.5,
     x2: 1,
     y2: 0.5,
-    stop: 0 #80211a2f,
-    stop: 1 #80ffcd88,
-    stop: 2 #80211a2f,);
+    stop: 0 #216BEB,
+    stop: 1 #AFC9F7,
+    stop: 2 #216BEB,);
     margin-right: 2px;
 }
 
@@ -2139,6 +2139,268 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
     background-color: #f2f2f2;
     font-size:22px;
     padding:10px 10px;
+}
+
+/*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+HH       PROPOSAL
+HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
+
+*[cssClass="dialog-proposal-message"] {
+    color:#707070;
+    font-size:16px;
+}
+
+/*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+HH       GOVERNANCE
+HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
+
+*[cssClass="label-budget-title"] {
+    color:#707070;
+    font-size:22px;
+}
+
+
+*[cssClass="label-budget-text"] {
+    color:#707070;
+    font-size:16px;
+}
+
+
+*[cssClass="label-budget-amount"] {
+    color:#707070;
+    font-size:17px;
+}
+
+
+*[cssClass="label-budget-amount-allocated"] {
+    color:#bababa;
+    font-size:17px;
+}
+
+*[cssClass="ic-time"] {
+    qproperty-icon: url("://ic-time");
+    qproperty-iconSize: 26px 26px;
+    background-color: transparent;
+}
+
+/*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+HH       GOVERNANCE CARD
+HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
+
+
+*[cssClass="card-governance"] {
+    background-color:#ffffff;
+    border:  1px solid #E0E0E0;
+    border-radius: 6px;
+}
+
+
+*[cssClass="card-title"] {
+    color:#4D4D4D;
+    font-size:20px;
+}
+
+*[cssClass="card-amount"] {
+    color:#4D4D4D;
+    font-size:18px;
+}
+
+*[cssClass="card-time"] {
+    color:#707070;
+    font-size:14px;
+}
+
+
+*[cssClass="card-status-passing"] {
+    color:#4D4D4D;
+    font-size:12px;
+    border-radius:12px;
+    background-color:rgba(33, 107, 235, 0.2);
+    padding:6px 6px;
+}
+
+*[cssClass="card-status-not-passing"] {
+    color:#4D4D4D;
+    font-size:12px;
+    border-radius:12px;
+    background-color:rgba(186, 186, 186, 0.2);
+    padding:6px 6px;
+}
+
+*[cssClass="card-status-no-votes"] {
+    border: 1px solid #BABABA;
+    color:#4D4D4D;
+    font-size:12px;
+    border-radius:12px;
+    background-color:transparent;
+    padding:6px 6px;
+}
+
+*[cssClass="card-progress-box"] {
+    border: 1px solid #bababa;
+    border-radius: 2px;
+}
+
+
+*[cssClass="card-progress-no"] {
+    color:#4D4D4D;
+    font-size:14px;
+    padding-left:4px;
+    background-color:transparent;
+}
+
+
+*[cssClass="card-progress-no"]::chunk:horizontal {
+    background: #cbcbcb;
+    margin-right: 2px;
+}
+
+*[cssClass="label-progress-no"] {
+    color:#4D4D4D;
+}
+
+*[cssClass="label-progress-yes"] {
+    color:#216BEB;
+}
+
+*[cssClass="card-progress-yes"] {
+    color:#4D4D4D;
+    font-size:14px;
+    padding-right:4px;
+    background-color:transparent;
+}
+
+
+*[cssClass="card-progress-yes"]::chunk:horizontal {
+    background: transparent;
+    margin-right: 2px;
+}
+
+*[cssClass="btn-link"] {
+    qproperty-icon: url(" ");
+    qproperty-iconSize: 22px 22px;
+    background-image: url("://ic-link");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-position: center center;
+}
+
+
+*[cssClass="btn-link"]:hover {
+    background-color: transparent;
+    background-image: url("://ic-link-hover");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+*[cssClass="card-btn-vote"] {
+    border:  1px solid #216BEB;
+    background-color:#FFFFFF;
+    font-size:18px;
+    padding:4px 10px;
+    color: #216BEB;
+    border-radius: 2px;
+}
+
+*[cssClass="card-btn-vote"]:hover {
+    background-color:rgba(33, 107, 235, 0.5);
+}
+
+/*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+HH       SELECT MASTER NODE
+HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
+
+
+*[cssClass="text-title-purple"] {
+    color: #216BEB;
+    font-size: 14px;
+}
+
+*[cssClass="text-purple"] {
+    color: #216BEB;
+    font-size: 14px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+*[cssClass="btn-dialog-secondary"] {
+    background: #ffffff;
+    border:1px solid #bababa;
+    border-radius: 2px;
+    color: #4d4d4d;
+    font-size: 14px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+
+*[cssClass="btn-dialog-secondary"]:hover {
+    border:1px solid #216BEB;
+    color: #216BEB;
+}
+
+
+QHeaderView::section {
+    background-color: #216BEB;
+    color: white;
+    font-size: 14px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: 1px solid #216BEB;
+}
+
+
+QTreeView {
+    show-decoration-selected: 1;
+    background: white;
+    border: 1px solid #216BEB;
+    font-size: 14px;
+    color: #4d4d4d;
+    padding-left: 0px;
+}
+
+QTreeView::item {
+    border:0px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 0px;
+    font-size: 14px;
+    color: #4d4d4d;
+}
+
+QTreeView::item:hover {
+    background:rgba(33, 107, 235, 0.2);
+    border:0px;
+}
+
+QTreeView::item:selected {
+    color: #216BEB;
+    border:0px;
+}
+
+QTreeView::item:selected:active{
+    color: #216BEB;
+    border:0px;
+}
+
+QTreeView::item:selected:!active {
+    color:#216BEB;
+    border:0px;
+}
+
+
+QTreeView::indicator {
+    width: 24px;
+    height: 24px;
+}
+
+
+QTreeView::indicator:unchecked {
+    image: url(://ic-check-box);
+}
+
+QTreeView::indicator:checked {
+    image: url(://ic-check-active);
 }
 
 

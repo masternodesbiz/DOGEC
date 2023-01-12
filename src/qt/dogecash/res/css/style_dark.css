@@ -1837,9 +1837,9 @@ QProgressBar[cssClass="progress-splash"]::chunk:horizontal {
     y1: 0.5,
     x2: 1,
     y2: 0.5,
-    stop: 0 #80211a2f,
-    stop: 1 #80ffcd88,
-    stop: 2 #80211a2f,);
+    stop: 0 #216BEB,
+    stop: 1 #AFC9F7,
+    stop: 2 #216BEB,);
     margin-right: 2px;
 }
 
@@ -1966,7 +1966,7 @@ QPushButton[cssClass="btn-chart-arrow-right"]:hover {
 }
 
 QPushButton[cssClass="btn-chart-arrow-right"]:pressed {
-    background-color:#2e2419;
+    background-color:#18171D;
 }
 
 QComboBox[cssClass="btn-combo-secundary"] {
@@ -2167,6 +2167,268 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
     background-color: #FFFFFF;
     font-size:22px;
     padding:10px 10px;
+}
+
+/*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+HH       PPROPOSAL
+HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
+
+*[cssClass="dialog-proposal-message"] {
+    color:#707070;
+    font-size:16px;
+}
+
+/*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+HH       GOVERNANCE
+HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
+
+*[cssClass="label-budget-title"] {
+    color:#B3FFFFFF;
+    font-size:22px;
+}
+
+*[cssClass="label-budget-text"] {
+    color:#B3FFFFFF;
+    font-size:16px;
+}
+
+
+*[cssClass="label-budget-amount"] {
+    color:#ffffff;
+    font-size:17px;
+}
+
+*[cssClass="label-budget-amount-allocated"] {
+    color:#4d4d4d;
+    font-size:17px;
+}
+
+*[cssClass="ic-time"] {
+    qproperty-icon: url("://ic-time");
+    qproperty-iconSize: 26px 26px;
+    background-color: transparent;
+}
+
+/*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+HH       GOVERNANCE CARD
+HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
+
+*[cssClass="card-governance"] {
+    background-color:#18171D;
+    border:  1px solid #216BEB;
+    border-radius: 6px;
+}
+
+*[cssClass="card-title"] {
+    color:#216BEB;
+    font-size:20px;
+}
+
+*[cssClass="card-amount"] {
+    color:#ffffff;
+    font-size:18px;
+}
+
+*[cssClass="card-time"] {
+    color:#B3FFFFFF;
+    font-size:14px;
+}
+
+*[cssClass="card-status-passing"] {
+    color:#B3FFFFFF;
+    font-size:12px;
+    border-radius:12px;
+    background-color:rgba(33, 107, 235, 0.4);
+    padding:6px 6px;
+}
+
+*[cssClass="card-status-not-passing"] {
+    color:#FFFFFF;
+    font-size:12px;
+    border-radius:12px;
+    background-color:rgba(112, 112, 112, 0.3);
+    padding:6px 6px;
+}
+
+*[cssClass="card-status-no-votes"] {
+    color:rgba(255, 255, 255, 0.5);
+    font-size:12px;
+    border-radius:12px;
+    background-color:rgba(186, 186, 186, 0.1);
+    padding:6px 6px;
+}
+
+*[cssClass="card-progress-box"] {
+    border: 1px solid #216BEB;
+    border-radius: 2px;
+}
+
+*[cssClass="card-progress-no"] {
+    color:#B3FFFFFF;
+    font-size:14px;
+    padding-left:4px;
+    background-color:transparent;
+}
+
+*[cssClass="card-progress-no"]::chunk:horizontal {
+    background: #B3000000;
+    margin-right: 2px;
+}
+
+*[cssClass="label-progress-no"] {
+    color:#E6FFFFFF;
+}
+
+*[cssClass="label-progress-yes"] {
+    color:#216BEB;
+}
+
+*[cssClass="card-progress-yes"] {
+    color:#216BEB;
+    font-size:14px;
+    padding-right:4px;
+    background-color:transparent;
+}
+
+*[cssClass="card-progress-yes"]::chunk:horizontal {
+    background: transparent;
+    margin-right: 2px;
+}
+
+*[cssClass="btn-link"] {
+    qproperty-icon: url(" ");
+    qproperty-iconSize: 22px 22px;
+    background-image: url("://ic-link");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-position: center center;
+}
+
+*[cssClass="btn-link"]:hover {
+    background-color: transparent;
+    background-image: url("://ic-link-hover");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+*[cssClass="card-btn-vote"] {
+    background-position:right center;
+    background-repeat:no-repeat;
+    border:  1px solid #216BEB;
+    background-color:#18171D;
+    font-size:18px;
+    color: #216BEB;
+    border-radius: 2px;
+    padding:4px 10px;
+}
+
+QPushButton[cssClass="card-btn-vote"]:hover {
+    border:  1px solid #216BEB;
+    background-color:#18171D;
+}
+
+QPushButton[cssClass="card-btn-vote"]:pressed {
+    border:  1px solid #216BEB;
+    background-color:#4Db088ff;
+}
+
+/*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+HH       SELECT MASTER NODE
+HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
+
+*[cssClass="text-title-purple"] {
+    color: #216BEB;
+    font-size: 14px;
+}
+
+*[cssClass="text-purple"] {
+    color: #216BEB;
+    font-size: 14px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+*[cssClass="btn-dialog-secondary"] {
+    border:  1px solid #216BEB;
+    background-color:#18171D;
+    border-radius: 2px;
+    color: #216BEB;
+    font-size: 14px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+*[cssClass="btn-dialog-secondary"]:hover {
+    border:  1px solid #216BEB;
+    background-color:#18171D;
+}
+
+QHeaderView::section {
+    background-color: #216BEB;
+    color: white;
+    font-size: 14px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: 1px solid #216BEB;
+}
+
+QTreeView {
+    show-decoration-selected: 1;
+    background: #18171D;
+    border: 1px solid #216BEB;
+    font-size: 14px;
+    color: #4d4d4d;
+    padding-left: 0px;
+}
+
+QTreeView::item {
+    border:0px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 0px;
+    font-size: 14px;
+    color: #D9ffffff;
+}
+
+QTreeView::item:hover {
+    background:rgba(33, 107, 235, 0.2);
+    border:0px;
+}
+
+QTreeView::item:selected {
+    color: #216BEB;
+    border:0px;
+}
+
+QTreeView::item:selected:active{
+    color: #216BEB;
+    border:0px;
+}
+
+QTreeView::item:selected:!active {
+    color:#216BEB;
+    border:0px;
+}
+
+QTreeView::indicator {
+    width: 24px;
+    height: 24px;
+}
+
+QTreeView::indicator:unchecked {
+    image: url(://ic-check-box);
+}
+
+QTreeView::indicator:checked {
+    image: url(://ic-check-active);
+}
+
+QTreeView:disabled::indicator:unchecked {
+    image: url(://ic-check-block);
+}
+
+QTreeView:disabled::indicator:checked {
+    image: url(://ic-check-block);
 }
 
 
