@@ -455,18 +455,18 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 *[cssClass="text-title-topbar"] {
-    color:#a3a3a4;
+    color:#041636;
     font-size:16px;
     font-weight: ligther;
 }
 
 *[cssClass="amount-topbar"] {
-    color:#FFFFFF;
+    color:#1D2D4A;
     font-size:35px;
 }
 
 *[cssClass="amount-small-topbar"] {
-    color:#FFFFFF;
+    color:#1D2D4A;
     font-size:21px;
 }
 
@@ -477,7 +477,7 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 *[cssClass="container-qr"] {
     border-radius: 2px;
-    background-color: rgba(0,0,0,0.25);
+    background-color: transparent;
 }
 
 QPushButton[cssClass="btn-qr"] {
