@@ -3,7 +3,7 @@ DogeCash Core
 
 Setup
 ---------------------
-[DogeCash Core](http://dogecash.org/wallet) is the original DogeCash client and it builds the backbone of the network. However, it downloads and stores the entire history of DogeCash transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
+[DogeCash Core](http://dogecash.net/wallet) is the original DogeCash client and it builds the backbone of the network. However, it downloads and stores the entire history of DogeCash transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
 
 Running
 ---------------------
@@ -30,8 +30,8 @@ Drag DogeCash-Qt to your applications folder, and then run DogeCash-Qt.
 
 * See the documentation at the [DogeCash Wiki](https://github.com/DogeCash/DogeCash/wiki)
 for help and more information.
-* Ask for help on the [DogeCash Forum](http://forum.dogecash.org/).
-* Join our Discord server [Discord Server](https://discord.dogecash.org)
+* Ask for help on the [DogeCash Forum](http://forum.dogecash.net/).
+* Join our Discord server [Discord Server](https://discord.dogecash.net)
 
 Building
 ---------------------
@@ -58,8 +58,8 @@ The DogeCash repo's [root README](/README.md) contains relevant information on t
 - [Dnsseed Policy](dnsseed-policy.md)
 
 ### Resources
-* Discuss on the [DogeCash](http://forum.dogecash.org/) forum.
-* Join the [DogeCash Discord](https://discord.dogecash.org).
+* Discuss on the [DogeCash](http://forum.dogecash.net/) forum.
+* Join the [DogeCash Discord](https://discord.dogecash.net).
 
 ### Miscellaneous
 - [Files](files.md)

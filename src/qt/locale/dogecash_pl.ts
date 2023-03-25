@@ -3689,8 +3689,8 @@ Wystąpił błąd podczas próby zapisania listy adresów w %1. Proszę spróbuj
         <translation>2) Dlaczego mojego DOGEC nie można wydać?</translation>
     </message>
     <message>
-        <source>https://DogeCash.org/</source>
-        <translation>https://DogeCash.org/</translation>
+        <source>https://dogecash.net/</source>
+        <translation>https://dogecash.net/</translation>
     </message>
     <message>
         <source>1</source>

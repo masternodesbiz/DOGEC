@@ -3795,8 +3795,8 @@ There was an error trying to save the address list to %1. Please try again.</sou
         <translation>2) Почему мои DOGEC невозможно потратить?</translation>
     </message>
     <message>
-        <source>https://DogeCash.org/</source>
-        <translation>https://DogeCash.org/</translation>
+        <source>https://dogecash.net/</source>
+        <translation>https://dogecash.net/</translation>
     </message>
     <message>
         <source>1</source>

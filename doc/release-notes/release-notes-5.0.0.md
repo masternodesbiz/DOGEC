@@ -58,7 +58,7 @@ New SHIELD Protocol Implemented!
 
 #### Overview
 Users will be able to protect their financial information by sending and receiving DOGECs privately, as well as sending and receiving encrypted messages attached to the shield transactions.
-More visual information about the protocol can be found at https://dogecash.org .
+More visual information about the protocol can be found at https://dogecash.net .
 
 #### GUI features
 New set of functionalities for the interaction with the SHIELD protocol:

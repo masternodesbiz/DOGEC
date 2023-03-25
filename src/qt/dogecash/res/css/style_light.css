@@ -3153,12 +3153,12 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 }
 
 *[cssClass="text-subtitle-faq"] {
-    color:#FFFFFF;
+    color:#1D2D4A;
     font-size:22px;
 }
 
 *[cssClass="text-content-faq"] {
-    color:#FFFFFF;
+    color:#1D2D4A;
     font-size:18px;
 }
 
@@ -3179,7 +3179,7 @@ QPushButton[cssClass="btn-faq-exit"] {
     border:none;
     padding:0 30px 0 0;
     font-size:18px;
-    color: #FFFFFF;
+    color: #1D2D4A;
     text-align:left;
 }
 
@@ -3197,7 +3197,7 @@ QPushButton[cssClass="btn-faq-options"] {
     background-color:transparent;
     border:none;
     font-size:18px;
-    color: #FFFFFF;
+    color: #1D2D4A;
     padding:0 20px;
     text-align:left;
 }
@@ -3206,7 +3206,7 @@ QPushButton[cssClass="btn-faq-options"]:checked {
     background-color: rgba(33, 107, 235, 0.1);
     border:none;
     font-size:18px;
-    color: #FFFFFF;
+    color: #1D2D4A;
     padding:0 20px;
     text-align:left;
 }

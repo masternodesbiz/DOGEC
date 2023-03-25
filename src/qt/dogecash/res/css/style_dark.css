@@ -3176,24 +3176,24 @@ HH        FAQ
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 
 *[cssClass="text-title-faq"] {
-    color:#216BEB;
+    color:#3779ed;
     font-size:26px;
 }
 
 
 *[cssClass="container-faq-buttons"] {
     background:transparent;
-    border:1px solid #216BEB;
+    border:1px solid #3779ed;
     border-radius: 5px;
 }
 
 *[cssClass="text-subtitle-faq"] {
-    color:#FFFFFF;
+    color:#1D2D4A;
     font-size:22px;
 }
 
 *[cssClass="text-content-faq"] {
-    color:#FFFFFF;
+    color:#1D2D4A;
     font-size:18px;
 }
 
@@ -3214,7 +3214,7 @@ QPushButton[cssClass="btn-faq-exit"] {
     border:none;
     padding:0 30px 0 0;
     font-size:18px;
-    color: #FFFFFF;
+    color: #1D2D4A;
     text-align:left;
 }
 
@@ -3222,7 +3222,7 @@ QPushButton[cssClass="btn-faq-web"] {
     background-color:transparent;
     border:none;
     font-size:16px;
-    color: #216BEB;
+    color: #3779ed;
     text-align:left;
 }
 
@@ -3232,16 +3232,16 @@ QPushButton[cssClass="btn-faq-options"] {
     background-color:transparent;
     border:none;
     font-size:18px;
-    color: #FFFFFF;
+    color: #1D2D4A;
     padding:0 20px;
     text-align:left;
 }
 
 QPushButton[cssClass="btn-faq-options"]:checked {
-    background-color: rgba(33, 107, 235, 0.2);
+    background-color: rgba(33, 107, 235, 0.1);
     border:none;
     font-size:18px;
-    color: #FFFFFF;
+    color: #1D2D4A;
     padding:0 20px;
     text-align:left;
 }
@@ -3249,7 +3249,7 @@ QPushButton[cssClass="btn-faq-options"]:checked {
 
 #scrollAreaFaq QScrollBar:vertical {
     border: 0px solid #bababa;
-    background:#18171D;
+    background:#a6c3f7;
     width:4px;
     margin: 0px 0px 0px 0px;
 }
@@ -3261,14 +3261,14 @@ QPushButton[cssClass="btn-faq-options"]:checked {
 }
 
 #scrollAreaFaq QScrollBar::add-line:vertical {
-    background: #18171D;
+    background: #a6c3f7;
     height: 0px;
     subcontrol-position: bottom;
     subcontrol-origin: margin;
 }
 
 #scrollAreaFaq QScrollBar::sub-line:vertical {
-    background: #18171D;
+    background: #a6c3f7;
     height: 0 px;
     subcontrol-position: top;
     subcontrol-origin: margin;
