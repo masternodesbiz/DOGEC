@@ -3973,8 +3973,8 @@ There was an error trying to save the address list to %1. Please try again.</tra
         <translation>2) Why are my DOGEC unspendable?</translation>
     </message>
     <message>
-        <source>https://DogeCash.org/</source>
-        <translation>https://DogeCash.org/</translation>
+        <source>https://dogecash.net/</source>
+        <translation>https://dogecash.net/</translation>
     </message>
     <message>
         <source>1</source>
@@ -4074,7 +4074,7 @@ There was an error trying to save the address list to %1. Please try again.</tra
         <source>
                            &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="justify"&gt;
                            We have support channels in most of our official chat groups, for example
-                           &lt;a style='color: #216BEB' href='https://discord.DogeCash.org'&gt;
+                           &lt;a style='color: #216BEB' href='https://discord.dogecash.net'&gt;
                            #support in our Discord&lt;/a&gt;.
                            If you prefer to submit a ticket, You can do so at
                            &lt;a style='color: #216BEB' href='https://DogeCash.freshdesk.com'&gt;
@@ -4084,7 +4084,7 @@ There was an error trying to save the address list to %1. Please try again.</tra
         <translation>
                            &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align="justify"&gt;
                            We have support channels in most of our official chat groups, for example
-                           &lt;a style='color: #216BEB' href='https://discord.DogeCash.org'&gt;
+                           &lt;a style='color: #216BEB' href='https://discord.dogecash.net'&gt;
                            #support in our Discord&lt;/a&gt;.
                            If you prefer to submit a ticket, You can do so at
                            &lt;a style='color: #216BEB' href='https://DogeCash.freshdesk.com'&gt;

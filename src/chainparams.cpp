@@ -264,7 +264,7 @@ public:
         consensus.nCoinbaseMaturity = 30;
         consensus.nFutureTimeDriftPoW = 7200;
         consensus.nFutureTimeDriftPoS = 180;
-        consensus.nMaxMoneyOut = 21000000 * COIN;
+        consensus.nMaxMoneyOut = 210000000 * COIN;
         consensus.nMNCollateralAmt = 15000 * COIN;
         consensus.nMNBlockReward = 3.5 * COIN;
         consensus.nMNCollateralMinConf = 15;

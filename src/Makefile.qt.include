@@ -359,11 +359,11 @@ RES_ICONS = \
   qt/dogecash/res/img/ic-check.svg \
   qt/dogecash/res/img/ic-nav-send-active.svg \
   qt/dogecash/res/img/img-empty-dark-staking-off.svg \
-  qt/dogecash/res/img/img-empty-dark-staking-on.svg \
+  qt/dogecash/res/img/img-empty-dark-staking-on.png \
   qt/dogecash/res/img/ic-address-book-grey.svg \
   qt/dogecash/res/img/ic-chevron-left.svg \
   qt/dogecash/res/img/ic-nav-send-hover.svg \
-  qt/dogecash/res/img/img-empty-dark-transactions.svg \
+  qt/dogecash/res/img/img-empty-dark-transactions.png \
   qt/dogecash/res/img/ic-address-book-white.svg \
   qt/dogecash/res/img/ic-chevron-right.svg \
   qt/dogecash/res/img/ic-chevron-right-liliac.svg \
@@ -390,11 +390,11 @@ RES_ICONS = \
   qt/dogecash/res/img/ic-arrow-drop-down.svg \
   qt/dogecash/res/img/ic-coin-dogec.svg \
   qt/dogecash/res/img/ic-receive-off.svg \
-  qt/dogecash/res/img/img-empty-staking-on.svg \
+  qt/dogecash/res/img/img-empty-staking-on.png \
   qt/dogecash/res/img/ic-arrow-drop-up-white.svg \
   qt/dogecash/res/img/ic-coin-zdogec.png \
   qt/dogecash/res/img/ic-receive-on.svg \
-  qt/dogecash/res/img/img-empty-transactions.svg \
+  qt/dogecash/res/img/img-empty-transactions.png \
   qt/dogecash/res/img/ic-arrow-drop-up.svg \
   qt/dogecash/res/img/ic-coin-zdogec.svg \
   qt/dogecash/res/img/ic-received.svg \

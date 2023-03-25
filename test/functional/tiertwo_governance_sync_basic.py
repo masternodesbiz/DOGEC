@@ -201,7 +201,7 @@ class MasternodeGovernanceBasicTest(DogeCashTier2TestFramework):
         self.log.info("preparing budget proposal..")
         firstProposal = Proposal(
             "super-cool",
-            "https://forum.dogecash.org/t/test-proposal",
+            "https://forum.dogecash.net/t/test-proposal",
             2,
             self.miner.getnewaddress(),
             300
