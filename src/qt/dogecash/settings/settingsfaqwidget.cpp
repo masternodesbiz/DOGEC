@@ -29,7 +29,7 @@ SettingsFaqWidget::SettingsFaqWidget(DogeCashGUI* parent, MNModel* mnModel) :
     setCssProperty(ui->container, "container-welcome");
 #endif
     setCssProperty(ui->labelTitle, "text-title-faq");
-    setCssProperty(ui->labelWebLink, "text-content-white");
+    setCssProperty(ui->labelWebLink, "text-content-faq");
 
     // Content
     setCssProperty({
@@ -114,7 +114,7 @@ SettingsFaqWidget::SettingsFaqWidget(DogeCashGUI* parent, MNModel* mnModel) :
     QString supportContent = formatFAQContent(
         formatFAQParagraph(
             tr("We have support channels in most of our official chat groups, for example %1")
-                .arg("<a style='color: #216BEB' href='https://discord.DogeCash.org'>" + tr("#support in our Discord") + "</a>.")));
+                .arg("<a style='color: #216BEB' href='https://discord.dogecash.net'>" + tr("#support in our Discord") + "</a>.")));
     ui->labelContent_Support->setText(supportContent);
 
     QString masternodeContent = formatFAQContent(

@@ -20,8 +20,8 @@ Summary:	Peer to Peer Cryptographic Currency
 
 Group:		Applications/System
 License:	MIT
-URL:		https://dogecash.org/
-Source0:	https://dogecash.org/bin/dogecash-core-%{version}/dogecash-%{version}.tar.gz
+URL:		https://dogecash.net/
+Source0:	https://dogecash.net/bin/dogecash-core-%{version}/dogecash-%{version}.tar.gz
 Source1:	http://download.oracle.com/berkeley-db/db-%{bdbv}.NC.tar.gz
 
 Source10:	https://raw.githubusercontent.com/dogecash/dogecash/v%{version}/contrib/debian/examples/dogecash.conf
