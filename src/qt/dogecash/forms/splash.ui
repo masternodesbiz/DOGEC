@@ -163,7 +163,7 @@
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color:white; padding-left:50px;</string>
+            <string notr="true">color:#1D2D4A; padding-left:50px;</string>
            </property>
            <property name="text">
             <string>Loading…</string>
