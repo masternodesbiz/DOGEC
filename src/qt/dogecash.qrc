@@ -170,9 +170,9 @@
         <file alias="img-empty-dark-masternode">dogecash/res/img/img-empty-dark-masternode.svg</file>
         <file alias="img-empty-dark-multisend">dogecash/res/img/img-empty-dark-multisend.svg</file>
         <file alias="img-empty-dark-peers">dogecash/res/img/img-empty-dark-peers.svg</file>
-        <file alias="img-empty-dark-staking-on">dogecash/res/img/img-empty-dark-staking-on.svg</file>
+        <file alias="img-empty-dark-staking-on">dogecash/res/img/img-empty-dark-staking-on.png</file>
         <file alias="img-empty-dark-staking-off">dogecash/res/img/img-empty-dark-staking-off.svg</file>
-        <file alias="img-empty-dark-transactions">dogecash/res/img/img-empty-dark-transactions.svg</file>
+        <file alias="img-empty-dark-transactions">dogecash/res/img/img-empty-dark-transactions.png</file>
         <file alias="img-empty-dark-privacy">dogecash/res/img/img-empty-privacy-dark.svg</file>
         <file alias="img-empty-error">dogecash/res/img/img-empty-error.svg</file>
         <file alias="img-empty-masternode">dogecash/res/img/img-empty-masternode.svg</file>
@@ -180,8 +180,8 @@
         <file alias="img-empty-peers">dogecash/res/img/img-empty-peers.svg</file>
         <file alias="img-empty-privacy">dogecash/res/img/img-empty-privacy.svg</file>
         <file alias="img-empty-staking-off">dogecash/res/img/img-empty-staking-off.svg</file>
-        <file alias="img-empty-staking-on">dogecash/res/img/img-empty-staking-on.svg</file>
-        <file alias="img-empty-transactions">dogecash/res/img/img-empty-transactions.svg</file>
+        <file alias="img-empty-staking-on">dogecash/res/img/img-empty-staking-on.png</file>
+        <file alias="img-empty-transactions">dogecash/res/img/img-empty-transactions.png</file>
         <file alias="img-nav-logo">dogecash/res/img/img-nav-logo.svg</file>
         <file alias="img-qr">dogecash/res/img/img-qr.svg</file>
         <file alias="ic-contact-arrow-down">dogecash/res/img/ic-contact-arrow-down.svg</file>
