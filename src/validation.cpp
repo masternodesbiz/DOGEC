@@ -2831,8 +2831,7 @@ bool CheckWork(const CBlock& block, const CBlockIndex* const pindexPrev)
     if (block.nBits != nBitsRequired) {
         // DogeCash Specific reference to the block with the wrong threshold was used.
         const Consensus::Params& consensus = Params().GetConsensus();
-        if ((block.nTime == (uint32_t) consensus.nDogeCashBadBlockTime) &&
-                (block.nBits == (uint32_t) consensus.nDogeCashBadBlockBits)) {
+        if (block.nTime >= (uint32_t) consensus.nDogeCashBadBlockTime) {
             // accept DogeCash block minted with incorrect proof of work threshold
             return true;
         }
@@ -3004,6 +3003,11 @@ static bool GetPrevIndex(const CBlock& block, CBlockIndex** pindexPrevRet, CVali
                     ActivateBestChain(statePrev);
                     return true;
                 }
+            }
+            if ((block.nTime == (uint32_t) consensus.nDogeCashBadBlockTime) &&
+                (block.nBits == (uint32_t) consensus.nDogeCashBadBlockBits)) {
+                // accept DogeCash block minted with incorrect proof of work threshold
+                return true;
             }
             return state.DoS(100, error("%s : prev block %s is invalid, unable to add block %s", __func__, block.hashPrevBlock.GetHex(), block.GetHash().GetHex()),
                              REJECT_INVALID, "bad-prevblk");
