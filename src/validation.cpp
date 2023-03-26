@@ -2831,7 +2831,7 @@ bool CheckWork(const CBlock& block, const CBlockIndex* const pindexPrev)
     if (block.nBits != nBitsRequired) {
         // DogeCash Specific reference to the block with the wrong threshold was used.
         const Consensus::Params& consensus = Params().GetConsensus();
-        if (block.nTime >= (uint32_t) consensus.nDogeCashBadBlockTime) {
+        if (block.nTime <= (uint32_t) consensus.nDogeCashBadBlockTime) {
             // accept DogeCash block minted with incorrect proof of work threshold
             return true;
         }
@@ -3004,8 +3004,7 @@ static bool GetPrevIndex(const CBlock& block, CBlockIndex** pindexPrevRet, CVali
                     return true;
                 }
             }
-            if ((block.nTime == (uint32_t) consensus.nDogeCashBadBlockTime) &&
-                (block.nBits == (uint32_t) consensus.nDogeCashBadBlockBits)) {
+            if (block.nTime <= (uint32_t) Params().GetConsensus().nDogeCashBadBlockTime) {
                 // accept DogeCash block minted with incorrect proof of work threshold
                 return true;
             }
