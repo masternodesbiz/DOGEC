@@ -236,7 +236,7 @@ bool CMasternodeBroadcast::Create(const std::string& strService,
     CKey keyMasternodeNew;
 
     //need correct blocks to send ping
-    if ((!fOffline && !g_tiertwo_sync_state.IsBlockchainSynced()) || (chainHeight <= Params().GetConsensus().nDogeCashV55MNWindow && !sporkManager.IsSporkActive(SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT))) {
+    if ((!fOffline && !g_tiertwo_sync_state.IsBlockchainSynced()) || (chainHeight <= Params().GetConsensus().nDogeCashV55MNWindow && sporkManager.IsSporkActive(SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT))) {
         strErrorRet = "Sync in progress. Must wait until sync is complete to start Masternode";
         LogPrint(BCLog::MASTERNODE,"CMasternodeBroadcast::Create -- %s\n", strErrorRet);
         return false;
@@ -435,8 +435,8 @@ bool CMasternodeBroadcast::CheckAndUpdate(int& nDos)
     }
 
     if (Params().NetworkIDString() == CBaseChainParams::MAIN) {
-        if (addr.GetPort() != 51472) return false;
-    } else if (addr.GetPort() == 51472)
+        if (addr.GetPort() != 56740) return false;
+    } else if (addr.GetPort() == 56740)
         return false;
 
     // incorrect ping or its sigTime

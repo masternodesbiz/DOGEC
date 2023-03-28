@@ -306,7 +306,7 @@ public:
         consensus.ZC_MinMintFee = 1 * CENT;
         consensus.ZC_MinStakeDepth = 200;
         consensus.ZC_TimeStart = 1554491934;        // October 17, 2017 4:30:00 AM
-        consensus.ZC_HeightStart = 863735;
+        consensus.ZC_HeightStart = 1;
 
         // Network upgrades
         consensus.vUpgrades[Consensus::BASE_NETWORK].nActivationHeight =
@@ -315,7 +315,7 @@ public:
                 Consensus::NetworkUpgrade::NO_ACTIVATION_HEIGHT;
         consensus.vUpgrades[Consensus::UPGRADE_POS].nActivationHeight           = 201;  
         consensus.vUpgrades[Consensus::UPGRADE_POS_V2].nActivationHeight        = 601339; 
-        consensus.vUpgrades[Consensus::UPGRADE_ZC].nActivationHeight            = 5000;
+        consensus.vUpgrades[Consensus::UPGRADE_ZC].nActivationHeight            = 1;
         consensus.vUpgrades[Consensus::UPGRADE_ZC_V2].nActivationHeight         = 1;
         consensus.vUpgrades[Consensus::UPGRADE_BIP65].nActivationHeight         = 1;
         consensus.vUpgrades[Consensus::UPGRADE_ZC_PUBLIC].nActivationHeight     = INT_MAX;
