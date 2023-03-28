@@ -846,7 +846,7 @@ int CMasternodeMan::ProcessMNBroadcast(CNode* pfrom, CMasternodeBroadcast& mnb)
     // Relay only if we are synchronized and if the mnb address is not local.
     // Makes no sense to relay MNBs to the peers from where we are syncing them.
     bool isLocal = (mnb.addr.IsRFC1918() || mnb.addr.IsLocal()) && !Params().IsRegTestNet();
-    if (!isLocal && g_tiertwo_sync_state.IsSynced()) mnb.Relay();
+    if ((!isLocal && g_tiertwo_sync_state.IsSynced()) || (chainHeight <= Params().GetConsensus().nDogeCashV55MNWindow && !sporkManager.IsSporkActive(SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT))) mnb.Relay();
 
     // Add it as a peer
     g_connman->AddNewAddress(CAddress(mnb.addr, NODE_NETWORK), pfrom->addr, 2 * 60 * 60);

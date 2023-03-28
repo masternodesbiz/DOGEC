@@ -291,6 +291,7 @@ public:
         // validation by-pass
         consensus.nDogeCashBadBlockTime = 1593294062;    // Skip nBit validation of Block 259201 per PR #915
         consensus.nDogeCashBadBlockBits = 488380309;    // Skip nBit validation of Block 259201 per PR #915
+        consensus.nDogeCashV55MNWindow = 1970000;
 
         // Zerocoin-related params
         consensus.ZC_Modulus = "25195908475657893494027183240048398571429282126204032027777137836043662020707595556264018525880784"
@@ -314,7 +315,7 @@ public:
                 Consensus::NetworkUpgrade::NO_ACTIVATION_HEIGHT;
         consensus.vUpgrades[Consensus::UPGRADE_POS].nActivationHeight           = 201;  
         consensus.vUpgrades[Consensus::UPGRADE_POS_V2].nActivationHeight        = 601339; 
-        consensus.vUpgrades[Consensus::UPGRADE_ZC].nActivationHeight            = 1;
+        consensus.vUpgrades[Consensus::UPGRADE_ZC].nActivationHeight            = 5000;
         consensus.vUpgrades[Consensus::UPGRADE_ZC_V2].nActivationHeight         = 1;
         consensus.vUpgrades[Consensus::UPGRADE_BIP65].nActivationHeight         = 1;
         consensus.vUpgrades[Consensus::UPGRADE_ZC_PUBLIC].nActivationHeight     = INT_MAX;

@@ -9,6 +9,8 @@
 #include "addrman.h"
 #include "masternodeman.h"
 #include "netbase.h"
+#include "spork.h"
+#include "sporkdb.h"
 #include "sync.h"
 #include "tiertwo/tiertwo_sync_state.h"
 #include "wallet/wallet.h"
@@ -234,7 +236,7 @@ bool CMasternodeBroadcast::Create(const std::string& strService,
     CKey keyMasternodeNew;
 
     //need correct blocks to send ping
-    if (!fOffline && !g_tiertwo_sync_state.IsBlockchainSynced()) {
+    if ((!fOffline && !g_tiertwo_sync_state.IsBlockchainSynced()) || (chainHeight <= Params().GetConsensus().nDogeCashV55MNWindow && !sporkManager.IsSporkActive(SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT))) {
         strErrorRet = "Sync in progress. Must wait until sync is complete to start Masternode";
         LogPrint(BCLog::MASTERNODE,"CMasternodeBroadcast::Create -- %s\n", strErrorRet);
         return false;

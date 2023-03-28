@@ -205,6 +205,7 @@ struct Params {
     // validation by-pass
     int64_t nDogeCashBadBlockTime;
     unsigned int nDogeCashBadBlockBits;
+    int nDogeCashV55MNWindow;
 
     CAmount nDevReward;
 
