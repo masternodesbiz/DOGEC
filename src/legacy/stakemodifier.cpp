@@ -125,7 +125,7 @@ bool GetOldStakeModifier(CStakeInput* stake, uint64_t& nStakeModifier)
         }
         return false;
 
-    } else if (!GetOldModifier(pindexFrom, nStakeModifier))
+    } else if (!GetOldModifier(pindexFrom, nStakeModifier) && pindexFrom->nTime >= Params().GetConsensus().nDogeCashBadBlockTime)
         return error("%s : failed to get kernel stake modifier", __func__);
 
     return true;
