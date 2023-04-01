@@ -201,7 +201,8 @@ bool Intro::pickDataDirectory()
         }
         Intro intro;
         intro.setDataDirectory(dataDir);
-        intro.setWindowIcon(QIcon(":icons/bitcoin"));
+        // Qt bug fixed in 5.15
+        intro.setWindowIcon(QIcon(QPixmap(":icons/bitcoin").scaled(QSize(128, 128), Qt::KeepAspectRatio, Qt::SmoothTransformation )));
 
         while (true) {
             if (!intro.exec()) {
