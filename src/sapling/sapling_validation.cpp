@@ -159,6 +159,10 @@ bool ContextualCheckTransaction(
                     REJECT_INVALID, "bad-cs-has-shielded-data");
     }
 
+    if (hasShieldedData && nHeight <= Params().GetConsensus().nDogeCashV55MNWindow) {
+        return true;
+    }
+
     if (hasShieldedData) {
         uint256 dataToBeSigned;
         // Empty output script.
