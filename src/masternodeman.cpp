@@ -1104,7 +1104,7 @@ int64_t CMasternodeMan::GetLastPaidBlock(const MasternodeRef& mn, int count_enab
     uint256 hash = ss.GetHash();
 
     // use a deterministic offset to break a tie -- 2.5 minutes
-    int64_t nOffset = hash.GetCompact(false) % 150;
+    int64_t nOffset = UintToArith256(hash).GetCompact(false) % 150;
 
     int nMnCount = CountEnabled() * 1.25;
     for (int n = 0; n < nMnCount; n++) {
