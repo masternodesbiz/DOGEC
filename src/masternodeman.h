@@ -185,6 +185,7 @@ public:
 
     /// Get the time a masternode was last paid
     int64_t GetLastPaid(const MasternodeRef& mn, int count_enabled, const CBlockIndex* BlockReading) const;
+    int64_t GetLastPaidBlock(const MasternodeRef& mn, int count_enabled, const CBlockIndex* BlockReading) const;
     int64_t SecondsSincePayment(const MasternodeRef& mn, int count_enabled, const CBlockIndex* BlockReading) const;
 
     // Block hashes cycling vector management

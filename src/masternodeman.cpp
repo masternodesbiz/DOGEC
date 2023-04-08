@@ -1092,6 +1092,39 @@ int64_t CMasternodeMan::GetLastPaid(const MasternodeRef& mn, int count_enabled, 
     return 0;
 }
 
+int64_t CMasternodeMan::GetLastPaid(const MasternodeRef& mn, int count_enabled, const CBlockIndex* BlockReading) const
+{
+    if (BlockReading == nullptr) return false;
+
+    const CScript& mnpayee = mn->GetPayeeScript();
+
+    CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
+    ss << mn->vin;
+    ss << mn->sigTime;
+    uint256 hash = ss.GetHash();
+
+    // use a deterministic offset to break a tie -- 2.5 minutes
+    int64_t nOffset = hash.GetCompact(false) % 150;
+
+    int nMnCount = CountEnabled() * 1.25;
+    for (int n = 0; n < nMnCount; n++) {
+        const auto& it = masternodePayments.mapMasternodeBlocks.find(BlockReading->nHeight);
+        if (it != masternodePayments.mapMasternodeBlocks.end()) {
+            // Search for this payee, with at least 2 votes. This will aid in consensus
+            // allowing the network to converge on the same payees quickly, then keep the same schedule.
+            if (it->second.HasPayeeWithVotes(mnpayee, 2))
+                return BlockReading->nHeight;
+        }
+        BlockReading = BlockReading->pprev;
+
+        if (BlockReading == nullptr || BlockReading->nHeight <= 0) {
+            break;
+        }
+    }
+
+    return 0;
+}
+
 std::string CMasternodeMan::ToString() const
 {
     std::ostringstream info;
