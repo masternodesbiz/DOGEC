@@ -1092,7 +1092,7 @@ int64_t CMasternodeMan::GetLastPaid(const MasternodeRef& mn, int count_enabled, 
     return 0;
 }
 
-int64_t CMasternodeMan::GetLastPaid(const MasternodeRef& mn, int count_enabled, const CBlockIndex* BlockReading) const
+int64_t CMasternodeMan::GetLastPaidBlock(const MasternodeRef& mn, int count_enabled, const CBlockIndex* BlockReading) const
 {
     if (BlockReading == nullptr) return false;
 
